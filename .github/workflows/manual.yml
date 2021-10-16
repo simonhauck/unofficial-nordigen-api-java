@@ -1,0 +1,66 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    inputs:
+      language:
+        description: 'Language to be generated'
+        default: 'java'
+        required: true
+
+jobs:
+  api-binding:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Generate client
+      run: |
+        docker run -u 1001 --rm --workdir /github/workspace -v "$GITHUB_WORKSPACE":"/github/workspace" \
+          openapitools/openapi-generator-cli generate \
+          -i /github/workspace/api.json \
+          -g ${{ github.event.inputs.language }} \
+          -c /github/workspace/config.yml \
+          -o /github/workspace/generated \
+          --skip-validate-spec
+
+    - name: Show files
+      working-directory: ./generated
+      run: |
+        ls
+
+#    - name: Set up JDK 17
+#      uses: actions/setup-java@v1
+#      with:
+#        java-version: 11
+#
+#    - name: Add publish gradle task
+#      run: |
+#        cat publish-config.txt >> ./generated/build.gradle
+
+    - name: Add and push
+      uses: EndBug/add-and-commit@v7
+      with:
+        author_name: GitHub Dart Bot
+        author_email: noreply@github-bot.de
+        default_author: user_info
+        message: 'Updating api'
+
+# Commented out, since git releases are not working without credentials
+#    - name: Grant execute permission for gradlew
+#      working-directory: ./generated
+#      run: chmod +x gradlew
+#    - name: Publish package
+#      working-directory: ./generated
+#      run: ./gradlew publish
+#      env:
+#        USERNAME: ${{ secrets.USER_NAME }}
+#        TOKEN: ${{ secrets.PASSWORD }}
+
+

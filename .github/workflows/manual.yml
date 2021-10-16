@@ -24,7 +24,7 @@ jobs:
       run: |
         docker run -u 1001 --rm --workdir /github/workspace -v "$GITHUB_WORKSPACE":"/github/workspace" \
           openapitools/openapi-generator-cli generate \
-          -i /github/workspace/api.json \
+          -i /github/workspace/api.yml \
           -g ${{ github.event.inputs.language }} \
           -c /github/workspace/config.yml \
           -o /github/workspace/generated \

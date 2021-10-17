@@ -40,9 +40,9 @@ jobs:
 #      with:
 #        java-version: 11
 #
-#    - name: Add publish gradle task
-#      run: |
-#        cat publish-config.txt >> ./generated/build.gradle
+    - name: Add publish gradle task
+      run: |
+        cat publish-config.txt >> ./generated/build.gradle
 
     - name: Add and push
       uses: EndBug/add-and-commit@v7

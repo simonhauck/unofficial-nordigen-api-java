@@ -26,7 +26,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-16T21:54:12.243372Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-17T11:46:57.069002Z[Etc/UTC]")
 @Component("com.github.simonhauck.unofficial.nordigen.api.AccountsApi")
 public class AccountsApi {
     private ApiClient apiClient;

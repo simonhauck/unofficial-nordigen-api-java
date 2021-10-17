@@ -61,7 +61,7 @@ import com.github.simonhauck.unofficial.nordigen.auth.Authentication;
 import com.github.simonhauck.unofficial.nordigen.auth.HttpBasicAuth;
 import com.github.simonhauck.unofficial.nordigen.auth.ApiKeyAuth;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-16T21:54:12.243372Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-17T11:46:57.069002Z[Etc/UTC]")
 @Component("com.github.simonhauck.unofficial.nordigen.ApiClient")
 public class ApiClient extends JavaTimeFormatter {
     public enum CollectionFormat {

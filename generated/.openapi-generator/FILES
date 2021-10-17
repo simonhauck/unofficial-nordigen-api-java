@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -54,18 +53,3 @@ src/main/java/org/openapitools/client/model/Requisition.java
 src/main/java/org/openapitools/client/model/RequisitionLinkParams.java
 src/main/java/org/openapitools/client/model/RequisitionLinks.java
 src/main/java/org/openapitools/client/model/RequisitionStatusEnum.java
-src/test/java/com/github/simonhauck/unofficial/nordigen/api/AccountsApiTest.java
-src/test/java/com/github/simonhauck/unofficial/nordigen/api/AgreementsApiTest.java
-src/test/java/com/github/simonhauck/unofficial/nordigen/api/AspspsApiTest.java
-src/test/java/com/github/simonhauck/unofficial/nordigen/api/RequisitionsApiTest.java
-src/test/java/org/openapitools/client/model/AccountStatusEnumTest.java
-src/test/java/org/openapitools/client/model/AccountTest.java
-src/test/java/org/openapitools/client/model/AspspTest.java
-src/test/java/org/openapitools/client/model/EndUserAgreementTest.java
-src/test/java/org/openapitools/client/model/EnduserAcceptanceDetailsTest.java
-src/test/java/org/openapitools/client/model/PaginatedEndUserAgreementListTest.java
-src/test/java/org/openapitools/client/model/PaginatedRequisitionListTest.java
-src/test/java/org/openapitools/client/model/RequisitionLinkParamsTest.java
-src/test/java/org/openapitools/client/model/RequisitionLinksTest.java
-src/test/java/org/openapitools/client/model/RequisitionStatusEnumTest.java
-src/test/java/org/openapitools/client/model/RequisitionTest.java

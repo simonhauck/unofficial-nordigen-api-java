@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-18T17:07:54.916901Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-18T17:11:55.968860Z[Etc/UTC]")
 public interface AgreementsApi extends ApiClient.Api {
 
 

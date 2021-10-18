@@ -35,6 +35,11 @@ jobs:
       run: |
         ls
 
+    - name: Remove gradlew files
+      working-directory: ./generated
+      run: |
+        find  . -name 'gradle*' -exec rm -r -f {} \;
+
     - name: Add and push
       uses: EndBug/add-and-commit@v7
       with:

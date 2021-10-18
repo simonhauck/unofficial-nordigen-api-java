@@ -35,25 +35,10 @@ jobs:
       run: |
         ls
     
-    - name: Remove File build.gradle
-      uses: JesseTG/rm@v1.0.2
-      with:
-        path: /github/workspace/generated/build.gradle
-    
-    - name: Remove File gradlew
-      uses: JesseTG/rm@v1.0.2
-      with:
-        path: /github/workspace/generated/gradlew
-        
-    - name: Remove File gradlew.bat
-      uses: JesseTG/rm@v1.0.2
-      with:
-        path: /github/workspace/generated/gradlew.bat
-    
-    - name: Remove gradlew wrapper
-      uses: JesseTG/rm@v1.0.2
-      with:
-        path: /github/workspace/generated/gradle/
+    - name: Remove gradlew files
+      working-directory: ./generated
+      run: |
+        find  . -name 'gradle*' -exec rm {} \;
 
     - name: Add and push
       uses: EndBug/add-and-commit@v7

@@ -23,6 +23,16 @@ repositories {
 implementation 'com.github.simonhauck:unofficial-nordigen-api-java:1.7.1' 
 ````
 
+3. And here is a basic example in kotlin. For more code see the informations in the generated [README](https://github.com/simonhauck/unofficial-nordigen-api-java/blob/master/generated/README.md)
+````kotlin
+    val client = ApiClient("tokenAuth", "Token yourToken")
+    client.basePath = "https://ob.nordigen.com"
+
+    val buildClient = client.buildClient(AspspsApi::class.java)
+
+    val aspsps = buildClient.retrieveAllSupportedASPSPSInAGivenCountry("")
+````
+
 ## Generated code
 
 The code for this project is generated with the [OpenApi Generator](https://github.com/OpenAPITools/openapi-generator).

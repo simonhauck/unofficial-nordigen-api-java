@@ -6,5 +6,5 @@ artifactUrl: https://github.com/simonhauck/unofficial-nordigen-api-java
 serializationLibrary: gson
 artifactDescription: Nordigen api
 developerName: Simon Hauck
-library: resttemplate
+library: feign
 

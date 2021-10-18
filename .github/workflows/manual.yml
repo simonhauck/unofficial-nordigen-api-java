@@ -34,15 +34,26 @@ jobs:
       working-directory: ./generated
       run: |
         ls
-
-#    - name: Set up JDK 17
-#      uses: actions/setup-java@v1
-#      with:
-#        java-version: 11
-#
-    - name: Add publish gradle task
-      run: |
-        cat publish-config.txt >> ./generated/build.gradle
+    
+    - name: Remove File build.gradle
+      uses: JesseTG/rm@v1.0.2
+      with:
+        path: /github/workspace/generated/build.gradle
+    
+    - name: Remove File gradlew
+      uses: JesseTG/rm@v1.0.2
+      with:
+        path: /github/workspace/generated/gradlew
+        
+    - name: Remove File gradlew.bat
+      uses: JesseTG/rm@v1.0.2
+      with:
+        path: /github/workspace/generated/gradlew.bat
+    
+    - name: Remove gradlew wrapper
+      uses: JesseTG/rm@v1.0.2
+      with:
+        path: /github/workspace/generated/gradle/
 
     - name: Add and push
       uses: EndBug/add-and-commit@v7
@@ -52,15 +63,5 @@ jobs:
         default_author: user_info
         message: 'Updating api'
 
-# Commented out, since git releases are not working without credentials
-#    - name: Grant execute permission for gradlew
-#      working-directory: ./generated
-#      run: chmod +x gradlew
-#    - name: Publish package
-#      working-directory: ./generated
-#      run: ./gradlew publish
-#      env:
-#        USERNAME: ${{ secrets.USER_NAME }}
-#        TOKEN: ${{ secrets.PASSWORD }}
 
 

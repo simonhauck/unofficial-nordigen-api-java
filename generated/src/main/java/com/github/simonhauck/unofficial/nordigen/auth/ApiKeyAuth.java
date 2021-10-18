@@ -1,15 +1,13 @@
 package com.github.simonhauck.unofficial.nordigen.auth;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.util.MultiValueMap;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-17T11:46:57.069002Z[Etc/UTC]")
-public class ApiKeyAuth implements Authentication {
+public class ApiKeyAuth implements RequestInterceptor {
     private final String location;
     private final String paramName;
 
     private String apiKey;
-    private String apiKeyPrefix;
 
     public ApiKeyAuth(String location, String paramName) {
         this.location = location;
@@ -32,31 +30,14 @@ public class ApiKeyAuth implements Authentication {
         this.apiKey = apiKey;
     }
 
-    public String getApiKeyPrefix() {
-        return apiKeyPrefix;
-    }
-
-    public void setApiKeyPrefix(String apiKeyPrefix) {
-        this.apiKeyPrefix = apiKeyPrefix;
-    }
-
     @Override
-    public void applyToParams(MultiValueMap<String, String> queryParams, HttpHeaders headerParams, MultiValueMap<String, String> cookieParams) {
-        if (apiKey == null) {
-            return;
-        }
-        String value;
-        if (apiKeyPrefix != null) {
-            value = apiKeyPrefix + " " + apiKey;
-        } else {
-            value = apiKey;
-        }
-        if (location.equals("query")) {
-            queryParams.add(paramName, value);
-        } else if (location.equals("header")) {
-            headerParams.add(paramName, value);
-        } else if (location.equals("cookie")) {
-            cookieParams.add(paramName, value);
+    public void apply(RequestTemplate template) {
+        if ("query".equals(location)) {
+            template.query(paramName, apiKey);
+        } else if ("header".equals(location)) {
+            template.header(paramName, apiKey);
+        } else if ("cookie".equals(location)) {
+            template.header("Cookie", String.format("%s=%s", paramName, apiKey));
         }
     }
 }

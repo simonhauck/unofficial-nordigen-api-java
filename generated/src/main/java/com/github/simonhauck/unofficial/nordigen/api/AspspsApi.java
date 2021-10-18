@@ -1,147 +1,122 @@
 package com.github.simonhauck.unofficial.nordigen.api;
 
 import com.github.simonhauck.unofficial.nordigen.ApiClient;
+import com.github.simonhauck.unofficial.nordigen.EncodingUtils;
+import org.openapitools.client.model.HttpResponse;
 
 import org.openapitools.client.model.Aspsp;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.stream.Collectors;
+import feign.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-18T16:39:14.085122Z[Etc/UTC]")
+public interface AspspsApi extends ApiClient.Api {
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-17T11:46:57.069002Z[Etc/UTC]")
-@Component("com.github.simonhauck.unofficial.nordigen.api.AspspsApi")
-public class AspspsApi {
-    private ApiClient apiClient;
 
-    public AspspsApi() {
-        this(new ApiClient());
+  /**
+   * 
+   * List all ASPSPs available.
+   * @param country ISO 3166 two-character country code (required)
+   * @return List&lt;Aspsp&gt;
+   */
+  @RequestLine("GET /api/aspsps/?country={country}")
+  @Headers({
+    "Accept: application/json",
+  })
+  List<Aspsp> retrieveAllSupportedASPSPSInAGivenCountry(@Param("country") String country);
+
+  /**
+   * 
+   * Similar to <code>retrieveAllSupportedASPSPSInAGivenCountry</code> but it also returns the http response headers .
+   * List all ASPSPs available.
+   * @param country ISO 3166 two-character country code (required)
+   * @return A HttpResponse that wraps the response boyd and the http headers.
+   */
+  @RequestLine("GET /api/aspsps/?country={country}")
+  @Headers({
+    "Accept: application/json",
+  })
+  HttpResponse<List<Aspsp>> retrieveAllSupportedASPSPSInAGivenCountryWithHttpInfo(@Param("country") String country);
+
+
+  /**
+   * 
+   * List all ASPSPs available.
+   * Note, this is equivalent to the other <code>retrieveAllSupportedASPSPSInAGivenCountry</code> method,
+   * but with the query parameters collected into a single Map parameter. This
+   * is convenient for services with optional query parameters, especially when
+   * used with the {@link RetrieveAllSupportedASPSPSInAGivenCountryQueryParams} class that allows for
+   * building up this map in a fluent style.
+   * @param queryParams Map of query parameters as name-value pairs
+   *   <p>The following elements may be specified in the query map:</p>
+   *   <ul>
+   *   <li>country - ISO 3166 two-character country code (required)</li>
+   *   </ul>
+   * @return List&lt;Aspsp&gt;
+   */
+  @RequestLine("GET /api/aspsps/?country={country}")
+  @Headers({
+  "Accept: application/json",
+  })
+  List<Aspsp> retrieveAllSupportedASPSPSInAGivenCountry(@QueryMap(encoded=true) Map<String, Object> queryParams);
+
+  /**
+  * 
+  * List all ASPSPs available.
+  * Note, this is equivalent to the other <code>retrieveAllSupportedASPSPSInAGivenCountry</code> that receives the query parameters as a map,
+  * but this one also exposes the Http response headers
+      * @param queryParams Map of query parameters as name-value pairs
+      *   <p>The following elements may be specified in the query map:</p>
+      *   <ul>
+          *   <li>country - ISO 3166 two-character country code (required)</li>
+      *   </ul>
+          * @return List&lt;Aspsp&gt;
+      */
+      @RequestLine("GET /api/aspsps/?country={country}")
+      @Headers({
+    "Accept: application/json",
+      })
+   HttpResponse<List<Aspsp>> retrieveAllSupportedASPSPSInAGivenCountryWithHttpInfo(@QueryMap(encoded=true) Map<String, Object> queryParams);
+
+
+   /**
+   * A convenience class for generating query parameters for the
+   * <code>retrieveAllSupportedASPSPSInAGivenCountry</code> method in a fluent style.
+   */
+  public static class RetrieveAllSupportedASPSPSInAGivenCountryQueryParams extends HashMap<String, Object> {
+    public RetrieveAllSupportedASPSPSInAGivenCountryQueryParams country(final String value) {
+      put("country", EncodingUtils.encode(value));
+      return this;
     }
+  }
 
-    @Autowired
-    public AspspsApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
+  /**
+   * 
+   * Get details about a specific ASPSP.
+   * @param id  (required)
+   * @return Aspsp
+   */
+  @RequestLine("GET /api/aspsps/{id}/")
+  @Headers({
+    "Accept: application/json",
+  })
+  Aspsp retrieveDetailsAboutSpecificASPSP(@Param("id") String id);
 
-    public ApiClient getApiClient() {
-        return apiClient;
-    }
+  /**
+   * 
+   * Similar to <code>retrieveDetailsAboutSpecificASPSP</code> but it also returns the http response headers .
+   * Get details about a specific ASPSP.
+   * @param id  (required)
+   * @return A HttpResponse that wraps the response boyd and the http headers.
+   */
+  @RequestLine("GET /api/aspsps/{id}/")
+  @Headers({
+    "Accept: application/json",
+  })
+  HttpResponse<Aspsp> retrieveDetailsAboutSpecificASPSPWithHttpInfo(@Param("id") String id);
 
-    public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
 
-    /**
-     * 
-     * List all ASPSPs available.
-     * <p><b>200</b> - list of supported ASPSPs in the country
-     * @param country ISO 3166 two-character country code (required)
-     * @return List&lt;Aspsp&gt;
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public List<Aspsp> retrieveAllSupportedASPSPSInAGivenCountry(String country) throws RestClientException {
-        return retrieveAllSupportedASPSPSInAGivenCountryWithHttpInfo(country).getBody();
-    }
-
-    /**
-     * 
-     * List all ASPSPs available.
-     * <p><b>200</b> - list of supported ASPSPs in the country
-     * @param country ISO 3166 two-character country code (required)
-     * @return ResponseEntity&lt;List&lt;Aspsp&gt;&gt;
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public ResponseEntity<List<Aspsp>> retrieveAllSupportedASPSPSInAGivenCountryWithHttpInfo(String country) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'country' is set
-        if (country == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'country' when calling retrieveAllSupportedASPSPSInAGivenCountry");
-        }
-        
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "country", country));
-
-        final String[] localVarAccepts = { 
-            "application/json"
-         };
-        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        final String[] contentTypes = {  };
-        final MediaType localVarContentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "cookieAuth", "tokenAuth" };
-
-        ParameterizedTypeReference<List<Aspsp>> returnType = new ParameterizedTypeReference<List<Aspsp>>() {};
-        return apiClient.invokeAPI("/api/aspsps/", HttpMethod.GET, Collections.<String, Object>emptyMap(), queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, authNames, returnType);
-    }
-    /**
-     * 
-     * Get details about a specific ASPSP.
-     * <p><b>200</b> - ASPSP Representation
-     * @param id  (required)
-     * @return Aspsp
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public Aspsp retrieveDetailsAboutSpecificASPSP(String id) throws RestClientException {
-        return retrieveDetailsAboutSpecificASPSPWithHttpInfo(id).getBody();
-    }
-
-    /**
-     * 
-     * Get details about a specific ASPSP.
-     * <p><b>200</b> - ASPSP Representation
-     * @param id  (required)
-     * @return ResponseEntity&lt;Aspsp&gt;
-     * @throws RestClientException if an error occurs while attempting to invoke the API
-     */
-    public ResponseEntity<Aspsp> retrieveDetailsAboutSpecificASPSPWithHttpInfo(String id) throws RestClientException {
-        Object postBody = null;
-        
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'id' when calling retrieveDetailsAboutSpecificASPSP");
-        }
-        
-        // create path and map variables
-        final Map<String, Object> uriVariables = new HashMap<String, Object>();
-        uriVariables.put("id", id);
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        final String[] localVarAccepts = { 
-            "application/json"
-         };
-        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        final String[] contentTypes = {  };
-        final MediaType localVarContentType = apiClient.selectHeaderContentType(contentTypes);
-
-        String[] authNames = new String[] { "cookieAuth", "tokenAuth" };
-
-        ParameterizedTypeReference<Aspsp> returnType = new ParameterizedTypeReference<Aspsp>() {};
-        return apiClient.invokeAPI("/api/aspsps/{id}/", HttpMethod.GET, uriVariables, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, authNames, returnType);
-    }
 }

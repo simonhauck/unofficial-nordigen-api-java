@@ -1,14 +1,14 @@
 package com.github.simonhauck.unofficial.nordigen.auth;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
+import feign.auth.BasicAuthRequestInterceptor;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.util.Base64Utils;
-import org.springframework.util.MultiValueMap;
+/**
+ * An interceptor that adds the request header needed to use HTTP basic authentication.
+ */
+public class HttpBasicAuth implements RequestInterceptor {
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-17T11:46:57.069002Z[Etc/UTC]")
-public class HttpBasicAuth implements Authentication {
     private String username;
     private String password;
 
@@ -28,12 +28,14 @@ public class HttpBasicAuth implements Authentication {
         this.password = password;
     }
 
-    @Override
-    public void applyToParams(MultiValueMap<String, String> queryParams, HttpHeaders headerParams, MultiValueMap<String, String> cookieParams) {
-        if (username == null && password == null) {
-            return;
-        }
-        String str = (username == null ? "" : username) + ":" + (password == null ? "" : password);
-        headerParams.add(HttpHeaders.AUTHORIZATION, "Basic " + Base64Utils.encodeToString(str.getBytes(StandardCharsets.UTF_8)));
+    public void setCredentials(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
+
+  @Override
+  public void apply(RequestTemplate template) {
+      RequestInterceptor requestInterceptor = new BasicAuthRequestInterceptor(username, password);
+      requestInterceptor.apply(template);
+  }
 }

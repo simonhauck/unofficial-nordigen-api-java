@@ -1,38 +1,43 @@
 package com.github.simonhauck.unofficial.nordigen.auth;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.util.Base64Utils;
-import org.springframework.util.MultiValueMap;
+/**
+ * An interceptor that adds the request header needed to use HTTP bearer authentication.
+ */
+public class HttpBearerAuth implements RequestInterceptor {
+  private final String scheme;
+  private String bearerToken;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-17T11:46:57.069002Z[Etc/UTC]")
-public class HttpBearerAuth implements Authentication {
-    private final String scheme;
-    private String bearerToken;
+  public HttpBearerAuth(String scheme) {
+    this.scheme = scheme;
+  }
 
-    public HttpBearerAuth(String scheme) {
-        this.scheme = scheme;
+  /**
+   * Gets the token, which together with the scheme, will be sent as the value of the Authorization header.
+   */
+  public String getBearerToken() {
+    return bearerToken;
+  }
+
+  /**
+   * Sets the token, which together with the scheme, will be sent as the value of the Authorization header.
+   */
+  public void setBearerToken(String bearerToken) {
+    this.bearerToken = bearerToken;
+  }
+
+  @Override
+  public void apply(RequestTemplate template) {
+    if(bearerToken == null) {
+      return;
     }
 
-    public String getBearerToken() {
-        return bearerToken;
-    }
+    template.header("Authorization", (scheme != null ? upperCaseBearer(scheme) + " " : "") + bearerToken);
+  }
 
-    public void setBearerToken(String bearerToken) {
-        this.bearerToken = bearerToken;
-    }
-
-    @Override
-    public void applyToParams(MultiValueMap<String, String> queryParams, HttpHeaders headerParams, MultiValueMap<String, String> cookieParams) {
-        if (bearerToken == null) {
-            return;
-        }
-        headerParams.add(HttpHeaders.AUTHORIZATION, (scheme != null ? upperCaseBearer(scheme) + " " : "") + bearerToken);
-    }
-
-    private static String upperCaseBearer(String scheme) {
-        return ("bearer".equalsIgnoreCase(scheme)) ? "Bearer" : scheme;
-    }
+  private static String upperCaseBearer(String scheme) {
+    return ("bearer".equalsIgnoreCase(scheme)) ? "Bearer" : scheme;
+  }
 }

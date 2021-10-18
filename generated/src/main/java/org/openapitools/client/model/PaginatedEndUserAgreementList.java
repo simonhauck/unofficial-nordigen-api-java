@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   PaginatedEndUserAgreementList.JSON_PROPERTY_RESULTS
 })
 @JsonTypeName("PaginatedEndUserAgreementList")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-18T16:42:20.649024Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-18T17:02:59.506159Z[Etc/UTC]")
 public class PaginatedEndUserAgreementList {
   public static final String JSON_PROPERTY_COUNT = "count";
   private Integer count;

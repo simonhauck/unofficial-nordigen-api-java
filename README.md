@@ -1,4 +1,5 @@
 # Unofficial Nordigen Api (Java)
+[![Manual workflow](https://github.com/simonhauck/unofficial-nordigen-api-java/actions/workflows/manual.yml/badge.svg)](https://github.com/simonhauck/unofficial-nordigen-api-java/actions/workflows/manual.yml)
 [![](https://jitpack.io/v/simonhauck/unofficial-nordigen-api-java.svg)](https://jitpack.io/#simonhauck/unofficial-nordigen-api-java)
 
 

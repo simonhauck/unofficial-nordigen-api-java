@@ -21,7 +21,7 @@ repositories {
 ````
 2. Add the dependecy
 ````shell
-implementation 'com.github.simonhauck:unofficial-nordigen-api-java:1.7.1' 
+implementation 'com.github.simonhauck:unofficial-nordigen-api-java:2.0.0' 
 ````
 
 3. And here is a basic example in kotlin. For more code see the informations in the generated [README](https://github.com/simonhauck/unofficial-nordigen-api-java/blob/master/generated/README.md)

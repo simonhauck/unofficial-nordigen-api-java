@@ -26,44 +26,64 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * RequisitionLinkParamsSerializer.
+ * Refresh access token.
  */
-@ApiModel(description = "RequisitionLinkParamsSerializer.")
+@ApiModel(description = "Refresh access token.")
 @JsonPropertyOrder({
-  RequisitionLinkParams.JSON_PROPERTY_ASPSP_ID
+  JWTRefresh.JSON_PROPERTY_REFRESH,
+  JWTRefresh.JSON_PROPERTY_ACCESS
 })
-@JsonTypeName("RequisitionLinkParams")
+@JsonTypeName("JWTRefresh")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:27:09.503691Z[Etc/UTC]")
-public class RequisitionLinkParams {
-  public static final String JSON_PROPERTY_ASPSP_ID = "aspsp_id";
-  private String aspspId;
+public class JWTRefresh {
+  public static final String JSON_PROPERTY_REFRESH = "refresh";
+  private String refresh;
+
+  public static final String JSON_PROPERTY_ACCESS = "access";
+  private String access;
 
 
-  public RequisitionLinkParams aspspId(String aspspId) {
+  public JWTRefresh refresh(String refresh) {
     
-    this.aspspId = aspspId;
+    this.refresh = refresh;
     return this;
   }
 
    /**
-   * ASPSP ID. Should match one used while creating EUA, if it&#39;s linked to this requisition
-   * @return aspspId
+   * Get refresh
+   * @return refresh
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "ASPSP ID. Should match one used while creating EUA, if it's linked to this requisition")
-  @JsonProperty(JSON_PROPERTY_ASPSP_ID)
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_REFRESH)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getAspspId() {
-    return aspspId;
+  public String getRefresh() {
+    return refresh;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ASPSP_ID)
+  @JsonProperty(JSON_PROPERTY_REFRESH)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAspspId(String aspspId) {
-    this.aspspId = aspspId;
+  public void setRefresh(String refresh) {
+    this.refresh = refresh;
   }
+
+
+   /**
+   * Get access
+   * @return access
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_ACCESS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getAccess() {
+    return access;
+  }
+
+
 
 
   @Override
@@ -74,20 +94,22 @@ public class RequisitionLinkParams {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RequisitionLinkParams requisitionLinkParams = (RequisitionLinkParams) o;
-    return Objects.equals(this.aspspId, requisitionLinkParams.aspspId);
+    JWTRefresh jwTRefresh = (JWTRefresh) o;
+    return Objects.equals(this.refresh, jwTRefresh.refresh) &&
+        Objects.equals(this.access, jwTRefresh.access);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aspspId);
+    return Objects.hash(refresh, access);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RequisitionLinkParams {\n");
-    sb.append("    aspspId: ").append(toIndentedString(aspspId)).append("\n");
+    sb.append("class JWTRefresh {\n");
+    sb.append("    refresh: ").append(toIndentedString(refresh)).append("\n");
+    sb.append("    access: ").append(toIndentedString(access)).append("\n");
     sb.append("}");
     return sb.toString();
   }

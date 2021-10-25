@@ -26,44 +26,53 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * RequisitionLinkParamsSerializer.
+ * Refresh Access token.
  */
-@ApiModel(description = "RequisitionLinkParamsSerializer.")
+@ApiModel(description = "Refresh Access token.")
 @JsonPropertyOrder({
-  RequisitionLinkParams.JSON_PROPERTY_ASPSP_ID
+  SpectacularJWTRefresh.JSON_PROPERTY_ACCESS,
+  SpectacularJWTRefresh.JSON_PROPERTY_ACCESS_EXPIRES
 })
-@JsonTypeName("RequisitionLinkParams")
+@JsonTypeName("SpectacularJWTRefresh")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:27:09.503691Z[Etc/UTC]")
-public class RequisitionLinkParams {
-  public static final String JSON_PROPERTY_ASPSP_ID = "aspsp_id";
-  private String aspspId;
+public class SpectacularJWTRefresh {
+  public static final String JSON_PROPERTY_ACCESS = "access";
+  private String access;
 
+  public static final String JSON_PROPERTY_ACCESS_EXPIRES = "access_expires";
+  private Integer accessExpires = 86400;
 
-  public RequisitionLinkParams aspspId(String aspspId) {
-    
-    this.aspspId = aspspId;
-    return this;
-  }
 
    /**
-   * ASPSP ID. Should match one used while creating EUA, if it&#39;s linked to this requisition
-   * @return aspspId
+   * Your access token
+   * @return access
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "ASPSP ID. Should match one used while creating EUA, if it's linked to this requisition")
-  @JsonProperty(JSON_PROPERTY_ASPSP_ID)
+  @ApiModelProperty(required = true, value = "Your access token")
+  @JsonProperty(JSON_PROPERTY_ACCESS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getAspspId() {
-    return aspspId;
+  public String getAccess() {
+    return access;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ASPSP_ID)
+
+
+   /**
+   * Access token expires in seconds
+   * @return accessExpires
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Access token expires in seconds")
+  @JsonProperty(JSON_PROPERTY_ACCESS_EXPIRES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAspspId(String aspspId) {
-    this.aspspId = aspspId;
+
+  public Integer getAccessExpires() {
+    return accessExpires;
   }
+
+
 
 
   @Override
@@ -74,20 +83,22 @@ public class RequisitionLinkParams {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RequisitionLinkParams requisitionLinkParams = (RequisitionLinkParams) o;
-    return Objects.equals(this.aspspId, requisitionLinkParams.aspspId);
+    SpectacularJWTRefresh spectacularJWTRefresh = (SpectacularJWTRefresh) o;
+    return Objects.equals(this.access, spectacularJWTRefresh.access) &&
+        Objects.equals(this.accessExpires, spectacularJWTRefresh.accessExpires);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aspspId);
+    return Objects.hash(access, accessExpires);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RequisitionLinkParams {\n");
-    sb.append("    aspspId: ").append(toIndentedString(aspspId)).append("\n");
+    sb.append("class SpectacularJWTRefresh {\n");
+    sb.append("    access: ").append(toIndentedString(access)).append("\n");
+    sb.append("    accessExpires: ").append(toIndentedString(accessExpires)).append("\n");
     sb.append("}");
     return sb.toString();
   }

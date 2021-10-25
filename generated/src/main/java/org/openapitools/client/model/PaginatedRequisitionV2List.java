@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.EndUserAgreement;
+import org.openapitools.client.model.RequisitionV2;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -34,17 +34,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * PaginatedEndUserAgreementList
+ * PaginatedRequisitionV2List
  */
 @JsonPropertyOrder({
-  PaginatedEndUserAgreementList.JSON_PROPERTY_COUNT,
-  PaginatedEndUserAgreementList.JSON_PROPERTY_NEXT,
-  PaginatedEndUserAgreementList.JSON_PROPERTY_PREVIOUS,
-  PaginatedEndUserAgreementList.JSON_PROPERTY_RESULTS
+  PaginatedRequisitionV2List.JSON_PROPERTY_COUNT,
+  PaginatedRequisitionV2List.JSON_PROPERTY_NEXT,
+  PaginatedRequisitionV2List.JSON_PROPERTY_PREVIOUS,
+  PaginatedRequisitionV2List.JSON_PROPERTY_RESULTS
 })
-@JsonTypeName("PaginatedEndUserAgreementList")
+@JsonTypeName("PaginatedRequisitionV2List")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:27:09.503691Z[Etc/UTC]")
-public class PaginatedEndUserAgreementList {
+public class PaginatedRequisitionV2List {
   public static final String JSON_PROPERTY_COUNT = "count";
   private Integer count;
 
@@ -55,10 +55,10 @@ public class PaginatedEndUserAgreementList {
   private JsonNullable<URI> previous = JsonNullable.<URI>undefined();
 
   public static final String JSON_PROPERTY_RESULTS = "results";
-  private List<EndUserAgreement> results = null;
+  private List<RequisitionV2> results = null;
 
 
-  public PaginatedEndUserAgreementList count(Integer count) {
+  public PaginatedRequisitionV2List count(Integer count) {
     
     this.count = count;
     return this;
@@ -85,7 +85,7 @@ public class PaginatedEndUserAgreementList {
   }
 
 
-  public PaginatedEndUserAgreementList next(URI next) {
+  public PaginatedRequisitionV2List next(URI next) {
     this.next = JsonNullable.<URI>of(next);
     
     return this;
@@ -96,7 +96,7 @@ public class PaginatedEndUserAgreementList {
    * @return next
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0", value = "")
+  @ApiModelProperty(example = "https://ob.nordigen.com/api/v2/requisitions/?limit=100&offset=0", value = "")
   @JsonIgnore
 
   public URI getNext() {
@@ -120,7 +120,7 @@ public class PaginatedEndUserAgreementList {
   }
 
 
-  public PaginatedEndUserAgreementList previous(URI previous) {
+  public PaginatedRequisitionV2List previous(URI previous) {
     this.previous = JsonNullable.<URI>of(previous);
     
     return this;
@@ -131,7 +131,7 @@ public class PaginatedEndUserAgreementList {
    * @return previous
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0", value = "")
+  @ApiModelProperty(example = "https://ob.nordigen.com/api/v2/requisitions/?limit=100&offset=0", value = "")
   @JsonIgnore
 
   public URI getPrevious() {
@@ -155,15 +155,15 @@ public class PaginatedEndUserAgreementList {
   }
 
 
-  public PaginatedEndUserAgreementList results(List<EndUserAgreement> results) {
+  public PaginatedRequisitionV2List results(List<RequisitionV2> results) {
     
     this.results = results;
     return this;
   }
 
-  public PaginatedEndUserAgreementList addResultsItem(EndUserAgreement resultsItem) {
+  public PaginatedRequisitionV2List addResultsItem(RequisitionV2 resultsItem) {
     if (this.results == null) {
-      this.results = new ArrayList<EndUserAgreement>();
+      this.results = new ArrayList<RequisitionV2>();
     }
     this.results.add(resultsItem);
     return this;
@@ -178,14 +178,14 @@ public class PaginatedEndUserAgreementList {
   @JsonProperty(JSON_PROPERTY_RESULTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<EndUserAgreement> getResults() {
+  public List<RequisitionV2> getResults() {
     return results;
   }
 
 
   @JsonProperty(JSON_PROPERTY_RESULTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResults(List<EndUserAgreement> results) {
+  public void setResults(List<RequisitionV2> results) {
     this.results = results;
   }
 
@@ -198,11 +198,11 @@ public class PaginatedEndUserAgreementList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PaginatedEndUserAgreementList paginatedEndUserAgreementList = (PaginatedEndUserAgreementList) o;
-    return Objects.equals(this.count, paginatedEndUserAgreementList.count) &&
-        equalsNullable(this.next, paginatedEndUserAgreementList.next) &&
-        equalsNullable(this.previous, paginatedEndUserAgreementList.previous) &&
-        Objects.equals(this.results, paginatedEndUserAgreementList.results);
+    PaginatedRequisitionV2List paginatedRequisitionV2List = (PaginatedRequisitionV2List) o;
+    return Objects.equals(this.count, paginatedRequisitionV2List.count) &&
+        equalsNullable(this.next, paginatedRequisitionV2List.next) &&
+        equalsNullable(this.previous, paginatedRequisitionV2List.previous) &&
+        Objects.equals(this.results, paginatedRequisitionV2List.results);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -224,7 +224,7 @@ public class PaginatedEndUserAgreementList {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PaginatedEndUserAgreementList {\n");
+    sb.append("class PaginatedRequisitionV2List {\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    next: ").append(toIndentedString(next)).append("\n");
     sb.append("    previous: ").append(toIndentedString(previous)).append("\n");

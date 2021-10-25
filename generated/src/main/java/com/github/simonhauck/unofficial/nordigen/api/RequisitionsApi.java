@@ -2,12 +2,11 @@ package com.github.simonhauck.unofficial.nordigen.api;
 
 import com.github.simonhauck.unofficial.nordigen.ApiClient;
 import com.github.simonhauck.unofficial.nordigen.EncodingUtils;
-import org.openapitools.client.model.HttpResponse;
+import org.openapitools.client.model.ApiResponse;
 
-import org.openapitools.client.model.PaginatedRequisitionList;
-import org.openapitools.client.model.Requisition;
-import org.openapitools.client.model.RequisitionLinkParams;
-import org.openapitools.client.model.RequisitionLinks;
+import org.openapitools.client.model.PaginatedRequisitionV2List;
+import org.openapitools.client.model.RequisitionV2;
+import org.openapitools.client.model.SpectacularRequisitionV2;
 import java.util.UUID;
 
 import java.util.ArrayList;
@@ -16,92 +15,32 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-18T17:20:21.539882Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:27:09.503691Z[Etc/UTC]")
 public interface RequisitionsApi extends ApiClient.Api {
 
 
   /**
    * 
-   * API endpoints related to requisitions.
-   * @param requisition  (required)
-   * @return Requisition
-   */
-  @RequestLine("POST /api/requisitions/")
-  @Headers({
-    "Content-Type: application/json",
-    "Accept: application/json",
-  })
-  Requisition createANewRequisition(Requisition requisition);
-
-  /**
-   * 
-   * Similar to <code>createANewRequisition</code> but it also returns the http response headers .
-   * API endpoints related to requisitions.
-   * @param requisition  (required)
-   * @return A HttpResponse that wraps the response boyd and the http headers.
-   */
-  @RequestLine("POST /api/requisitions/")
-  @Headers({
-    "Content-Type: application/json",
-    "Accept: application/json",
-  })
-  HttpResponse<Requisition> createANewRequisitionWithHttpInfo(Requisition requisition);
-
-
-
-  /**
-   * 
-   * Get links for user redirection.
-   * @param id A UUID string identifying this requisition. (required)
-   * @param requisitionLinkParams  (required)
-   * @return RequisitionLinks
-   */
-  @RequestLine("POST /api/requisitions/{id}/links/")
-  @Headers({
-    "Content-Type: application/json",
-    "Accept: application/json",
-  })
-  RequisitionLinks createASPSPAuthorizationLink(@Param("id") UUID id, RequisitionLinkParams requisitionLinkParams);
-
-  /**
-   * 
-   * Similar to <code>createASPSPAuthorizationLink</code> but it also returns the http response headers .
-   * Get links for user redirection.
-   * @param id A UUID string identifying this requisition. (required)
-   * @param requisitionLinkParams  (required)
-   * @return A HttpResponse that wraps the response boyd and the http headers.
-   */
-  @RequestLine("POST /api/requisitions/{id}/links/")
-  @Headers({
-    "Content-Type: application/json",
-    "Accept: application/json",
-  })
-  HttpResponse<RequisitionLinks> createASPSPAuthorizationLinkWithHttpInfo(@Param("id") UUID id, RequisitionLinkParams requisitionLinkParams);
-
-
-
-  /**
-   * 
    * Delete Requisition and all End User Agreements.
    * @param id A UUID string identifying this requisition. (required)
    */
-  @RequestLine("DELETE /api/requisitions/{id}/")
+  @RequestLine("DELETE /api/v2/requisitions/{id}/")
   @Headers({
     "Accept: application/json",
   })
-  void deleteRequisition(@Param("id") UUID id);
+  void deleteRequisitionByIdV2(@Param("id") UUID id);
 
   /**
    * 
-   * Similar to <code>deleteRequisition</code> but it also returns the http response headers .
+   * Similar to <code>deleteRequisitionByIdV2</code> but it also returns the http response headers .
    * Delete Requisition and all End User Agreements.
    * @param id A UUID string identifying this requisition. (required)
    */
-  @RequestLine("DELETE /api/requisitions/{id}/")
+  @RequestLine("DELETE /api/v2/requisitions/{id}/")
   @Headers({
     "Accept: application/json",
   })
-  HttpResponse<Void> deleteRequisitionWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Void> deleteRequisitionByIdV2WithHttpInfo(@Param("id") UUID id);
 
 
 
@@ -109,26 +48,55 @@ public interface RequisitionsApi extends ApiClient.Api {
    * 
    * API endpoints related to requisitions.
    * @param id A UUID string identifying this requisition. (required)
-   * @return Requisition
+   * @return RequisitionV2
    */
-  @RequestLine("GET /api/requisitions/{id}/")
+  @RequestLine("GET /api/v2/requisitions/{id}/")
   @Headers({
     "Accept: application/json",
   })
-  Requisition requisitionById(@Param("id") UUID id);
+  RequisitionV2 requisitionById(@Param("id") UUID id);
 
   /**
    * 
    * Similar to <code>requisitionById</code> but it also returns the http response headers .
    * API endpoints related to requisitions.
    * @param id A UUID string identifying this requisition. (required)
-   * @return A HttpResponse that wraps the response boyd and the http headers.
+   * @return A ApiResponse that wraps the response boyd and the http headers.
    */
-  @RequestLine("GET /api/requisitions/{id}/")
+  @RequestLine("GET /api/v2/requisitions/{id}/")
   @Headers({
     "Accept: application/json",
   })
-  HttpResponse<Requisition> requisitionByIdWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<RequisitionV2> requisitionByIdWithHttpInfo(@Param("id") UUID id);
+
+
+
+  /**
+   * 
+   * API endpoints related to requisitions.
+   * @param requisitionV2  (required)
+   * @return SpectacularRequisitionV2
+   */
+  @RequestLine("POST /api/v2/requisitions/")
+  @Headers({
+    "Content-Type: application/json",
+    "Accept: application/json",
+  })
+  SpectacularRequisitionV2 requisitionCreated(RequisitionV2 requisitionV2);
+
+  /**
+   * 
+   * Similar to <code>requisitionCreated</code> but it also returns the http response headers .
+   * API endpoints related to requisitions.
+   * @param requisitionV2  (required)
+   * @return A ApiResponse that wraps the response boyd and the http headers.
+   */
+  @RequestLine("POST /api/v2/requisitions/")
+  @Headers({
+    "Content-Type: application/json",
+    "Accept: application/json",
+  })
+  ApiResponse<SpectacularRequisitionV2> requisitionCreatedWithHttpInfo(RequisitionV2 requisitionV2);
 
 
 
@@ -137,13 +105,13 @@ public interface RequisitionsApi extends ApiClient.Api {
    * API endpoints related to requisitions.
    * @param limit Number of results to return per page. (optional)
    * @param offset The initial index from which to return the results. (optional)
-   * @return PaginatedRequisitionList
+   * @return PaginatedRequisitionV2List
    */
-  @RequestLine("GET /api/requisitions/?limit={limit}&offset={offset}")
+  @RequestLine("GET /api/v2/requisitions/?limit={limit}&offset={offset}")
   @Headers({
     "Accept: application/json",
   })
-  PaginatedRequisitionList retrieveAllRequisitions(@Param("limit") Integer limit, @Param("offset") Integer offset);
+  PaginatedRequisitionV2List retrieveAllRequisitions(@Param("limit") Integer limit, @Param("offset") Integer offset);
 
   /**
    * 
@@ -151,13 +119,13 @@ public interface RequisitionsApi extends ApiClient.Api {
    * API endpoints related to requisitions.
    * @param limit Number of results to return per page. (optional)
    * @param offset The initial index from which to return the results. (optional)
-   * @return A HttpResponse that wraps the response boyd and the http headers.
+   * @return A ApiResponse that wraps the response boyd and the http headers.
    */
-  @RequestLine("GET /api/requisitions/?limit={limit}&offset={offset}")
+  @RequestLine("GET /api/v2/requisitions/?limit={limit}&offset={offset}")
   @Headers({
     "Accept: application/json",
   })
-  HttpResponse<PaginatedRequisitionList> retrieveAllRequisitionsWithHttpInfo(@Param("limit") Integer limit, @Param("offset") Integer offset);
+  ApiResponse<PaginatedRequisitionV2List> retrieveAllRequisitionsWithHttpInfo(@Param("limit") Integer limit, @Param("offset") Integer offset);
 
 
   /**
@@ -174,13 +142,13 @@ public interface RequisitionsApi extends ApiClient.Api {
    *   <li>limit - Number of results to return per page. (optional)</li>
    *   <li>offset - The initial index from which to return the results. (optional)</li>
    *   </ul>
-   * @return PaginatedRequisitionList
+   * @return PaginatedRequisitionV2List
    */
-  @RequestLine("GET /api/requisitions/?limit={limit}&offset={offset}")
+  @RequestLine("GET /api/v2/requisitions/?limit={limit}&offset={offset}")
   @Headers({
   "Accept: application/json",
   })
-  PaginatedRequisitionList retrieveAllRequisitions(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  PaginatedRequisitionV2List retrieveAllRequisitions(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
   * 
@@ -193,13 +161,13 @@ public interface RequisitionsApi extends ApiClient.Api {
           *   <li>limit - Number of results to return per page. (optional)</li>
           *   <li>offset - The initial index from which to return the results. (optional)</li>
       *   </ul>
-          * @return PaginatedRequisitionList
+          * @return PaginatedRequisitionV2List
       */
-      @RequestLine("GET /api/requisitions/?limit={limit}&offset={offset}")
+      @RequestLine("GET /api/v2/requisitions/?limit={limit}&offset={offset}")
       @Headers({
     "Accept: application/json",
       })
-   HttpResponse<PaginatedRequisitionList> retrieveAllRequisitionsWithHttpInfo(@QueryMap(encoded=true) Map<String, Object> queryParams);
+   ApiResponse<PaginatedRequisitionV2List> retrieveAllRequisitionsWithHttpInfo(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
 
    /**

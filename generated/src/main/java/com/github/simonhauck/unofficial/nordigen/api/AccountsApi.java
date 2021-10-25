@@ -2,9 +2,9 @@ package com.github.simonhauck.unofficial.nordigen.api;
 
 import com.github.simonhauck.unofficial.nordigen.ApiClient;
 import com.github.simonhauck.unofficial.nordigen.EncodingUtils;
-import org.openapitools.client.model.HttpResponse;
+import org.openapitools.client.model.ApiResponse;
 
-import org.openapitools.client.model.Account;
+import org.openapitools.client.model.AccountV2;
 import java.util.UUID;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-18T17:20:21.539882Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:27:09.503691Z[Etc/UTC]")
 public interface AccountsApi extends ApiClient.Api {
 
 
@@ -21,26 +21,26 @@ public interface AccountsApi extends ApiClient.Api {
    * 
    * Access account balances.  Balances will be returned in Berlin Group PSD2 format.
    * @param id  (required)
-   * @return String
+   * @return Map&lt;String, Object&gt;
    */
-  @RequestLine("GET /api/accounts/{id}/balances/")
+  @RequestLine("GET /api/v2/accounts/{id}/balances/")
   @Headers({
     "Accept: application/json",
   })
-  String retrieveAccountBalances(@Param("id") UUID id);
+  Map<String, Object> retrieveAccountBalances(@Param("id") UUID id);
 
   /**
    * 
    * Similar to <code>retrieveAccountBalances</code> but it also returns the http response headers .
    * Access account balances.  Balances will be returned in Berlin Group PSD2 format.
    * @param id  (required)
-   * @return A HttpResponse that wraps the response boyd and the http headers.
+   * @return A ApiResponse that wraps the response boyd and the http headers.
    */
-  @RequestLine("GET /api/accounts/{id}/balances/")
+  @RequestLine("GET /api/v2/accounts/{id}/balances/")
   @Headers({
     "Accept: application/json",
   })
-  HttpResponse<String> retrieveAccountBalancesWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Map<String, Object>> retrieveAccountBalancesWithHttpInfo(@Param("id") UUID id);
 
 
 
@@ -48,26 +48,26 @@ public interface AccountsApi extends ApiClient.Api {
    * 
    * Access account details.  Account details will be returned in Berlin Group PSD2 format.
    * @param id  (required)
-   * @return String
+   * @return Map&lt;String, Object&gt;
    */
-  @RequestLine("GET /api/accounts/{id}/details/")
+  @RequestLine("GET /api/v2/accounts/{id}/details/")
   @Headers({
     "Accept: application/json",
   })
-  String retrieveAccountDetails(@Param("id") UUID id);
+  Map<String, Object> retrieveAccountDetails(@Param("id") UUID id);
 
   /**
    * 
    * Similar to <code>retrieveAccountDetails</code> but it also returns the http response headers .
    * Access account details.  Account details will be returned in Berlin Group PSD2 format.
    * @param id  (required)
-   * @return A HttpResponse that wraps the response boyd and the http headers.
+   * @return A ApiResponse that wraps the response boyd and the http headers.
    */
-  @RequestLine("GET /api/accounts/{id}/details/")
+  @RequestLine("GET /api/v2/accounts/{id}/details/")
   @Headers({
     "Accept: application/json",
   })
-  HttpResponse<String> retrieveAccountDetailsWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Map<String, Object>> retrieveAccountDetailsWithHttpInfo(@Param("id") UUID id);
 
 
 
@@ -75,26 +75,26 @@ public interface AccountsApi extends ApiClient.Api {
    * 
    * Access account metadata.  Information about the account record, such as the processing status and IBAN.  Account status is recalculated based on the error count in the latest req.
    * @param id  (required)
-   * @return Account
+   * @return AccountV2
    */
-  @RequestLine("GET /api/accounts/{id}/")
+  @RequestLine("GET /api/v2/accounts/{id}/")
   @Headers({
     "Accept: application/json",
   })
-  Account retrieveAccountMetadata(@Param("id") UUID id);
+  AccountV2 retrieveAccountMetadata(@Param("id") UUID id);
 
   /**
    * 
    * Similar to <code>retrieveAccountMetadata</code> but it also returns the http response headers .
    * Access account metadata.  Information about the account record, such as the processing status and IBAN.  Account status is recalculated based on the error count in the latest req.
    * @param id  (required)
-   * @return A HttpResponse that wraps the response boyd and the http headers.
+   * @return A ApiResponse that wraps the response boyd and the http headers.
    */
-  @RequestLine("GET /api/accounts/{id}/")
+  @RequestLine("GET /api/v2/accounts/{id}/")
   @Headers({
     "Accept: application/json",
   })
-  HttpResponse<Account> retrieveAccountMetadataWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<AccountV2> retrieveAccountMetadataWithHttpInfo(@Param("id") UUID id);
 
 
 
@@ -102,26 +102,26 @@ public interface AccountsApi extends ApiClient.Api {
    * 
    * Access account transactions.  Transactions will be returned in Berlin Group PSD2 format.
    * @param id  (required)
-   * @return String
+   * @return Map&lt;String, Object&gt;
    */
-  @RequestLine("GET /api/accounts/{id}/transactions/")
+  @RequestLine("GET /api/v2/accounts/{id}/transactions/")
   @Headers({
     "Accept: application/json",
   })
-  String retrieveAccountTransactions(@Param("id") UUID id);
+  Map<String, Object> retrieveAccountTransactions(@Param("id") UUID id);
 
   /**
    * 
    * Similar to <code>retrieveAccountTransactions</code> but it also returns the http response headers .
    * Access account transactions.  Transactions will be returned in Berlin Group PSD2 format.
    * @param id  (required)
-   * @return A HttpResponse that wraps the response boyd and the http headers.
+   * @return A ApiResponse that wraps the response boyd and the http headers.
    */
-  @RequestLine("GET /api/accounts/{id}/transactions/")
+  @RequestLine("GET /api/v2/accounts/{id}/transactions/")
   @Headers({
     "Accept: application/json",
   })
-  HttpResponse<String> retrieveAccountTransactionsWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Map<String, Object>> retrieveAccountTransactionsWithHttpInfo(@Param("id") UUID id);
 
 
 }

@@ -23,17 +23,17 @@ import feign.slf4j.Slf4jLogger;
 import com.github.simonhauck.unofficial.nordigen.auth.HttpBasicAuth;
 import com.github.simonhauck.unofficial.nordigen.auth.HttpBearerAuth;
 import com.github.simonhauck.unofficial.nordigen.auth.ApiKeyAuth;
-import com.github.simonhauck.unofficial.nordigen.JacksonResponseDecoder;
+import com.github.simonhauck.unofficial.nordigen.ApiResponseDecoder;
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-18T17:20:21.539882Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:27:09.503691Z[Etc/UTC]")
 public class ApiClient {
   private static final Logger log = Logger.getLogger(ApiClient.class.getName());
 
   public interface Api {}
 
   protected ObjectMapper objectMapper;
-  private String basePath = "http://localhost";
+  private String basePath = "https://ob.nordigen.com";
   private Map<String, RequestInterceptor> apiAuthorizations;
   private Feign.Builder feignBuilder;
 
@@ -43,7 +43,7 @@ public class ApiClient {
     feignBuilder = Feign.builder()
                 .client(new OkHttpClient())
                 .encoder(new FormEncoder(new JacksonEncoder(objectMapper)))
-                .decoder(new JacksonResponseDecoder(objectMapper))
+                .decoder(new ApiResponseDecoder(objectMapper))
                 .logger(new Slf4jLogger());
   }
 
@@ -52,12 +52,8 @@ public class ApiClient {
     for(String authName : authNames) {
       log.log(Level.FINE, "Creating authentication {0}", authName);
       RequestInterceptor auth;
-      if ("basicAuth".equals(authName)) {
-        auth = new HttpBasicAuth();
-      } else if ("cookieAuth".equals(authName)) {
-        auth = new ApiKeyAuth("cookie", "Session");
-      } else if ("tokenAuth".equals(authName)) {
-        auth = new ApiKeyAuth("header", "Authorization");
+      if ("jwtAuth".equals(authName)) {
+        auth = new HttpBearerAuth("bearer");
       } else {
         throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
       }

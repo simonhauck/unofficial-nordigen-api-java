@@ -26,43 +26,74 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * RequisitionLinkParamsSerializer.
+ * Obtain JWT pair.
  */
-@ApiModel(description = "RequisitionLinkParamsSerializer.")
+@ApiModel(description = "Obtain JWT pair.")
 @JsonPropertyOrder({
-  RequisitionLinkParams.JSON_PROPERTY_ASPSP_ID
+  JWTObtainPair.JSON_PROPERTY_SECRET_ID,
+  JWTObtainPair.JSON_PROPERTY_SECRET_KEY
 })
-@JsonTypeName("RequisitionLinkParams")
+@JsonTypeName("JWTObtainPair")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:27:09.503691Z[Etc/UTC]")
-public class RequisitionLinkParams {
-  public static final String JSON_PROPERTY_ASPSP_ID = "aspsp_id";
-  private String aspspId;
+public class JWTObtainPair {
+  public static final String JSON_PROPERTY_SECRET_ID = "secret_id";
+  private String secretId;
+
+  public static final String JSON_PROPERTY_SECRET_KEY = "secret_key";
+  private String secretKey;
 
 
-  public RequisitionLinkParams aspspId(String aspspId) {
+  public JWTObtainPair secretId(String secretId) {
     
-    this.aspspId = aspspId;
+    this.secretId = secretId;
     return this;
   }
 
    /**
-   * ASPSP ID. Should match one used while creating EUA, if it&#39;s linked to this requisition
-   * @return aspspId
+   * Secret id from /user-secrets/
+   * @return secretId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "ASPSP ID. Should match one used while creating EUA, if it's linked to this requisition")
-  @JsonProperty(JSON_PROPERTY_ASPSP_ID)
+  @ApiModelProperty(required = true, value = "Secret id from /user-secrets/")
+  @JsonProperty(JSON_PROPERTY_SECRET_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getAspspId() {
-    return aspspId;
+  public String getSecretId() {
+    return secretId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ASPSP_ID)
+  @JsonProperty(JSON_PROPERTY_SECRET_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAspspId(String aspspId) {
-    this.aspspId = aspspId;
+  public void setSecretId(String secretId) {
+    this.secretId = secretId;
+  }
+
+
+  public JWTObtainPair secretKey(String secretKey) {
+    
+    this.secretKey = secretKey;
+    return this;
+  }
+
+   /**
+   * Secret key from /user-secrets/
+   * @return secretKey
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Secret key from /user-secrets/")
+  @JsonProperty(JSON_PROPERTY_SECRET_KEY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getSecretKey() {
+    return secretKey;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SECRET_KEY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSecretKey(String secretKey) {
+    this.secretKey = secretKey;
   }
 
 
@@ -74,20 +105,22 @@ public class RequisitionLinkParams {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RequisitionLinkParams requisitionLinkParams = (RequisitionLinkParams) o;
-    return Objects.equals(this.aspspId, requisitionLinkParams.aspspId);
+    JWTObtainPair jwTObtainPair = (JWTObtainPair) o;
+    return Objects.equals(this.secretId, jwTObtainPair.secretId) &&
+        Objects.equals(this.secretKey, jwTObtainPair.secretKey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aspspId);
+    return Objects.hash(secretId, secretKey);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RequisitionLinkParams {\n");
-    sb.append("    aspspId: ").append(toIndentedString(aspspId)).append("\n");
+    sb.append("class JWTObtainPair {\n");
+    sb.append("    secretId: ").append(toIndentedString(secretId)).append("\n");
+    sb.append("    secretKey: ").append(toIndentedString(secretKey)).append("\n");
     sb.append("}");
     return sb.toString();
   }

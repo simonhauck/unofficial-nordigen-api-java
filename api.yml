@@ -1,9 +1,9 @@
 openapi: 3.0.3
 info:
   title: Nordigen Account Information Services API
-  version: '1.7'
+  version: 2.0 (v2)
 paths:
-  /api/accounts/{id}/:
+  /api/v2/accounts/{id}/:
     get:
       operationId: retrieve account metadata
       description: |-
@@ -22,17 +22,35 @@ paths:
           required: true
       tags:
         - accounts
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Account'
+                $ref: '#/components/schemas/AccountV2'
           description: sample account metadata
-  /api/accounts/{id}/balances/:
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+                AccountNotFoundError:
+                  value:
+                    summary: 'Account: $ACC_ID not found'
+                    detail: ''
+                    status_code: 404
+                  summary: Account not found error
+                  description: Account not found
+          description: ''
+  /api/v2/accounts/{id}/balances/:
     get:
       operationId: retrieve account balances
       description: |-
@@ -49,29 +67,172 @@ paths:
           required: true
       tags:
         - accounts
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           description: sample account balances
           content:
             application/json:
               schema:
-                type: string
+                type: object
+                additionalProperties: {}
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
               examples:
-                - balances:
-                    - balanceAmount:
-                        amount: '-961.21'
-                        currency: string
-                      balanceType: string
-                      referenceDate: '2021-10-08'
-                    - balanceAmount:
-                        amount: '726.17'
-                        currency: string
-                      balanceType: string
-                      referenceDate: '2021-10-11'
-  /api/accounts/{id}/details/:
+                InvalidID:
+                  value:
+                    summary: Invalid Account ID
+                    detail: $ACCOUNT_ID is not a valid UUID.
+                    status_code: 400
+                  summary: Invalid ID
+                  description: Invalid Account ID
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AccessExpiredError:
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Access has expired or it has been revoked. To restore access reconnect the account.
+                    type: AccessExpiredError
+                    status_code: 401
+                  description: Couldn't update account balances
+                AccountInactiveError:
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Account has been deactivated or it no longer exists.
+                    type: AccountInactiveError
+                    status_code: 401
+                  description: Couldn't update account balances
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AccountEUAScopeError:
+                  value:
+                    summary: End User Agreement (EUA) access scope error
+                    detail: EUA doesn't allow access to account balances. Check EUA access scope. Or create new EUA with correct access scope
+                    status_code: 403
+                  summary: Account EUA scope error
+                  description: EUA doesn't allow access to account balances.
+                AccountValidEUAError:
+                  value:
+                    summary: No valid End User Agreement
+                    error: Account exists but there is no valid End User Agreement permitting you to access it
+                    status_code: 403
+                  summary: Account valid EUA error
+                  description: Account has no valid End User Agreement
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+                AccountNotFoundError:
+                  value:
+                    summary: 'Account: $ACC_ID not found'
+                    detail: ''
+                    status_code: 404
+                  summary: Account not found error
+                  description: Account not found
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AccountSuspendedError:
+                  value:
+                    summary: Account suspended
+                    detail: This account or its requisition was suspended due to numerous errors that occurred while accessing it.
+                    status_code: 409
+                  summary: Account suspended error
+                  description: Account or its requisition suspended
+                AccountStateError:
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                    created: '2021-10-25T16:01:40.661602Z'
+                    last_accessed: '2021-10-25T16:01:40.661613Z'
+                    iban: string
+                    aspsp_identifier: string
+                    status: ERROR
+                  summary: Account state error
+                  description: Account state does not support this operation
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                RateLimitError:
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Daily request limit set by the Institution has been exceeded.
+                    type: RateLimitError
+                    status_code: 429
+                  description: Couldn't update account balances
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                UnknownRequestError:
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Request to Institution returned an error
+                    type: UnknownRequestError
+                    status_code: 500
+                  description: Couldn't update account balances
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                ServiceError:
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Institution service unavailable
+                    type: ServiceError
+                    status_code: 503
+                  description: Couldn't update account balances
+                ConnectionError:
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Couldn't connect to Institution
+                    type: ConnectionError
+                    status_code: 503
+                  description: Couldn't update account balances
+          description: ''
+  /api/v2/accounts/{id}/details/:
     get:
       operationId: retrieve account details
       description: |-
@@ -88,26 +249,172 @@ paths:
           required: true
       tags:
         - accounts
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           description: sample account details
           content:
             application/json:
               schema:
-                type: string
+                type: object
+                additionalProperties: {}
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
               examples:
-                - account:
-                    resourceId: string
+                InvalidID:
+                  value:
+                    summary: Invalid Account ID
+                    detail: $ACCOUNT_ID is not a valid UUID.
+                    status_code: 400
+                  summary: Invalid ID
+                  description: Invalid Account ID
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AccessExpiredError:
+                  value:
+                    summary: Couldn't update account details
+                    detail: Access has expired or it has been revoked. To restore access reconnect the account.
+                    type: AccessExpiredError
+                    status_code: 401
+                  description: Couldn't update account details
+                AccountInactiveError:
+                  value:
+                    summary: Couldn't update account details
+                    detail: Account has been deactivated or it no longer exists.
+                    type: AccountInactiveError
+                    status_code: 401
+                  description: Couldn't update account details
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AccountEUAScopeError:
+                  value:
+                    summary: End User Agreement (EUA) access scope error
+                    detail: EUA doesn't allow access to account details. Check EUA access scope. Or create new EUA with correct access scope
+                    status_code: 403
+                  summary: Account EUA scope error
+                  description: EUA doesn't allow access to account details.
+                AccountValidEUAError:
+                  value:
+                    summary: No valid End User Agreement
+                    error: Account exists but there is no valid End User Agreement permitting you to access it
+                    status_code: 403
+                  summary: Account valid EUA error
+                  description: Account has no valid End User Agreement
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+                AccountNotFoundError:
+                  value:
+                    summary: 'Account: $ACC_ID not found'
+                    detail: ''
+                    status_code: 404
+                  summary: Account not found error
+                  description: Account not found
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AccountSuspendedError:
+                  value:
+                    summary: Account suspended
+                    detail: This account or its requisition was suspended due to numerous errors that occurred while accessing it.
+                    status_code: 409
+                  summary: Account suspended error
+                  description: Account or its requisition suspended
+                AccountStateError:
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                    created: '2021-10-25T16:01:40.661602Z'
+                    last_accessed: '2021-10-25T16:01:40.661613Z'
                     iban: string
-                    currency: string
-                    ownerName: string
-                    name: string
-                    product: string
-                    cashAccountType: string
-  /api/accounts/{id}/transactions/:
+                    aspsp_identifier: string
+                    status: ERROR
+                  summary: Account state error
+                  description: Account state does not support this operation
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                RateLimitError:
+                  value:
+                    summary: Couldn't update account details
+                    detail: Daily request limit set by the Institution has been exceeded.
+                    type: RateLimitError
+                    status_code: 429
+                  description: Couldn't update account details
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                UnknownRequestError:
+                  value:
+                    summary: Couldn't update account details
+                    detail: Request to Institution returned an error
+                    type: UnknownRequestError
+                    status_code: 500
+                  description: Couldn't update account details
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                ServiceError:
+                  value:
+                    summary: Couldn't update account details
+                    detail: Institution service unavailable
+                    type: ServiceError
+                    status_code: 503
+                  description: Couldn't update account details
+                ConnectionError:
+                  value:
+                    summary: Couldn't update account details
+                    detail: Couldn't connect to Institution
+                    type: ConnectionError
+                    status_code: 503
+                  description: Couldn't update account details
+          description: ''
+  /api/v2/accounts/{id}/transactions/:
     get:
       operationId: retrieve account transactions
       description: |-
@@ -124,57 +431,176 @@ paths:
           required: true
       tags:
         - accounts
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           description: sample transaction data
           content:
             application/json:
               schema:
-                type: string
+                type: object
+                additionalProperties: {}
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
               examples:
-                - transactions:
-                    booked:
-                      - transactionId: string
-                        debtorName: string
-                        debtorAccount:
-                          iban: string
-                        transactionAmount:
-                          currency: string
-                          amount: '-580.12'
-                        bankTransactionCode: string
-                        bookingDate: '2021-10-10T21:34:47.261597'
-                        valueDate: '2021-10-13T21:34:47.274129'
-                        remittanceInformationUnstructured: string
-                      - transactionId: string
-                        transactionAmount:
-                          currency: string
-                          amount: '843.32'
-                        bankTransactionCode: string
-                        bookingDate: '2021-10-08T21:34:47.274239'
-                        valueDate: '2021-10-08T21:34:47.274253'
-                        remittanceInformationUnstructured: string
-                    pending:
-                      - transactionAmount:
-                          currency: string
-                          amount: '101.52'
-                        valueDate: '2021-10-12T21:34:47.274276'
-                        remittanceInformationUnstructured: string
+                InvalidID:
+                  value:
+                    summary: Invalid Account ID
+                    detail: $ACCOUNT_ID is not a valid UUID.
+                    status_code: 400
+                  summary: Invalid ID
+                  description: Invalid Account ID
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AccessExpiredError:
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Access has expired or it has been revoked. To restore access reconnect the account.
+                    type: AccessExpiredError
+                    status_code: 401
+                  description: Couldn't update account transactions
+                AccountInactiveError:
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Account has been deactivated or it no longer exists.
+                    type: AccountInactiveError
+                    status_code: 401
+                  description: Couldn't update account transactions
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AccountEUAScopeError:
+                  value:
+                    summary: End User Agreement (EUA) access scope error
+                    detail: EUA doesn't allow access to account transactions. Check EUA access scope. Or create new EUA with correct access scope
+                    status_code: 403
+                  summary: Account EUA scope error
+                  description: EUA doesn't allow access to account transactions.
+                AccountValidEUAError:
+                  value:
+                    summary: No valid End User Agreement
+                    error: Account exists but there is no valid End User Agreement permitting you to access it
+                    status_code: 403
+                  summary: Account valid EUA error
+                  description: Account has no valid End User Agreement
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+                AccountNotFoundError:
+                  value:
+                    summary: 'Account: $ACC_ID not found'
+                    detail: ''
+                    status_code: 404
+                  summary: Account not found error
+                  description: Account not found
+          description: ''
         '409':
-          description: Account state does not support this operation
-  /api/agreements/enduser/:
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AccountSuspendedError:
+                  value:
+                    summary: Account suspended
+                    detail: This account or its requisition was suspended due to numerous errors that occurred while accessing it.
+                    status_code: 409
+                  summary: Account suspended error
+                  description: Account or its requisition suspended
+                AccountStateError:
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                    created: '2021-10-25T16:01:40.661602Z'
+                    last_accessed: '2021-10-25T16:01:40.661613Z'
+                    iban: string
+                    aspsp_identifier: string
+                    status: ERROR
+                  summary: Account state error
+                  description: Account state does not support this operation
+          description: ''
+        '429':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                RateLimitError:
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Daily request limit set by the Institution has been exceeded.
+                    type: RateLimitError
+                    status_code: 429
+                  description: Couldn't update account transactions
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                UnknownRequestError:
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Request to Institution returned an error
+                    type: UnknownRequestError
+                    status_code: 500
+                  description: Couldn't update account transactions
+          description: ''
+        '503':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                ServiceError:
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Institution service unavailable
+                    type: ServiceError
+                    status_code: 503
+                  description: Couldn't update account transactions
+                ConnectionError:
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Couldn't connect to Institution
+                    type: ConnectionError
+                    status_code: 503
+                  description: Couldn't update account transactions
+          description: ''
+  /api/v2/agreements/enduser/:
     get:
-      operationId: retrieve all EUAs for an end user
+      operationId: retrieve all EUAs for an end user v2
       description: API endpoints related to end-user agreements.
       parameters:
-        - in: query
-          name: enduser_id
-          schema:
-            type: string
-          description: Your enduser ID, used for filtering results.
-          required: true
         - name: limit
           required: false
           in: query
@@ -189,18 +615,15 @@ paths:
             type: integer
       tags:
         - agreements
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedEndUserAgreementList'
-          description: ''
+          description: Retrieve all enduser agreements
     post:
-      operationId: create EUA
+      operationId: create EUA v2
       description: API endpoints related to end-user agreements.
       tags:
         - agreements
@@ -216,19 +639,58 @@ paths:
             schema:
               $ref: '#/components/schemas/EndUserAgreement'
         required: true
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '201':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/EndUserAgreement'
+          description: Create enduser agreement
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                InstitutionFieldErrors:
+                  value:
+                    institution_id:
+                      summary: Unknown Institution ID $INSTITUTION_ID
+                      detail: Get Institution IDs from /institutions/?country={$COUNTRY_CODE}
+                    status_code: 400
+                  summary: Institution field errors
+                  description: Errors related to 'institution' field.
+                AccessScopeFieldErrors:
+                  value:
+                    access_scope:
+                      - summary: Unknown value '$SCOPE' in access_scope
+                        detail: Choose one or several from ['balances', 'details', 'transactions']
+                      - summary: Aspsp access scope dependencies error
+                        detail: For this ASPSP you have to select both ['details', 'balances'] in access_scope
+                    status_code: 400
+                  summary: Access scope field errors
+                  description: Errors related to 'access_scope' field.
+                MaxHistoricalDaysFieldErrors:
+                  value:
+                    max_historical_days:
+                      - summary: Incorrect max_historical_days
+                        detail: max_historical_days must be > 0 and <= N26_NTSBDEB1 transaction_total_days (730)
+                    status_code: 400
+                  summary: Max historical days field errors
+                  description: Errors related to 'max_historical_days' field.
+                AccessValidForDaysFieldErrors:
+                  value:
+                    access_valid_for_days:
+                      - summary: Incorrect access_valid_for_days
+                        detail: access_valid_for_days must be > 0 and <= 730
+                    status_code: 400
+                  summary: Access valid for days field errors
+                  description: Errors related to 'access_valid_for_days' field.
           description: ''
-  /api/agreements/enduser/{id}/:
+  /api/v2/agreements/enduser/{id}/:
     get:
-      operationId: retrieve EUA by id
+      operationId: retrieve EUA by id v2
       description: API endpoints related to end-user agreements.
       parameters:
         - in: path
@@ -240,18 +702,29 @@ paths:
           required: true
       tags:
         - agreements
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/EndUserAgreement'
-          description: EUA
+          description: Retrieve enduser agreement by id
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+          description: ''
     delete:
-      operationId: delete EUA by id
+      operationId: delete EUA by id v2
       description: Delete End User Agreement.
       parameters:
         - in: path
@@ -263,13 +736,58 @@ paths:
           required: true
       tags:
         - agreements
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
-        '204':
-          description: No response body
-  /api/agreements/enduser/{id}/accept/:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                EuaDeleted:
+                  value:
+                    summary: End User Agreement deleted
+                    detail: End User Agreement '$EUA_ID' deleted
+                  summary: Eua Deleted
+                  description: EUA is deleted
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                CannotDeleteEUA:
+                  value:
+                    summary: Cannot delete End User Agreement
+                    detail: 'Cannot delete accepted End User Agreement: $EUA_ID. Only non accepted agreements can be deleted'
+                    status_code: 400
+                  summary: Cannot delete EUA
+                  description: Cannot delete End User Agreement
+                InvalidID:
+                  value:
+                    summary: Invalid ID
+                    detail: foo-bar-baz is not a valid UUID.
+                    status_code: 400
+                  summary: Invalid ID
+                  description: Invalid ID
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+          description: ''
+  /api/v2/agreements/enduser/{id}/accept/:
     put:
       operationId: accept EUA
       description: Accept an end-user agreement via the API.
@@ -295,9 +813,6 @@ paths:
             schema:
               $ref: '#/components/schemas/EnduserAcceptanceDetails'
         required: true
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           content:
@@ -305,7 +820,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EndUserAgreement'
           description: EUA
-  /api/agreements/enduser/{id}/text/:
+  /api/v2/agreements/enduser/{id}/text/:
     get:
       operationId: retrieve EUA text
       description: Show the text of the end-user agreement.
@@ -319,22 +834,17 @@ paths:
           required: true
       tags:
         - agreements
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           description: EUA Text
           content:
             application/json:
               schema:
-                type: string
-              examples:
-                - en:
-                    text: string
-  /api/aspsps/:
+                type: object
+                additionalProperties: {}
+  /api/v2/institutions/:
     get:
-      operationId: retrieve all supported ASPSP(s) in a given country
+      operationId: retrieve all supported Institutions in a given country
       description: List all ASPSPs available.
       parameters:
         - in: query
@@ -353,10 +863,7 @@ paths:
               summary: United Kingdom
               description: ISO 3166 two-character code for the UK
       tags:
-        - aspsps
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
+        - institutions
       responses:
         '200':
           content:
@@ -366,7 +873,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Aspsp'
               examples:
-                SomeOfSupportedASPSPs:
+                SomeOfSupportedInstitutions:
                   value:
                     - id: N26_NTSBDEB1
                       name: N26 Bank
@@ -374,9 +881,36 @@ paths:
                       transaction_total_days: '90'
                       countries:
                         - 'NO'
+                        - SE
+                        - FI
+                        - DK
+                        - EE
+                        - LV
+                        - LT
+                        - GB
+                        - NL
+                        - CZ
+                        - ES
+                        - PL
+                        - BE
                         - DE
-                        - '...'
                         - AT
+                        - BG
+                        - HR
+                        - CY
+                        - FR
+                        - GR
+                        - HU
+                        - IS
+                        - IE
+                        - IT
+                        - LI
+                        - LU
+                        - MT
+                        - PT
+                        - RO
+                        - SK
+                        - SI
                       logo: https://cdn.nordigen.com/ais/N26_SANDBOX_NTSBDEB1.png
                     - id: ABNAMRO_FTSBDEFAXXX
                       name: ABN AMRO Bank Commercial
@@ -385,11 +919,56 @@ paths:
                       countries:
                         - DE
                       logo: https://cdn.nordigen.com/ais/ABNAMRO_FTSBDEFAXXX.png
-                  summary: some of supported ASPSPs
-          description: list of supported ASPSPs in the country
-  /api/aspsps/{id}/:
+                  summary: some of supported Institutions
+                  description: some of supported Institutions
+          description: list of supported Institutions in the country
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                UnknownFields:
+                  value:
+                    summary: Unknown fields
+                    detail: Unknown fields {${FIELD}} in payload
+                    status_code: 400
+                  summary: Unknown Fields
+                  description: Unknown Fields
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                CountryParameterErrors:
+                  value:
+                    summary: Country not permitted
+                    detail: You do not have permission to access 'KP'
+                    status_code: 403
+                  summary: Country parameter errors
+                  description: Errors related to 'Country' parameter.
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+          description: ''
+  /api/v2/institutions/{id}/:
     get:
-      operationId: retrieve details about specific ASPSP
+      operationId: retrieve institution
       description: Get details about a specific ASPSP.
       parameters:
         - in: path
@@ -403,10 +982,7 @@ paths:
               summary: N26
               description: Nordigen's ASPSP ID for N26
       tags:
-        - aspsps
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
+        - institutions
       responses:
         '200':
           content:
@@ -422,9 +998,36 @@ paths:
                     transaction_total_days: '90'
                     countries:
                       - 'NO'
+                      - SE
+                      - FI
+                      - DK
+                      - EE
+                      - LV
+                      - LT
+                      - GB
+                      - NL
+                      - CZ
+                      - ES
+                      - PL
+                      - BE
                       - DE
-                      - '...'
                       - AT
+                      - BG
+                      - HR
+                      - CY
+                      - FR
+                      - GR
+                      - HU
+                      - IS
+                      - IE
+                      - IT
+                      - LI
+                      - LU
+                      - MT
+                      - PT
+                      - RO
+                      - SK
+                      - SI
                     logo: https://cdn.nordigen.com/ais/N26_SANDBOX_NTSBDEB1.png
                   summary: N26 Bank
                   description: N26 Bank
@@ -439,8 +1042,22 @@ paths:
                     logo: https://cdn.nordigen.com/ais/ABNAMRO_FTSBDEFAXXX.png
                   summary: ABN AMRO Bank
                   description: ABN AMRO Bank
-          description: ASPSP Representation
-  /api/requisitions/:
+          description: Retrieve institution by id
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+          description: ''
+  /api/v2/requisitions/:
     get:
       operationId: retrieve all requisitions
       description: API endpoints related to requisitions.
@@ -459,18 +1076,15 @@ paths:
             type: integer
       tags:
         - requisitions
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedRequisitionList'
-          description: ''
+                $ref: '#/components/schemas/PaginatedRequisitionV2List'
+          description: retrieve all requisitions
     post:
-      operationId: create a new requisition
+      operationId: requisition created
       description: API endpoints related to requisitions.
       tags:
         - requisitions
@@ -478,25 +1092,106 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Requisition'
+              $ref: '#/components/schemas/RequisitionV2'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Requisition'
+              $ref: '#/components/schemas/RequisitionV2'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Requisition'
+              $ref: '#/components/schemas/RequisitionV2'
         required: true
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '201':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Requisition'
-          description: requisition
-  /api/requisitions/{id}/:
+                $ref: '#/components/schemas/SpectacularRequisitionV2'
+          description: Requisition has been succesfully created
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                ReferenceFieldErrors:
+                  value:
+                    reference:
+                      summary: Client Reference must be unique
+                      detail: 'Client Reference: $REFERENCE_ID already exists'
+                    status_code: 400
+                  summary: Reference field errors
+                  description: Errors related to 'reference' field.
+                UserLanguageFieldErrors:
+                  value:
+                    user_language:
+                      summary: Provided user_language is invalid or not supported
+                      detail: '''$LNG_CODE'' is invalid or not supported language'
+                    status_code: 400
+                  summary: User language field errors
+                  description: Errors related to 'user_language' field.
+                AgreementFieldErrors:
+                  value:
+                    agreement:
+                      - summary: Unknown Institution ID $ASPSP_ID
+                        detail: Get Institution IDs from /institutions/?country={$COUNTRY_CODE}
+                      - summary: Invalid EndUserAgreement ID
+                        detail: $AGREEMENT_ID is not a valid UUID. Please specify valid agreement from /api/agreements/enduser/?={$ENDUSER_ID} or create a new one
+                    status_code: 400
+                  summary: Agreement field errors
+                  description: Errors related to 'agreement' field.
+                RedirectFieldErrors:
+                  value:
+                    redirect:
+                      - summary: Redirect URL is required
+                        detail: Where an end user will be redirected after finishing authentication in ASPSP
+                      - summary: Invalid redirect URI
+                        detail: Redirect URI must have a valid URI structure
+                    status_code: 400
+                  summary: Redirect field errors
+                  description: Errors related to 'redirect' field.
+                InstitutionFieldErrors:
+                  value:
+                    institution_id:
+                      summary: Unknown Institution ID $INSTITUTION_ID
+                      detail: Get Institution IDs from /institutions/?country={$COUNTRY_CODE}
+                    status_code: 400
+                  summary: Institution field errors
+                  description: Errors related to 'institution' field.
+                UnknownFields:
+                  value:
+                    summary: Unknown fields
+                    detail: Unknown fields {${FIELD}} in payload
+                    status_code: 400
+                  summary: Unknown Fields
+                  description: Unknown Fields
+                FieldsRequired:
+                  value:
+                    redirect:
+                      - This field is required.
+                    institution_id:
+                      - This field is required.
+                    status_code: 400
+                  summary: Fields required
+                  description: Field is required
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AgreementNotFoundErrors:
+                  value:
+                    agreement:
+                      summary: 'Agreement: $AGREEMENT_ID not found'
+                      detail: Please specify valid agreement from /agreements/enduser/?={enduser_id} or create a new one
+                    status_code: 404
+                  summary: Agreement not found errors
+                  description: Errors related to 'agreement' field.
+          description: ''
+  /api/v2/requisitions/{id}/:
     get:
       operationId: requisition by id
       description: API endpoints related to requisitions.
@@ -510,18 +1205,29 @@ paths:
           required: true
       tags:
         - requisitions
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Requisition'
-          description: requisition
+                $ref: '#/components/schemas/RequisitionV2'
+          description: Get requisition by id
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+          description: ''
     delete:
-      operationId: delete requisition
+      operationId: delete requisition by id v2
       description: Delete Requisition and all End User Agreements.
       parameters:
         - in: path
@@ -533,60 +1239,159 @@ paths:
           required: true
       tags:
         - requisitions
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
-        '204':
-          description: No response body
-  /api/requisitions/{id}/links/:
+        '200':
+          description: requisition has been deleted
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                InvalidID:
+                  value:
+                    summary: Invalid ID
+                    detail: foo-bar-baz is not a valid UUID.
+                    status_code: 400
+                  summary: Invalid ID
+                  description: Invalid ID
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                NotFoundError:
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                  summary: Not found error
+                  description: Not found error
+          description: ''
+  /api/v2/token/new/:
     post:
-      operationId: create ASPSP authorization link
-      description: Get links for user redirection.
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: string
-            format: uuid
-          description: A UUID string identifying this requisition.
-          required: true
+      operationId: JWT Obtain
+      description: Obtain JWT pair
       tags:
-        - requisitions
+        - token
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RequisitionLinkParams'
+              $ref: '#/components/schemas/JWTObtainPair'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/RequisitionLinkParams'
+              $ref: '#/components/schemas/JWTObtainPair'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/RequisitionLinkParams'
+              $ref: '#/components/schemas/JWTObtainPair'
         required: true
-      security:
-        - tokenAuth: []
-        - cookieAuth: []
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RequisitionLinks'
-          description: link to initiate authorization with ASPSP
+                $ref: '#/components/schemas/SpectacularJWTObtain'
+          description: Obtain JWT response.
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                AuthenticationFailed:
+                  value:
+                    summary: Authentication failed
+                    detail: No active account found with the given credentials
+                    status_code: 401
+                  summary: Authentication failed
+                  description: Incorrect secret key or id
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                IPAccessDenied:
+                  value:
+                    summary: IP address access denied
+                    detail: Your IP $IP_ADDRESS isn't whitelisted to perform this action
+                    status_code: 403
+                  summary: IP Access denied
+                  description: IP address not whitelisted
+          description: ''
+  /api/v2/token/refresh/:
+    post:
+      operationId: JWT Refresh
+      description: Refresh access token
+      tags:
+        - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JWTRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/JWTRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/JWTRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpectacularJWTRefresh'
+          description: Refresh access token.
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                InvalidToken:
+                  value:
+                    summary: Invalid token
+                    detail: Token is invalid or expired
+                    status_code: 401
+                  summary: Invalid token
+                  description: Token is invalid or expired
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                IPAccessDenied:
+                  value:
+                    summary: IP address access denied
+                    detail: Your IP $IP_ADDRESS isn't whitelisted to perform this action
+                    status_code: 403
+                  summary: IP Access denied
+                  description: IP address not whitelisted
+          description: ''
 components:
   schemas:
-    Account:
+    AccountV2:
       type: object
-      description: The representation of a bank account.
+      description: AccountV2Serializer.
       properties:
         id:
           type: string
           format: uuid
           readOnly: true
-          description: The ID of this Account, used to refer to this account in other
-            API calls.
+          description: The ID of this Account, used to refer to this account in other API calls.
           title: Account ID
         created:
           type: string
@@ -605,31 +1410,32 @@ components:
           type: string
           readOnly: true
           description: The Account IBAN
-        aspsp_identifier:
+        institution_id:
           type: string
           readOnly: true
           title: ASPSP ID
           description: The ASPSP associated with this account.
         status:
           allOf:
-            - $ref: '#/components/schemas/AccountStatusEnum'
+            - $ref: '#/components/schemas/AccountV2StatusEnum'
           readOnly: true
           title: Account Status
           description: The processing status of this account.
       required:
-        - aspsp_identifier
         - created
         - iban
         - id
+        - institution_id
         - last_accessed
         - status
-    AccountStatusEnum:
+    AccountV2StatusEnum:
       enum:
-        - DISCOVERED
-        - PROCESSING
-        - READY
-        - ERROR
-        - SUSPENDED
+        - DISCOVERED: User has succesfully authenticated and account is discovered
+        - PROCESSING: Account is being processed by the ASPSP
+        - ERROR: An error was encountered when processing account
+        - EXPIRED: Access to account has expired as set in End User Agreement
+        - READY: Account has been successfully processed
+        - SUSPENDED: Account has been suspended (more than 10 consecutive failed attempts to access the account)
       type: string
     Aspsp:
       type: object
@@ -657,15 +1463,14 @@ components:
         - name
     EndUserAgreement:
       type: object
-      description: Represents an end-user agreement.
+      description: EndUserAgreement.
       properties:
         id:
           type: string
           format: uuid
           readOnly: true
           title: End User Agreement ID
-          description: The ID of this End User Agreement, used to refer to this end
-            user agreement in other API calls.
+          description: The ID of this End User Agreement, used to refer to this end user agreement in other API calls.
         created:
           type: string
           format: date-time
@@ -674,16 +1479,15 @@ components:
           description: The date & time at which the end user agreement was created.
         max_historical_days:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 730
+          minimum: 1
           default: 90
           title: Maximum Historical Days
           description: Maximum number of days of transaction data to retrieve.
         access_valid_for_days:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          readOnly: true
+          maximum: 730
+          minimum: 1
           default: 90
           title: Access Valid For (Days)
           description: Number of days from acceptance that the access can be used.
@@ -701,8 +1505,7 @@ components:
             - details
             - transactions
           title: Level of information to access (by default all)
-          description: Array containing one or several values of ['balances', 'details',
-            'transactions']
+          description: Array containing one or several values of ['balances', 'details', 'transactions']
         accepted:
           type: string
           format: date-time
@@ -710,25 +1513,14 @@ components:
           readOnly: true
           title: Accepted Date
           description: The date & time at which the end user accepted the agreement.
-        enduser_id:
+        institution_id:
           type: string
-          nullable: true
-          title: End User ID
-          description: A unique ID that identifies this user in your system. For data
-            protection purposes, it must be possible to identify your users using
-            this value. Data protection related requests may quote this value to identify
-            data subjects.
-          maxLength: 256
-        aspsp_id:
-          type: string
-          description: an ASPSP ID for this EUA
+          description: an Institution ID for this EUA
       required:
         - accepted
-        - access_valid_for_days
-        - aspsp_id
         - created
-        - enduser_id
         - id
+        - institution_id
     EnduserAcceptanceDetails:
       type: object
       description: Represents end-user details.
@@ -742,6 +1534,31 @@ components:
       required:
         - ip_address
         - user_agent
+    JWTObtainPair:
+      type: object
+      description: Obtain JWT pair.
+      properties:
+        secret_id:
+          type: string
+          description: Secret id from /user-secrets/
+        secret_key:
+          type: string
+          description: Secret key from /user-secrets/
+      required:
+        - secret_id
+        - secret_key
+    JWTRefresh:
+      type: object
+      description: Refresh access token.
+      properties:
+        refresh:
+          type: string
+        access:
+          type: string
+          readOnly: true
+      required:
+        - access
+        - refresh
     PaginatedEndUserAgreementList:
       type: object
       properties:
@@ -752,17 +1569,17 @@ components:
           type: string
           nullable: true
           format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
+          example: https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0
         previous:
           type: string
           nullable: true
           format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
+          example: https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0
         results:
           type: array
           items:
             $ref: '#/components/schemas/EndUserAgreement'
-    PaginatedRequisitionList:
+    PaginatedRequisitionV2List:
       type: object
       properties:
         count:
@@ -772,19 +1589,38 @@ components:
           type: string
           nullable: true
           format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
+          example: https://ob.nordigen.com/api/v2/requisitions/?limit=100&offset=0
         previous:
           type: string
           nullable: true
           format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
+          example: https://ob.nordigen.com/api/v2/requisitions/?limit=100&offset=0
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Requisition'
-    Requisition:
+            $ref: '#/components/schemas/RequisitionV2'
+    RequisitionLinkParams:
       type: object
-      description: RequisitionSerializer.
+      description: RequisitionLinkParamsSerializer.
+      properties:
+        aspsp_id:
+          type: string
+          description: ASPSP ID. Should match one used while creating EUA, if it's linked to this requisition
+      required:
+        - aspsp_id
+    RequisitionLinks:
+      type: object
+      description: RequisitionLinksSerializer.
+      properties:
+        initiate:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+        - initiate
+    RequisitionV2:
+      type: object
+      description: Get requisition by id.
       properties:
         id:
           type: string
@@ -801,20 +1637,24 @@ components:
           type: string
           format: uri
           nullable: true
-          description: redirect URL to your application after end-user authorization
-            with ASPSP
+          description: redirect URL to your application after end-user authorization with ASPSP
         status:
           allOf:
-            - $ref: '#/components/schemas/RequisitionStatusEnum'
+            - $ref: '#/components/schemas/Status6e6Enum'
+          title: Requisition status
           readOnly: true
           description: status of this requisition
-        agreements:
-          type: array
-          items:
-            type: string
-            format: uuid
-            title: agreements
-          description: array of EUAs associated with this requisition
+        institution_id:
+          type: string
+          description: an Institution ID for this Requisition
+        agreement:
+          type: string
+          format: uuid
+          description: EUA associated with this requisition
+        reference:
+          type: string
+          description: additional ID to identify the end user
+          maxLength: 256
         accounts:
           type: array
           items:
@@ -823,67 +1663,150 @@ components:
             title: accounts
           readOnly: true
           description: array of account IDs retrieved within a scope of this requisition
+        user_language:
+          type: string
+          description: A two-letter country code (ISO 639-1)
+          maxLength: 5
+        link:
+          type: string
+          format: uri
+          readOnly: true
+          default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/{$INSTITUTION_ID}
+          description: link to initiate authorization with Institution
+      required:
+        - accounts
+        - created
+        - id
+        - institution_id
+        - link
+        - redirect
+        - status
+    SpectacularJWTObtain:
+      type: object
+      description: Obtain new JWT pair.
+      properties:
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+          description: Your access token
+        access_expires:
+          type: integer
+          readOnly: true
+          default: 86400
+          description: Access token expires in seconds
+        refresh:
+          type: string
+          readOnly: true
+          description: Your refresh token
+        refresh_expires:
+          type: integer
+          readOnly: true
+          default: 2592000
+          description: Refresh token expires in seconds
+      required:
+        - access
+        - access_expires
+        - password
+        - refresh
+        - refresh_expires
+    SpectacularJWTRefresh:
+      type: object
+      description: Refresh Access token.
+      properties:
+        access:
+          type: string
+          readOnly: true
+          description: Your access token
+        access_expires:
+          type: integer
+          readOnly: true
+          default: 86400
+          description: Access token expires in seconds
+      required:
+        - access
+        - access_expires
+    SpectacularRequisitionV2:
+      type: object
+      description: Create requisition.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+          title: Created Date
+          description: The date & time at which the requisition was created.
+        redirect:
+          type: string
+          format: uri
+          nullable: true
+          description: redirect URL to your application after end-user authorization with ASPSP
+        status:
+          allOf:
+            - $ref: '#/components/schemas/Status6e6Enum'
+          title: Requisition status
+          readOnly: true
+          description: status of this requisition
+        institution_id:
+          type: string
+          description: an Institution ID for this Requisition
+        agreement:
+          type: string
+          format: uuid
+          description: EUA associated with this requisition
         reference:
           type: string
           description: additional ID to identify the end user
           maxLength: 256
-        enduser_id:
-          type: string
-          title: end user id
-          description: end-user id in client's system, usually a UUID
-          maxLength: 256
+        accounts:
+          type: array
+          items: {}
+          readOnly: true
+          default: []
+          description: array of account IDs retrieved within a scope of this requisition
         user_language:
           type: string
-          description: user language for the views
+          description: A two-letter country code (ISO 639-1)
           maxLength: 5
-      required:
-        - accounts
-        - created
-        - enduser_id
-        - id
-        - redirect
-        - reference
-        - status
-    RequisitionLinkParams:
-      type: object
-      description: RequisitionLinkParamsSerializer.
-      properties:
-        aspsp_id:
-          type: string
-          description: ASPSP ID. Should match one used while creating EUA, if it's
-            linked to this requisition
-      required:
-        - aspsp_id
-    RequisitionLinks:
-      type: object
-      description: RequisitionLinksSerializer.
-      properties:
-        initiate:
+        link:
           type: string
           format: uri
           readOnly: true
+          default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/{$INSTITUTION_ID}
+          description: link to initiate authorization with Institution
       required:
-        - initiate
-    RequisitionStatusEnum:
+        - accounts
+        - created
+        - id
+        - institution_id
+        - link
+        - redirect
+        - status
+    Status6e6Enum:
       enum:
-        - CR
-        - ID
-        - LN
-        - RJ
-        - ER
-        - SU
-        - EX
+        - short: CR
+          long: CREATED
+          description: Requisition has been succesfully created
+        - short: LN
+          long: LINKED
+          description: Account has been succesfully linked to requisition
+        - short: EX
+          long: EXPIRED
+          description: Access to account has expired as set in End User Agreement
       type: string
   securitySchemes:
-    basicAuth:
+    jwtAuth:
       type: http
-      scheme: basic
-    cookieAuth:
-      type: apiKey
-      in: cookie
-      name: Session
-    tokenAuth:
-      type: apiKey
-      in: header
-      name: Authorization
-      description: Token-based authentication with required prefix "Token"
+      scheme: bearer
+      bearerFormat: Bearer
+security:
+  - jwtAuth: []
+servers:
+  - url: https://ob.nordigen.com

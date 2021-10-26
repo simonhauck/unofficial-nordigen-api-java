@@ -20,6 +20,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Delete old code
+      run: |
+        rm -r -f /github/workspace/generated
+
     - name: Generate client
       run: |
         docker run -u 1001 --rm --workdir /github/workspace -v "$GITHUB_WORKSPACE":"/github/workspace" \

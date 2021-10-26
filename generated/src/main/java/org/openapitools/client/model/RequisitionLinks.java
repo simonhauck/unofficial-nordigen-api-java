@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionLinks.JSON_PROPERTY_INITIATE
 })
 @JsonTypeName("RequisitionLinks")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:32:12.154376Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
 public class RequisitionLinks {
   public static final String JSON_PROPERTY_INITIATE = "initiate";
   private URI initiate;

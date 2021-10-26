@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularJWTRefresh.JSON_PROPERTY_ACCESS_EXPIRES
 })
 @JsonTypeName("SpectacularJWTRefresh")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:32:12.154376Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
 public class SpectacularJWTRefresh {
   public static final String JSON_PROPERTY_ACCESS = "access";
   private String access;

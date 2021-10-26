@@ -48,7 +48,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularRequisitionV2.JSON_PROPERTY_LINK
 })
 @JsonTypeName("SpectacularRequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:32:12.154376Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
 public class SpectacularRequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
@@ -78,7 +78,7 @@ public class SpectacularRequisitionV2 {
   private String userLanguage;
 
   public static final String JSON_PROPERTY_LINK = "link";
-  private URI link = URI.create("https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/{$INSTITUTION_ID}");
+  private URI link = URI.create("https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id");
 
 
    /**

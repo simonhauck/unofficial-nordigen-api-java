@@ -1806,7 +1806,7 @@ components:
           maxLength: 5
           type: string
         link:
-          default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/{$INSTITUTION_ID}
+          default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           description: link to initiate authorization with Institution
           format: uri
           readOnly: true
@@ -1937,7 +1937,7 @@ components:
           maxLength: 5
           type: string
         link:
-          default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/{$INSTITUTION_ID}
+          default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           description: link to initiate authorization with Institution
           format: uri
           readOnly: true

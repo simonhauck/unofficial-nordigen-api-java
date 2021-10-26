@@ -26,7 +26,7 @@ After the client library is installed/deployed, you can use it in your Maven pro
 <dependency>
     <groupId>com.github.simonhauck</groupId>
     <artifactId>unofficial-nordigen-api-java</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <scope>compile</scope>
 </dependency>
 

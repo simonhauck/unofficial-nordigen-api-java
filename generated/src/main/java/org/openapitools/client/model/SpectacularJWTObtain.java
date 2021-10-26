@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularJWTObtain.JSON_PROPERTY_REFRESH_EXPIRES
 })
 @JsonTypeName("SpectacularJWTObtain")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:32:12.154376Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
 public class SpectacularJWTObtain {
   public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;

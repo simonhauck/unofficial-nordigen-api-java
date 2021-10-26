@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   AccountV2.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("AccountV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-25T19:32:12.154376Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
 public class AccountV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;

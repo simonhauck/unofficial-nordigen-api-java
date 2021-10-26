@@ -1765,15 +1765,9 @@ components:
         - status
     Status6e6Enum:
       enum:
-        - short: CR
-          long: CREATED
-          description: Requisition has been succesfully created
-        - short: LN
-          long: LINKED
-          description: Account has been succesfully linked to requisition
-        - short: EX
-          long: EXPIRED
-          description: Access to account has expired as set in End User Agreement
+        - CR
+        - LN
+        - EX
       type: string
   securitySchemes:
     jwtAuth:

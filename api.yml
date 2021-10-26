@@ -17,7 +17,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
             description: A UUID string identifying this account.
           required: true
       tags:
@@ -62,7 +61,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
             description: A UUID string identifying this account.
           required: true
       tags:
@@ -244,7 +242,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
             description: A UUID string identifying this account.
           required: true
       tags:
@@ -426,7 +423,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
             description: A UUID string identifying this account.
           required: true
       tags:
@@ -697,7 +693,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
           description: A UUID string identifying this end user agreement.
           required: true
       tags:
@@ -731,7 +726,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
           description: A UUID string identifying this end user agreement.
           required: true
       tags:
@@ -796,7 +790,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
           description: A UUID string identifying this end user agreement.
           required: true
       tags:
@@ -829,7 +822,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
           description: A UUID string identifying this end user agreement.
           required: true
       tags:
@@ -1200,7 +1192,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
           description: A UUID string identifying this requisition.
           required: true
       tags:
@@ -1234,7 +1225,6 @@ paths:
           name: id
           schema:
             type: string
-            format: uuid
           description: A UUID string identifying this requisition.
           required: true
       tags:
@@ -1389,7 +1379,6 @@ components:
       properties:
         id:
           type: string
-          format: uuid
           readOnly: true
           description: The ID of this Account, used to refer to this account in other API calls.
           title: Account ID
@@ -1467,7 +1456,6 @@ components:
       properties:
         id:
           type: string
-          format: uuid
           readOnly: true
           title: End User Agreement ID
           description: The ID of this End User Agreement, used to refer to this end user agreement in other API calls.
@@ -1568,12 +1556,10 @@ components:
         next:
           type: string
           nullable: true
-          format: uri
           example: https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0
         previous:
           type: string
           nullable: true
-          format: uri
           example: https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0
         results:
           type: array
@@ -1588,12 +1574,10 @@ components:
         next:
           type: string
           nullable: true
-          format: uri
           example: https://ob.nordigen.com/api/v2/requisitions/?limit=100&offset=0
         previous:
           type: string
           nullable: true
-          format: uri
           example: https://ob.nordigen.com/api/v2/requisitions/?limit=100&offset=0
         results:
           type: array
@@ -1614,7 +1598,6 @@ components:
       properties:
         initiate:
           type: string
-          format: uri
           readOnly: true
       required:
         - initiate
@@ -1624,7 +1607,6 @@ components:
       properties:
         id:
           type: string
-          format: uuid
           readOnly: true
         created:
           type: string
@@ -1635,7 +1617,6 @@ components:
           description: The date & time at which the requisition was created.
         redirect:
           type: string
-          format: uri
           nullable: true
           description: redirect URL to your application after end-user authorization with ASPSP
         status:
@@ -1649,7 +1630,6 @@ components:
           description: an Institution ID for this Requisition
         agreement:
           type: string
-          format: uuid
           description: EUA associated with this requisition
         reference:
           type: string
@@ -1659,7 +1639,6 @@ components:
           type: array
           items:
             type: string
-            format: uuid
             title: accounts
           readOnly: true
           description: array of account IDs retrieved within a scope of this requisition
@@ -1669,7 +1648,6 @@ components:
           maxLength: 5
         link:
           type: string
-          format: uri
           readOnly: true
           default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           description: link to initiate authorization with Institution
@@ -1734,7 +1712,6 @@ components:
       properties:
         id:
           type: string
-          format: uuid
           readOnly: true
         created:
           type: string
@@ -1745,7 +1722,6 @@ components:
           description: The date & time at which the requisition was created.
         redirect:
           type: string
-          format: uri
           nullable: true
           description: redirect URL to your application after end-user authorization with ASPSP
         status:
@@ -1759,7 +1735,6 @@ components:
           description: an Institution ID for this Requisition
         agreement:
           type: string
-          format: uuid
           description: EUA associated with this requisition
         reference:
           type: string
@@ -1777,7 +1752,6 @@ components:
           maxLength: 5
         link:
           type: string
-          format: uri
           readOnly: true
           default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           description: link to initiate authorization with Institution

@@ -23,7 +23,6 @@ paths:
         required: true
         schema:
           description: A UUID string identifying this account.
-          format: uuid
           type: string
         style: simple
       responses:
@@ -70,7 +69,6 @@ paths:
         required: true
         schema:
           description: A UUID string identifying this account.
-          format: uuid
           type: string
         style: simple
       responses:
@@ -251,7 +249,6 @@ paths:
         required: true
         schema:
           description: A UUID string identifying this account.
-          format: uuid
           type: string
         style: simple
       responses:
@@ -432,7 +429,6 @@ paths:
         required: true
         schema:
           description: A UUID string identifying this account.
-          format: uuid
           type: string
         style: simple
       responses:
@@ -710,7 +706,6 @@ paths:
         name: id
         required: true
         schema:
-          format: uuid
           type: string
         style: simple
       responses:
@@ -775,7 +770,6 @@ paths:
         name: id
         required: true
         schema:
-          format: uuid
           type: string
         style: simple
       responses:
@@ -812,7 +806,6 @@ paths:
         name: id
         required: true
         schema:
-          format: uuid
           type: string
         style: simple
       requestBody:
@@ -849,7 +842,6 @@ paths:
         name: id
         required: true
         schema:
-          format: uuid
           type: string
         style: simple
       responses:
@@ -1234,7 +1226,6 @@ paths:
         name: id
         required: true
         schema:
-          format: uuid
           type: string
         style: simple
       responses:
@@ -1280,7 +1271,6 @@ paths:
         name: id
         required: true
         schema:
-          format: uuid
           type: string
         style: simple
       responses:
@@ -1426,14 +1416,13 @@ components:
         last_accessed: 2000-01-23T04:56:07.000+00:00
         created: 2000-01-23T04:56:07.000+00:00
         iban: iban
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: id
         institution_id: institution_id
         status: ""
       properties:
         id:
           description: The ID of this Account, used to refer to this account in other
             API calls.
-          format: uuid
           readOnly: true
           title: Account ID
           type: string
@@ -1525,14 +1514,13 @@ components:
         created: 2000-01-23T04:56:07.000+00:00
         accepted: 2000-01-23T04:56:07.000+00:00
         access_valid_for_days: 440
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: id
         max_historical_days: 59
         institution_id: institution_id
       properties:
         id:
           description: The ID of this End User Agreement, used to refer to this end
             user agreement in other API calls.
-          format: uuid
           readOnly: true
           title: End User Agreement ID
           type: string
@@ -1643,7 +1631,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           accepted: 2000-01-23T04:56:07.000+00:00
           access_valid_for_days: 440
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: id
           max_historical_days: 59
           institution_id: institution_id
         - access_scope:
@@ -1652,7 +1640,7 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           accepted: 2000-01-23T04:56:07.000+00:00
           access_valid_for_days: 440
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: id
           max_historical_days: 59
           institution_id: institution_id
       properties:
@@ -1661,12 +1649,10 @@ components:
           type: integer
         next:
           example: https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0
-          format: uri
           nullable: true
           type: string
         previous:
           example: https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0
-          format: uri
           nullable: true
           type: string
         results:
@@ -1680,28 +1666,28 @@ components:
         previous: https://ob.nordigen.com/api/v2/requisitions/?limit=100&offset=0
         count: 123
         results:
-        - redirect: https://openapi-generator.tech
+        - redirect: redirect
           reference: reference
-          agreement: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          agreement: agreement
           created: 2000-01-23T04:56:07.000+00:00
-          link: https://openapi-generator.tech
+          link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           user_language: user_language
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: id
           accounts:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - accounts
+          - accounts
           status: ""
           institution_id: institution_id
-        - redirect: https://openapi-generator.tech
+        - redirect: redirect
           reference: reference
-          agreement: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          agreement: agreement
           created: 2000-01-23T04:56:07.000+00:00
-          link: https://openapi-generator.tech
+          link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           user_language: user_language
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: id
           accounts:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - accounts
+          - accounts
           status: ""
           institution_id: institution_id
       properties:
@@ -1710,12 +1696,10 @@ components:
           type: integer
         next:
           example: https://ob.nordigen.com/api/v2/requisitions/?limit=100&offset=0
-          format: uri
           nullable: true
           type: string
         previous:
           example: https://ob.nordigen.com/api/v2/requisitions/?limit=100&offset=0
-          format: uri
           nullable: true
           type: string
         results:
@@ -1737,7 +1721,6 @@ components:
       description: RequisitionLinksSerializer.
       properties:
         initiate:
-          format: uri
           readOnly: true
           type: string
       required:
@@ -1746,21 +1729,20 @@ components:
     RequisitionV2:
       description: Get requisition by id.
       example:
-        redirect: https://openapi-generator.tech
+        redirect: redirect
         reference: reference
-        agreement: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        agreement: agreement
         created: 2000-01-23T04:56:07.000+00:00
-        link: https://openapi-generator.tech
+        link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
         user_language: user_language
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: id
         accounts:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - accounts
+        - accounts
         status: ""
         institution_id: institution_id
       properties:
         id:
-          format: uuid
           readOnly: true
           type: string
         created:
@@ -1773,7 +1755,6 @@ components:
         redirect:
           description: redirect URL to your application after end-user authorization
             with ASPSP
-          format: uri
           nullable: true
           type: string
         status:
@@ -1787,7 +1768,6 @@ components:
           type: string
         agreement:
           description: EUA associated with this requisition
-          format: uuid
           type: string
         reference:
           description: additional ID to identify the end user
@@ -1796,7 +1776,6 @@ components:
         accounts:
           description: array of account IDs retrieved within a scope of this requisition
           items:
-            format: uuid
             title: accounts
             type: string
           readOnly: true
@@ -1808,7 +1787,6 @@ components:
         link:
           default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           description: link to initiate authorization with Institution
-          format: uri
           readOnly: true
           type: string
       required:
@@ -1879,13 +1857,13 @@ components:
     SpectacularRequisitionV2:
       description: Create requisition.
       example:
-        redirect: https://openapi-generator.tech
+        redirect: redirect
         reference: reference
-        agreement: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        agreement: agreement
         created: 2000-01-23T04:56:07.000+00:00
-        link: https://openapi-generator.tech
+        link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
         user_language: user_language
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: id
         accounts:
         - ""
         - ""
@@ -1893,7 +1871,6 @@ components:
         institution_id: institution_id
       properties:
         id:
-          format: uuid
           readOnly: true
           type: string
         created:
@@ -1906,7 +1883,6 @@ components:
         redirect:
           description: redirect URL to your application after end-user authorization
             with ASPSP
-          format: uri
           nullable: true
           type: string
         status:
@@ -1920,7 +1896,6 @@ components:
           type: string
         agreement:
           description: EUA associated with this requisition
-          format: uuid
           type: string
         reference:
           description: additional ID to identify the end user
@@ -1939,7 +1914,6 @@ components:
         link:
           default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           description: link to initiate authorization with Institution
-          format: uri
           readOnly: true
           type: string
       required:

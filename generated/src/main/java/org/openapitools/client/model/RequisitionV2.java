@@ -22,10 +22,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import org.openapitools.client.model.Status6e6Enum;
 import org.threeten.bp.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -48,16 +46,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionV2.JSON_PROPERTY_LINK
 })
 @JsonTypeName("RequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T20:09:34.644998Z[Etc/UTC]")
 public class RequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
-  private UUID id;
+  private String id;
 
   public static final String JSON_PROPERTY_CREATED = "created";
   private OffsetDateTime created;
 
   public static final String JSON_PROPERTY_REDIRECT = "redirect";
-  private URI redirect;
+  private String redirect;
 
   public static final String JSON_PROPERTY_STATUS = "status";
   private Status6e6Enum status;
@@ -66,19 +64,19 @@ public class RequisitionV2 {
   private String institutionId;
 
   public static final String JSON_PROPERTY_AGREEMENT = "agreement";
-  private UUID agreement;
+  private String agreement;
 
   public static final String JSON_PROPERTY_REFERENCE = "reference";
   private String reference;
 
   public static final String JSON_PROPERTY_ACCOUNTS = "accounts";
-  private List<UUID> accounts = new ArrayList<UUID>();
+  private List<String> accounts = new ArrayList<String>();
 
   public static final String JSON_PROPERTY_USER_LANGUAGE = "user_language";
   private String userLanguage;
 
   public static final String JSON_PROPERTY_LINK = "link";
-  private URI link = URI.create("https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id");
+  private String link = "https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id";
 
 
    /**
@@ -90,7 +88,7 @@ public class RequisitionV2 {
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public UUID getId() {
+  public String getId() {
     return id;
   }
 
@@ -113,7 +111,7 @@ public class RequisitionV2 {
 
 
 
-  public RequisitionV2 redirect(URI redirect) {
+  public RequisitionV2 redirect(String redirect) {
     
     this.redirect = redirect;
     return this;
@@ -128,14 +126,14 @@ public class RequisitionV2 {
   @JsonProperty(JSON_PROPERTY_REDIRECT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public URI getRedirect() {
+  public String getRedirect() {
     return redirect;
   }
 
 
   @JsonProperty(JSON_PROPERTY_REDIRECT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRedirect(URI redirect) {
+  public void setRedirect(String redirect) {
     this.redirect = redirect;
   }
 
@@ -183,7 +181,7 @@ public class RequisitionV2 {
   }
 
 
-  public RequisitionV2 agreement(UUID agreement) {
+  public RequisitionV2 agreement(String agreement) {
     
     this.agreement = agreement;
     return this;
@@ -198,14 +196,14 @@ public class RequisitionV2 {
   @JsonProperty(JSON_PROPERTY_AGREEMENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public UUID getAgreement() {
+  public String getAgreement() {
     return agreement;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGREEMENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgreement(UUID agreement) {
+  public void setAgreement(String agreement) {
     this.agreement = agreement;
   }
 
@@ -246,7 +244,7 @@ public class RequisitionV2 {
   @JsonProperty(JSON_PROPERTY_ACCOUNTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<UUID> getAccounts() {
+  public List<String> getAccounts() {
     return accounts;
   }
 
@@ -289,7 +287,7 @@ public class RequisitionV2 {
   @JsonProperty(JSON_PROPERTY_LINK)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public URI getLink() {
+  public String getLink() {
     return link;
   }
 

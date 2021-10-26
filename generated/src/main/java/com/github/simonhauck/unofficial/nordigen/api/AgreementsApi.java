@@ -7,7 +7,6 @@ import org.openapitools.client.model.ApiResponse;
 import org.openapitools.client.model.EndUserAgreement;
 import org.openapitools.client.model.EnduserAcceptanceDetails;
 import org.openapitools.client.model.PaginatedEndUserAgreementList;
-import java.util.UUID;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T20:09:34.644998Z[Etc/UTC]")
 public interface AgreementsApi extends ApiClient.Api {
 
 
@@ -31,7 +30,7 @@ public interface AgreementsApi extends ApiClient.Api {
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  EndUserAgreement acceptEUA(@Param("id") UUID id, EnduserAcceptanceDetails enduserAcceptanceDetails);
+  EndUserAgreement acceptEUA(@Param("id") String id, EnduserAcceptanceDetails enduserAcceptanceDetails);
 
   /**
    * 
@@ -46,7 +45,7 @@ public interface AgreementsApi extends ApiClient.Api {
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  ApiResponse<EndUserAgreement> acceptEUAWithHttpInfo(@Param("id") UUID id, EnduserAcceptanceDetails enduserAcceptanceDetails);
+  ApiResponse<EndUserAgreement> acceptEUAWithHttpInfo(@Param("id") String id, EnduserAcceptanceDetails enduserAcceptanceDetails);
 
 
 
@@ -89,7 +88,7 @@ public interface AgreementsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Map<String, Object> deleteEUAByIdV2(@Param("id") UUID id);
+  Map<String, Object> deleteEUAByIdV2(@Param("id") String id);
 
   /**
    * 
@@ -102,7 +101,7 @@ public interface AgreementsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<Map<String, Object>> deleteEUAByIdV2WithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Map<String, Object>> deleteEUAByIdV2WithHttpInfo(@Param("id") String id);
 
 
 
@@ -201,7 +200,7 @@ public interface AgreementsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  EndUserAgreement retrieveEUAByIdV2(@Param("id") UUID id);
+  EndUserAgreement retrieveEUAByIdV2(@Param("id") String id);
 
   /**
    * 
@@ -214,7 +213,7 @@ public interface AgreementsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<EndUserAgreement> retrieveEUAByIdV2WithHttpInfo(@Param("id") UUID id);
+  ApiResponse<EndUserAgreement> retrieveEUAByIdV2WithHttpInfo(@Param("id") String id);
 
 
 
@@ -228,7 +227,7 @@ public interface AgreementsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Map<String, Object> retrieveEUAText(@Param("id") UUID id);
+  Map<String, Object> retrieveEUAText(@Param("id") String id);
 
   /**
    * 
@@ -241,7 +240,7 @@ public interface AgreementsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<Map<String, Object>> retrieveEUATextWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Map<String, Object>> retrieveEUATextWithHttpInfo(@Param("id") String id);
 
 
 }

@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -34,10 +33,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionLinks.JSON_PROPERTY_INITIATE
 })
 @JsonTypeName("RequisitionLinks")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T20:09:34.644998Z[Etc/UTC]")
 public class RequisitionLinks {
   public static final String JSON_PROPERTY_INITIATE = "initiate";
-  private URI initiate;
+  private String initiate;
 
 
    /**
@@ -49,7 +48,7 @@ public class RequisitionLinks {
   @JsonProperty(JSON_PROPERTY_INITIATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public URI getInitiate() {
+  public String getInitiate() {
     return initiate;
   }
 

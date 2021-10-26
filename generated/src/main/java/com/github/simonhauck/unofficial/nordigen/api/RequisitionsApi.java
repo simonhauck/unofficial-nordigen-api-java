@@ -7,7 +7,6 @@ import org.openapitools.client.model.ApiResponse;
 import org.openapitools.client.model.PaginatedRequisitionV2List;
 import org.openapitools.client.model.RequisitionV2;
 import org.openapitools.client.model.SpectacularRequisitionV2;
-import java.util.UUID;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T20:09:34.644998Z[Etc/UTC]")
 public interface RequisitionsApi extends ApiClient.Api {
 
 
@@ -28,7 +27,7 @@ public interface RequisitionsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  void deleteRequisitionByIdV2(@Param("id") UUID id);
+  void deleteRequisitionByIdV2(@Param("id") String id);
 
   /**
    * 
@@ -40,7 +39,7 @@ public interface RequisitionsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<Void> deleteRequisitionByIdV2WithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Void> deleteRequisitionByIdV2WithHttpInfo(@Param("id") String id);
 
 
 
@@ -54,7 +53,7 @@ public interface RequisitionsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  RequisitionV2 requisitionById(@Param("id") UUID id);
+  RequisitionV2 requisitionById(@Param("id") String id);
 
   /**
    * 
@@ -67,7 +66,7 @@ public interface RequisitionsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<RequisitionV2> requisitionByIdWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<RequisitionV2> requisitionByIdWithHttpInfo(@Param("id") String id);
 
 
 

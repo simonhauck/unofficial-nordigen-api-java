@@ -5,7 +5,6 @@ import com.github.simonhauck.unofficial.nordigen.EncodingUtils;
 import org.openapitools.client.model.ApiResponse;
 
 import org.openapitools.client.model.AccountV2;
-import java.util.UUID;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T20:09:34.644998Z[Etc/UTC]")
 public interface AccountsApi extends ApiClient.Api {
 
 
@@ -27,7 +26,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Map<String, Object> retrieveAccountBalances(@Param("id") UUID id);
+  Map<String, Object> retrieveAccountBalances(@Param("id") String id);
 
   /**
    * 
@@ -40,7 +39,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<Map<String, Object>> retrieveAccountBalancesWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Map<String, Object>> retrieveAccountBalancesWithHttpInfo(@Param("id") String id);
 
 
 
@@ -54,7 +53,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Map<String, Object> retrieveAccountDetails(@Param("id") UUID id);
+  Map<String, Object> retrieveAccountDetails(@Param("id") String id);
 
   /**
    * 
@@ -67,7 +66,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<Map<String, Object>> retrieveAccountDetailsWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Map<String, Object>> retrieveAccountDetailsWithHttpInfo(@Param("id") String id);
 
 
 
@@ -81,7 +80,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  AccountV2 retrieveAccountMetadata(@Param("id") UUID id);
+  AccountV2 retrieveAccountMetadata(@Param("id") String id);
 
   /**
    * 
@@ -94,7 +93,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<AccountV2> retrieveAccountMetadataWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<AccountV2> retrieveAccountMetadataWithHttpInfo(@Param("id") String id);
 
 
 
@@ -108,7 +107,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Map<String, Object> retrieveAccountTransactions(@Param("id") UUID id);
+  Map<String, Object> retrieveAccountTransactions(@Param("id") String id);
 
   /**
    * 
@@ -121,7 +120,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<Map<String, Object>> retrieveAccountTransactionsWithHttpInfo(@Param("id") UUID id);
+  ApiResponse<Map<String, Object>> retrieveAccountTransactionsWithHttpInfo(@Param("id") String id);
 
 
 }

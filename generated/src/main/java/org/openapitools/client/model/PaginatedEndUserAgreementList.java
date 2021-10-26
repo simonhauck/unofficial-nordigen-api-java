@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.EndUserAgreement;
@@ -43,16 +42,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   PaginatedEndUserAgreementList.JSON_PROPERTY_RESULTS
 })
 @JsonTypeName("PaginatedEndUserAgreementList")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T20:09:34.644998Z[Etc/UTC]")
 public class PaginatedEndUserAgreementList {
   public static final String JSON_PROPERTY_COUNT = "count";
   private Integer count;
 
   public static final String JSON_PROPERTY_NEXT = "next";
-  private JsonNullable<URI> next = JsonNullable.<URI>undefined();
+  private JsonNullable<String> next = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_PREVIOUS = "previous";
-  private JsonNullable<URI> previous = JsonNullable.<URI>undefined();
+  private JsonNullable<String> previous = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_RESULTS = "results";
   private List<EndUserAgreement> results = null;
@@ -85,8 +84,8 @@ public class PaginatedEndUserAgreementList {
   }
 
 
-  public PaginatedEndUserAgreementList next(URI next) {
-    this.next = JsonNullable.<URI>of(next);
+  public PaginatedEndUserAgreementList next(String next) {
+    this.next = JsonNullable.<String>of(next);
     
     return this;
   }
@@ -99,29 +98,29 @@ public class PaginatedEndUserAgreementList {
   @ApiModelProperty(example = "https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0", value = "")
   @JsonIgnore
 
-  public URI getNext() {
+  public String getNext() {
         return next.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_NEXT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<URI> getNext_JsonNullable() {
+  public JsonNullable<String> getNext_JsonNullable() {
     return next;
   }
   
   @JsonProperty(JSON_PROPERTY_NEXT)
-  public void setNext_JsonNullable(JsonNullable<URI> next) {
+  public void setNext_JsonNullable(JsonNullable<String> next) {
     this.next = next;
   }
 
-  public void setNext(URI next) {
-    this.next = JsonNullable.<URI>of(next);
+  public void setNext(String next) {
+    this.next = JsonNullable.<String>of(next);
   }
 
 
-  public PaginatedEndUserAgreementList previous(URI previous) {
-    this.previous = JsonNullable.<URI>of(previous);
+  public PaginatedEndUserAgreementList previous(String previous) {
+    this.previous = JsonNullable.<String>of(previous);
     
     return this;
   }
@@ -134,24 +133,24 @@ public class PaginatedEndUserAgreementList {
   @ApiModelProperty(example = "https://ob.nordigen.com/api/v2/agreements/enduser/?limit=100&offset=0", value = "")
   @JsonIgnore
 
-  public URI getPrevious() {
+  public String getPrevious() {
         return previous.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_PREVIOUS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<URI> getPrevious_JsonNullable() {
+  public JsonNullable<String> getPrevious_JsonNullable() {
     return previous;
   }
   
   @JsonProperty(JSON_PROPERTY_PREVIOUS)
-  public void setPrevious_JsonNullable(JsonNullable<URI> previous) {
+  public void setPrevious_JsonNullable(JsonNullable<String> previous) {
     this.previous = previous;
   }
 
-  public void setPrevious(URI previous) {
-    this.previous = JsonNullable.<URI>of(previous);
+  public void setPrevious(String previous) {
+    this.previous = JsonNullable.<String>of(previous);
   }
 
 

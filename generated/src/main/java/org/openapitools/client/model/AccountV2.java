@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.UUID;
 import org.openapitools.client.model.AccountV2StatusEnum;
 import org.threeten.bp.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -41,10 +40,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   AccountV2.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("AccountV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T20:09:34.644998Z[Etc/UTC]")
 public class AccountV2 {
   public static final String JSON_PROPERTY_ID = "id";
-  private UUID id;
+  private String id;
 
   public static final String JSON_PROPERTY_CREATED = "created";
   private OffsetDateTime created;
@@ -71,7 +70,7 @@ public class AccountV2 {
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public UUID getId() {
+  public String getId() {
     return id;
   }
 

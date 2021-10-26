@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionLinkParams.JSON_PROPERTY_ASPSP_ID
 })
 @JsonTypeName("RequisitionLinkParams")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T16:56:39.273839Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T20:09:34.644998Z[Etc/UTC]")
 public class RequisitionLinkParams {
   public static final String JSON_PROPERTY_ASPSP_ID = "aspsp_id";
   private String aspspId;

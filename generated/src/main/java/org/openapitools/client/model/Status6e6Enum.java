@@ -26,11 +26,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum Status6e6Enum {
   
-  CR_LONG_CREATED_DESCRIPTION_REQUISITION_HAS_BEEN_SUCCESFULLY_CREATED_("{\"short\":\"CR\",\"long\":\"CREATED\",\"description\":\"Requisition has been succesfully created\"}"),
+  CR("CR"),
   
-  LN_LONG_LINKED_DESCRIPTION_ACCOUNT_HAS_BEEN_SUCCESFULLY_LINKED_TO_REQUISITION_("{\"short\":\"LN\",\"long\":\"LINKED\",\"description\":\"Account has been succesfully linked to requisition\"}"),
+  LN("LN"),
   
-  EX_LONG_EXPIRED_DESCRIPTION_ACCESS_TO_ACCOUNT_HAS_EXPIRED_AS_SET_IN_END_USER_AGREEMENT_("{\"short\":\"EX\",\"long\":\"EXPIRED\",\"description\":\"Access to account has expired as set in End User Agreement\"}");
+  EX("EX");
 
   private String value;
 

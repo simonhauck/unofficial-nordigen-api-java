@@ -26,7 +26,7 @@ import com.github.simonhauck.unofficial.nordigen.auth.ApiKeyAuth;
 import com.github.simonhauck.unofficial.nordigen.ApiResponseDecoder;
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T20:09:34.644998Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T21:29:23.050133Z[Etc/UTC]")
 public class ApiClient {
   private static final Logger log = Logger.getLogger(ApiClient.class.getName());
 

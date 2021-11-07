@@ -7,8 +7,12 @@ This project provides a generated java api for
 the [Nordigen](https://nordigen.com/en/account_information_documenation/api-documention/overview/) Banking Api which is
 specified [here](https://ob.nordigen.com/api/swagger.json).
 
-Important note:
-The api documetnation is is sligtly modified. Some endpoints did not contain a reponse object, which led to Void return types. To prevent this, the response of those endpoints is modified to return a string instead which must be interpreted manually. Also there are some problems with enum generation, which are also modified.
+## Modification
+The api.yaml is modified to resolve some short comings. 
+- Path and UUID objects were replace to strings. Some default values were invalid which lead to exceptions
+- Some methods returned void. In these cases now the raw string response is returned
+- Enums don't include a description. This lead to parsing errors with enums
+
 
 ## Usage
 1. This project is provided via `https://jitpack.io`. Add the registry to your `build.gradle`, `pom` or `build.gradle.kts`

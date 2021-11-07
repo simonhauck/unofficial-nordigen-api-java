@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   JWTRefresh.JSON_PROPERTY_ACCESS
 })
 @JsonTypeName("JWTRefresh")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T21:29:23.050133Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
 public class JWTRefresh {
   public static final String JSON_PROPERTY_REFRESH = "refresh";
   private String refresh;

@@ -1464,13 +1464,12 @@ components:
       type: object
     AccountV2StatusEnum:
       enum:
-      - '{"DISCOVERED":"User has succesfully authenticated and account is discovered"}'
-      - '{"PROCESSING":"Account is being processed by the ASPSP"}'
-      - '{"ERROR":"An error was encountered when processing account"}'
-      - '{"EXPIRED":"Access to account has expired as set in End User Agreement"}'
-      - '{"READY":"Account has been successfully processed"}'
-      - '{"SUSPENDED":"Account has been suspended (more than 10 consecutive failed
-        attempts to access the account)"}'
+      - DISCOVERED
+      - PROCESSING
+      - ERROR
+      - EXPIRED
+      - READY
+      - SUSPENDED
       type: string
     Aspsp:
       description: Represents an ASPSP.

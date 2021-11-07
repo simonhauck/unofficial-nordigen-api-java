@@ -26,17 +26,17 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum AccountV2StatusEnum {
   
-  DISCOVERED_USER_HAS_SUCCESFULLY_AUTHENTICATED_AND_ACCOUNT_IS_DISCOVERED_("{\"DISCOVERED\":\"User has succesfully authenticated and account is discovered\"}"),
+  DISCOVERED("DISCOVERED"),
   
-  PROCESSING_ACCOUNT_IS_BEING_PROCESSED_BY_THE_ASPSP_("{\"PROCESSING\":\"Account is being processed by the ASPSP\"}"),
+  PROCESSING("PROCESSING"),
   
-  ERROR_AN_ERROR_WAS_ENCOUNTERED_WHEN_PROCESSING_ACCOUNT_("{\"ERROR\":\"An error was encountered when processing account\"}"),
+  ERROR("ERROR"),
   
-  EXPIRED_ACCESS_TO_ACCOUNT_HAS_EXPIRED_AS_SET_IN_END_USER_AGREEMENT_("{\"EXPIRED\":\"Access to account has expired as set in End User Agreement\"}"),
+  EXPIRED("EXPIRED"),
   
-  READY_ACCOUNT_HAS_BEEN_SUCCESSFULLY_PROCESSED_("{\"READY\":\"Account has been successfully processed\"}"),
+  READY("READY"),
   
-  SUSPENDED_ACCOUNT_HAS_BEEN_SUSPENDED_MORE_THAN_10_CONSECUTIVE_FAILED_ATTEMPTS_TO_ACCESS_THE_ACCOUNT_("{\"SUSPENDED\":\"Account has been suspended (more than 10 consecutive failed attempts to access the account)\"}");
+  SUSPENDED("SUSPENDED");
 
   private String value;
 

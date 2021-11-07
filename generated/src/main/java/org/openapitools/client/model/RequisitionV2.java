@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionV2.JSON_PROPERTY_LINK
 })
 @JsonTypeName("RequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-10-26T21:29:23.050133Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
 public class RequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

@@ -25,7 +25,7 @@ repositories {
 ````
 2. Add the dependecy
 ````shell
-implementation 'com.github.simonhauck:unofficial-nordigen-api-java:2.0.0' 
+implementation 'com.github.simonhauck:unofficial-nordigen-api-java:2.0.1' 
 ````
 
 ## Basic Setup

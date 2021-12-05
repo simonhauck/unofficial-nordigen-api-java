@@ -33,6 +33,7 @@ With version 2.0 of the api the static api key was removed and users have to req
 
 1. Create two api clients, one with and one without authentication. The authentication interceptor is implemented in step 3. 
 ````kotlin
+@Configuration
 class NordigenClientConfiguration {
 
     @Bean(name = ["NordigenWithAuth"])
@@ -57,6 +58,7 @@ class NordigenClientConfiguration {
 
 2. Create you required clients. The NordigenTokenApi client does not required authentication. All other clients require the authentication
 ````kotlin
+@Configuration
 class NordigenClientConfiguration {
     
     @Bean

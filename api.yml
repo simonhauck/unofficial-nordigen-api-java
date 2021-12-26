@@ -33,7 +33,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -72,13 +72,13 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
         '400':
           content:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 InvalidID:
                   value:
@@ -100,7 +100,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccessExpiredError:
                   value:
@@ -129,7 +129,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountEUAScopeError:
                   value:
@@ -158,7 +158,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -179,7 +179,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountSuspendedError:
                   value:
@@ -204,7 +204,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 RateLimitError:
                   value:
@@ -219,7 +219,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 UnknownRequestError:
                   value:
@@ -234,7 +234,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 ServiceError:
                   value:
@@ -274,13 +274,13 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
         '400':
           content:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 InvalidID:
                   value:
@@ -302,7 +302,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccessExpiredError:
                   value:
@@ -331,7 +331,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountEUAScopeError:
                   value:
@@ -360,7 +360,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -381,7 +381,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountSuspendedError:
                   value:
@@ -406,7 +406,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 RateLimitError:
                   value:
@@ -421,7 +421,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 UnknownRequestError:
                   value:
@@ -436,7 +436,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 ServiceError:
                   value:
@@ -465,7 +465,6 @@ paths:
           name: date_from
           schema:
             type: string
-            format: date
           examples:
             '2021-09-25':
               value: '2021-09-25'
@@ -475,7 +474,6 @@ paths:
           name: date_to
           schema:
             type: string
-            format: date
           examples:
             '2021-12-24':
               value: '2021-12-24'
@@ -496,13 +494,13 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
         '400':
           content:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 InvalidID:
                   value:
@@ -524,7 +522,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccessExpiredError:
                   value:
@@ -553,7 +551,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountEUAScopeError:
                   value:
@@ -582,7 +580,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -603,7 +601,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountSuspendedError:
                   value:
@@ -628,7 +626,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 RateLimitError:
                   value:
@@ -643,7 +641,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 UnknownRequestError:
                   value:
@@ -658,7 +656,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 ServiceError:
                   value:
@@ -695,7 +693,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 InvalidID:
                   value:
@@ -717,7 +715,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccessExpiredError:
                   value:
@@ -746,7 +744,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountEUAScopeError:
                   value:
@@ -775,7 +773,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -796,7 +794,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountSuspendedError:
                   value:
@@ -821,7 +819,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 RateLimitError:
                   value:
@@ -836,7 +834,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 UnknownRequestError:
                   value:
@@ -851,7 +849,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 ServiceError:
                   value:
@@ -902,7 +900,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 InvalidID:
                   value:
@@ -924,7 +922,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccessExpiredError:
                   value:
@@ -953,7 +951,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountEUAScopeError:
                   value:
@@ -982,7 +980,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -1003,7 +1001,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountSuspendedError:
                   value:
@@ -1028,7 +1026,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 RateLimitError:
                   value:
@@ -1043,7 +1041,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 UnknownRequestError:
                   value:
@@ -1058,7 +1056,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 ServiceError:
                   value:
@@ -1098,7 +1096,6 @@ paths:
           name: date_from
           schema:
             type: string
-            format: date
           examples:
             '2021-09-25':
               value: '2021-09-25'
@@ -1108,7 +1105,6 @@ paths:
           name: date_to
           schema:
             type: string
-            format: date
           examples:
             '2021-12-24':
               value: '2021-12-24'
@@ -1129,7 +1125,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 InvalidID:
                   value:
@@ -1151,7 +1147,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccessExpiredError:
                   value:
@@ -1180,7 +1176,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountEUAScopeError:
                   value:
@@ -1209,7 +1205,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -1230,7 +1226,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AccountSuspendedError:
                   value:
@@ -1255,7 +1251,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 RateLimitError:
                   value:
@@ -1270,7 +1266,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 UnknownRequestError:
                   value:
@@ -1285,7 +1281,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 ServiceError:
                   value:
@@ -1357,7 +1353,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 InstitutionFieldErrors:
                   value:
@@ -1419,7 +1415,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -1446,7 +1442,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 EuaDeleted:
                   value:
@@ -1460,7 +1456,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 CannotDeleteEUA:
                   value:
@@ -1482,7 +1478,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -1608,7 +1604,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 UnknownFields:
                   value:
@@ -1623,7 +1619,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 CountryParameterErrors:
                   value:
@@ -1638,7 +1634,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -1729,7 +1725,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -1793,7 +1789,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 ReferenceFieldErrors:
                   value:
@@ -1877,7 +1873,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AgreementNotFoundErrors:
                   value:
@@ -1913,7 +1909,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -1942,7 +1938,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 InvalidID:
                   value:
@@ -1957,7 +1953,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 NotFoundError:
                   value:
@@ -1996,7 +1992,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 AuthenticationFailed:
                   value:
@@ -2011,7 +2007,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 IPAccessDenied:
                   value:
@@ -2051,7 +2047,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 InvalidToken:
                   value:
@@ -2066,7 +2062,7 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: {}
+                additionalProperties: { }
               examples:
                 IPAccessDenied:
                   value:
@@ -2089,13 +2085,11 @@ components:
           title: Account ID
         created:
           type: string
-          format: date-time
           readOnly: true
           title: Created date/time
           description: The date & time at which the account object was created.
         last_accessed:
           type: string
-          format: date-time
           nullable: true
           readOnly: true
           title: Last accessed date/time
@@ -2159,7 +2153,6 @@ components:
           description: The ID of this End User Agreement, used to refer to this end user agreement in other API calls.
         created:
           type: string
-          format: date-time
           readOnly: true
           title: Created Date
           description: The date & time at which the end user agreement was created.
@@ -2194,7 +2187,6 @@ components:
           description: Array containing one or several values of ['balances', 'details', 'transactions']
         accepted:
           type: string
-          format: date-time
           nullable: true
           readOnly: true
           title: Accepted Date
@@ -2302,7 +2294,6 @@ components:
           readOnly: true
         created:
           type: string
-          format: date-time
           nullable: true
           readOnly: true
           title: Created Date
@@ -2403,7 +2394,6 @@ components:
           readOnly: true
         created:
           type: string
-          format: date-time
           nullable: true
           readOnly: true
           title: Created Date
@@ -2430,9 +2420,9 @@ components:
           maxLength: 256
         accounts:
           type: array
-          items: {}
+          items: { }
           readOnly: true
-          default: []
+          default: [ ]
           description: array of account IDs retrieved within a scope of this requisition
         user_language:
           type: string
@@ -2471,6 +2461,6 @@ components:
       scheme: bearer
       bearerFormat: Bearer
 security:
-  - jwtAuth: []
+  - jwtAuth: [ ]
 servers:
   - url: https://ob.nordigen.com

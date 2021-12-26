@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   EnduserAcceptanceDetails.JSON_PROPERTY_IP_ADDRESS
 })
 @JsonTypeName("EnduserAcceptanceDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:36:10.643498Z[Etc/UTC]")
 public class EnduserAcceptanceDetails {
   public static final String JSON_PROPERTY_USER_AGENT = "user_agent";
   private String userAgent;

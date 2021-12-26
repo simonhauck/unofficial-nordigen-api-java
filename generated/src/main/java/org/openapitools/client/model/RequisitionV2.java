@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.Status1c5Enum;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.threeten.bp.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
@@ -52,13 +51,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionV2.JSON_PROPERTY_ACCOUNT_SELECTION
 })
 @JsonTypeName("RequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:36:10.643498Z[Etc/UTC]")
 public class RequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
   public static final String JSON_PROPERTY_CREATED = "created";
-  private JsonNullable<OffsetDateTime> created = JsonNullable.<OffsetDateTime>undefined();
+  private JsonNullable<String> created = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_REDIRECT = "redirect";
   private String redirect;
@@ -96,7 +95,7 @@ public class RequisitionV2 {
   @JsonCreator
   public RequisitionV2(
     @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
+    @JsonProperty(JSON_PROPERTY_CREATED) String created, 
     @JsonProperty(JSON_PROPERTY_STATUS) Status1c5Enum status, 
     @JsonProperty(JSON_PROPERTY_ACCOUNTS) List<String> accounts, 
     @JsonProperty(JSON_PROPERTY_LINK) String link
@@ -133,10 +132,10 @@ public class RequisitionV2 {
   @ApiModelProperty(value = "The date & time at which the requisition was created.")
   @JsonIgnore
 
-  public OffsetDateTime getCreated() {
+  public String getCreated() {
     
     if (created == null) {
-      created = JsonNullable.<OffsetDateTime>undefined();
+      created = JsonNullable.<String>undefined();
     }
     return created.orElse(null);
   }
@@ -144,12 +143,12 @@ public class RequisitionV2 {
   @JsonProperty(JSON_PROPERTY_CREATED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<OffsetDateTime> getCreated_JsonNullable() {
+  public JsonNullable<String> getCreated_JsonNullable() {
     return created;
   }
   
   @JsonProperty(JSON_PROPERTY_CREATED)
-  private void setCreated_JsonNullable(JsonNullable<OffsetDateTime> created) {
+  private void setCreated_JsonNullable(JsonNullable<String> created) {
     this.created = created;
   }
 

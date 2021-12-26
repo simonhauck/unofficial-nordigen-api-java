@@ -49,5 +49,3 @@ src/main/java/org/openapitools/client/model/SpectacularJWTObtain.java
 src/main/java/org/openapitools/client/model/SpectacularJWTRefresh.java
 src/main/java/org/openapitools/client/model/SpectacularRequisitionV2.java
 src/main/java/org/openapitools/client/model/Status1c5Enum.java
-src/test/java/com/github/simonhauck/unofficial/nordigen/api/PremiumApiTest.java
-src/test/java/org/openapitools/client/model/Status1c5EnumTest.java

@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularJWTObtain.JSON_PROPERTY_REFRESH_EXPIRES
 })
 @JsonTypeName("SpectacularJWTObtain")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
 public class SpectacularJWTObtain {
   public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;
@@ -54,6 +54,22 @@ public class SpectacularJWTObtain {
   public static final String JSON_PROPERTY_REFRESH_EXPIRES = "refresh_expires";
   private Integer refreshExpires = 2592000;
 
+  public SpectacularJWTObtain() { 
+  }
+
+  @JsonCreator
+  public SpectacularJWTObtain(
+    @JsonProperty(JSON_PROPERTY_ACCESS) String access, 
+    @JsonProperty(JSON_PROPERTY_ACCESS_EXPIRES) Integer accessExpires, 
+    @JsonProperty(JSON_PROPERTY_REFRESH) String refresh, 
+    @JsonProperty(JSON_PROPERTY_REFRESH_EXPIRES) Integer refreshExpires
+  ) {
+    this();
+    this.access = access;
+    this.accessExpires = accessExpires;
+    this.refresh = refresh;
+    this.refreshExpires = refreshExpires;
+  }
 
   public SpectacularJWTObtain password(String password) {
     
@@ -86,10 +102,10 @@ public class SpectacularJWTObtain {
    * Your access token
    * @return access
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Your access token")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Your access token")
   @JsonProperty(JSON_PROPERTY_ACCESS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAccess() {
     return access;
@@ -102,10 +118,10 @@ public class SpectacularJWTObtain {
    * Access token expires in seconds
    * @return accessExpires
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Access token expires in seconds")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Access token expires in seconds")
   @JsonProperty(JSON_PROPERTY_ACCESS_EXPIRES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getAccessExpires() {
     return accessExpires;
@@ -118,10 +134,10 @@ public class SpectacularJWTObtain {
    * Your refresh token
    * @return refresh
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Your refresh token")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Your refresh token")
   @JsonProperty(JSON_PROPERTY_REFRESH)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRefresh() {
     return refresh;
@@ -134,10 +150,10 @@ public class SpectacularJWTObtain {
    * Refresh token expires in seconds
    * @return refreshExpires
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Refresh token expires in seconds")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Refresh token expires in seconds")
   @JsonProperty(JSON_PROPERTY_REFRESH_EXPIRES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getRefreshExpires() {
     return refreshExpires;

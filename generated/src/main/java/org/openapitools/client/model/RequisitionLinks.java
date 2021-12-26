@@ -33,20 +33,30 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionLinks.JSON_PROPERTY_INITIATE
 })
 @JsonTypeName("RequisitionLinks")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
 public class RequisitionLinks {
   public static final String JSON_PROPERTY_INITIATE = "initiate";
   private String initiate;
 
+  public RequisitionLinks() { 
+  }
+
+  @JsonCreator
+  public RequisitionLinks(
+    @JsonProperty(JSON_PROPERTY_INITIATE) String initiate
+  ) {
+    this();
+    this.initiate = initiate;
+  }
 
    /**
    * Get initiate
    * @return initiate
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_INITIATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getInitiate() {
     return initiate;

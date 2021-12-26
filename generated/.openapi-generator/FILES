@@ -25,6 +25,7 @@ src/main/java/com/github/simonhauck/unofficial/nordigen/StringUtil.java
 src/main/java/com/github/simonhauck/unofficial/nordigen/api/AccountsApi.java
 src/main/java/com/github/simonhauck/unofficial/nordigen/api/AgreementsApi.java
 src/main/java/com/github/simonhauck/unofficial/nordigen/api/InstitutionsApi.java
+src/main/java/com/github/simonhauck/unofficial/nordigen/api/PremiumApi.java
 src/main/java/com/github/simonhauck/unofficial/nordigen/api/RequisitionsApi.java
 src/main/java/com/github/simonhauck/unofficial/nordigen/api/TokenApi.java
 src/main/java/com/github/simonhauck/unofficial/nordigen/auth/ApiKeyAuth.java
@@ -47,4 +48,6 @@ src/main/java/org/openapitools/client/model/RequisitionV2.java
 src/main/java/org/openapitools/client/model/SpectacularJWTObtain.java
 src/main/java/org/openapitools/client/model/SpectacularJWTRefresh.java
 src/main/java/org/openapitools/client/model/SpectacularRequisitionV2.java
-src/main/java/org/openapitools/client/model/Status6e6Enum.java
+src/main/java/org/openapitools/client/model/Status1c5Enum.java
+src/test/java/com/github/simonhauck/unofficial/nordigen/api/PremiumApiTest.java
+src/test/java/org/openapitools/client/model/Status1c5EnumTest.java

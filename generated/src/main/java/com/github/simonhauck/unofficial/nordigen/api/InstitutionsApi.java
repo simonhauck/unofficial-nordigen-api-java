@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
 public interface InstitutionsApi extends ApiClient.Api {
 
 
   /**
    * 
-   * List all ASPSPs available.
+   * List all available institutions
    * @param country ISO 3166 two-character country code (required)
    * @return List&lt;Aspsp&gt;
    */
@@ -31,7 +31,7 @@ public interface InstitutionsApi extends ApiClient.Api {
   /**
    * 
    * Similar to <code>retrieveAllSupportedInstitutionsInAGivenCountry</code> but it also returns the http response headers .
-   * List all ASPSPs available.
+   * List all available institutions
    * @param country ISO 3166 two-character country code (required)
    * @return A ApiResponse that wraps the response boyd and the http headers.
    */
@@ -44,7 +44,7 @@ public interface InstitutionsApi extends ApiClient.Api {
 
   /**
    * 
-   * List all ASPSPs available.
+   * List all available institutions
    * Note, this is equivalent to the other <code>retrieveAllSupportedInstitutionsInAGivenCountry</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
@@ -65,7 +65,7 @@ public interface InstitutionsApi extends ApiClient.Api {
 
   /**
   * 
-  * List all ASPSPs available.
+  * List all available institutions
   * Note, this is equivalent to the other <code>retrieveAllSupportedInstitutionsInAGivenCountry</code> that receives the query parameters as a map,
   * but this one also exposes the Http response headers
       * @param queryParams Map of query parameters as name-value pairs
@@ -95,7 +95,7 @@ public interface InstitutionsApi extends ApiClient.Api {
 
   /**
    * 
-   * Get details about a specific ASPSP.
+   * Get details about a specific Institution
    * @param id  (required)
    * @return Aspsp
    */
@@ -108,7 +108,7 @@ public interface InstitutionsApi extends ApiClient.Api {
   /**
    * 
    * Similar to <code>retrieveInstitution</code> but it also returns the http response headers .
-   * Get details about a specific ASPSP.
+   * Get details about a specific Institution
    * @param id  (required)
    * @return A ApiResponse that wraps the response boyd and the http headers.
    */

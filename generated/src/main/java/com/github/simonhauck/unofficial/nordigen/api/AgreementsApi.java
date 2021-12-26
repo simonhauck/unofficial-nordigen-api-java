@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
 public interface AgreementsApi extends ApiClient.Api {
 
 
@@ -214,33 +214,6 @@ public interface AgreementsApi extends ApiClient.Api {
     "Accept: application/json",
   })
   ApiResponse<EndUserAgreement> retrieveEUAByIdV2WithHttpInfo(@Param("id") String id);
-
-
-
-  /**
-   * 
-   * Show the text of the end-user agreement.
-   * @param id A UUID string identifying this end user agreement. (required)
-   * @return Map&lt;String, Object&gt;
-   */
-  @RequestLine("GET /api/v2/agreements/enduser/{id}/text/")
-  @Headers({
-    "Accept: application/json",
-  })
-  Map<String, Object> retrieveEUAText(@Param("id") String id);
-
-  /**
-   * 
-   * Similar to <code>retrieveEUAText</code> but it also returns the http response headers .
-   * Show the text of the end-user agreement.
-   * @param id A UUID string identifying this end user agreement. (required)
-   * @return A ApiResponse that wraps the response boyd and the http headers.
-   */
-  @RequestLine("GET /api/v2/agreements/enduser/{id}/text/")
-  @Headers({
-    "Accept: application/json",
-  })
-  ApiResponse<Map<String, Object>> retrieveEUATextWithHttpInfo(@Param("id") String id);
 
 
 }

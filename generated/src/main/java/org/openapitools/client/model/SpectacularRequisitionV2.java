@@ -24,8 +24,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.Status6e6Enum;
+import org.openapitools.client.model.Status1c5Enum;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -43,22 +47,24 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularRequisitionV2.JSON_PROPERTY_REFERENCE,
   SpectacularRequisitionV2.JSON_PROPERTY_ACCOUNTS,
   SpectacularRequisitionV2.JSON_PROPERTY_USER_LANGUAGE,
-  SpectacularRequisitionV2.JSON_PROPERTY_LINK
+  SpectacularRequisitionV2.JSON_PROPERTY_LINK,
+  SpectacularRequisitionV2.JSON_PROPERTY_SSN,
+  SpectacularRequisitionV2.JSON_PROPERTY_ACCOUNT_SELECTION
 })
 @JsonTypeName("SpectacularRequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
 public class SpectacularRequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
   public static final String JSON_PROPERTY_CREATED = "created";
-  private OffsetDateTime created;
+  private JsonNullable<OffsetDateTime> created = JsonNullable.<OffsetDateTime>undefined();
 
   public static final String JSON_PROPERTY_REDIRECT = "redirect";
   private String redirect;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  private Status6e6Enum status;
+  private JsonNullable<Status1c5Enum> status = JsonNullable.<Status1c5Enum>undefined();
 
   public static final String JSON_PROPERTY_INSTITUTION_ID = "institution_id";
   private String institutionId;
@@ -70,7 +76,7 @@ public class SpectacularRequisitionV2 {
   private String reference;
 
   public static final String JSON_PROPERTY_ACCOUNTS = "accounts";
-  private List<Object> accounts = new ArrayList<Object>();
+  private List<Object> accounts = null;
 
   public static final String JSON_PROPERTY_USER_LANGUAGE = "user_language";
   private String userLanguage;
@@ -78,15 +84,39 @@ public class SpectacularRequisitionV2 {
   public static final String JSON_PROPERTY_LINK = "link";
   private String link = "https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id";
 
+  public static final String JSON_PROPERTY_SSN = "ssn";
+  private String ssn;
+
+  public static final String JSON_PROPERTY_ACCOUNT_SELECTION = "account_selection";
+  private Boolean accountSelection = false;
+
+  public SpectacularRequisitionV2() { 
+  }
+
+  @JsonCreator
+  public SpectacularRequisitionV2(
+    @JsonProperty(JSON_PROPERTY_ID) String id, 
+    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
+    @JsonProperty(JSON_PROPERTY_STATUS) Status1c5Enum status, 
+    @JsonProperty(JSON_PROPERTY_ACCOUNTS) List<Object> accounts, 
+    @JsonProperty(JSON_PROPERTY_LINK) String link
+  ) {
+    this();
+    this.id = id;
+    this.created = created;
+    this.status = status;
+    this.accounts = accounts;
+    this.link = link;
+  }
 
    /**
    * Get id
    * @return id
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -100,14 +130,28 @@ public class SpectacularRequisitionV2 {
    * @return created
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "The date & time at which the requisition was created.")
-  @JsonProperty(JSON_PROPERTY_CREATED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @ApiModelProperty(value = "The date & time at which the requisition was created.")
+  @JsonIgnore
 
   public OffsetDateTime getCreated() {
-    return created;
+    
+    if (created == null) {
+      created = JsonNullable.<OffsetDateTime>undefined();
+    }
+    return created.orElse(null);
   }
 
+  @JsonProperty(JSON_PROPERTY_CREATED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<OffsetDateTime> getCreated_JsonNullable() {
+    return created;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CREATED)
+  private void setCreated_JsonNullable(JsonNullable<OffsetDateTime> created) {
+    this.created = created;
+  }
 
 
 
@@ -143,14 +187,28 @@ public class SpectacularRequisitionV2 {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "status of this requisition")
-  @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @ApiModelProperty(value = "status of this requisition")
+  @JsonIgnore
 
-  public Status6e6Enum getStatus() {
-    return status;
+  public Status1c5Enum getStatus() {
+    
+    if (status == null) {
+      status = JsonNullable.<Status1c5Enum>undefined();
+    }
+    return status.orElse(null);
   }
 
+  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<Status1c5Enum> getStatus_JsonNullable() {
+    return status;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_STATUS)
+  private void setStatus_JsonNullable(JsonNullable<Status1c5Enum> status) {
+    this.status = status;
+  }
 
 
 
@@ -239,10 +297,10 @@ public class SpectacularRequisitionV2 {
    * array of account IDs retrieved within a scope of this requisition
    * @return accounts
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "array of account IDs retrieved within a scope of this requisition")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "array of account IDs retrieved within a scope of this requisition")
   @JsonProperty(JSON_PROPERTY_ACCOUNTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getAccounts() {
     return accounts;
@@ -282,16 +340,70 @@ public class SpectacularRequisitionV2 {
    * link to initiate authorization with Institution
    * @return link
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "link to initiate authorization with Institution")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "link to initiate authorization with Institution")
   @JsonProperty(JSON_PROPERTY_LINK)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLink() {
     return link;
   }
 
 
+
+
+  public SpectacularRequisitionV2 ssn(String ssn) {
+    
+    this.ssn = ssn;
+    return this;
+  }
+
+   /**
+   * optional SSN field to verify ownership of the account
+   * @return ssn
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "optional SSN field to verify ownership of the account")
+  @JsonProperty(JSON_PROPERTY_SSN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getSsn() {
+    return ssn;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SSN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSsn(String ssn) {
+    this.ssn = ssn;
+  }
+
+
+  public SpectacularRequisitionV2 accountSelection(Boolean accountSelection) {
+    
+    this.accountSelection = accountSelection;
+    return this;
+  }
+
+   /**
+   * option to enable account selection view for the end user
+   * @return accountSelection
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "option to enable account selection view for the end user")
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_SELECTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getAccountSelection() {
+    return accountSelection;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_SELECTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccountSelection(Boolean accountSelection) {
+    this.accountSelection = accountSelection;
+  }
 
 
   @Override
@@ -304,20 +416,33 @@ public class SpectacularRequisitionV2 {
     }
     SpectacularRequisitionV2 spectacularRequisitionV2 = (SpectacularRequisitionV2) o;
     return Objects.equals(this.id, spectacularRequisitionV2.id) &&
-        Objects.equals(this.created, spectacularRequisitionV2.created) &&
+        equalsNullable(this.created, spectacularRequisitionV2.created) &&
         Objects.equals(this.redirect, spectacularRequisitionV2.redirect) &&
-        Objects.equals(this.status, spectacularRequisitionV2.status) &&
+        equalsNullable(this.status, spectacularRequisitionV2.status) &&
         Objects.equals(this.institutionId, spectacularRequisitionV2.institutionId) &&
         Objects.equals(this.agreement, spectacularRequisitionV2.agreement) &&
         Objects.equals(this.reference, spectacularRequisitionV2.reference) &&
         Objects.equals(this.accounts, spectacularRequisitionV2.accounts) &&
         Objects.equals(this.userLanguage, spectacularRequisitionV2.userLanguage) &&
-        Objects.equals(this.link, spectacularRequisitionV2.link);
+        Objects.equals(this.link, spectacularRequisitionV2.link) &&
+        Objects.equals(this.ssn, spectacularRequisitionV2.ssn) &&
+        Objects.equals(this.accountSelection, spectacularRequisitionV2.accountSelection);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, redirect, status, institutionId, agreement, reference, accounts, userLanguage, link);
+    return Objects.hash(id, hashCodeNullable(created), redirect, hashCodeNullable(status), institutionId, agreement, reference, accounts, userLanguage, link, ssn, accountSelection);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -334,6 +459,8 @@ public class SpectacularRequisitionV2 {
     sb.append("    accounts: ").append(toIndentedString(accounts)).append("\n");
     sb.append("    userLanguage: ").append(toIndentedString(userLanguage)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    ssn: ").append(toIndentedString(ssn)).append("\n");
+    sb.append("    accountSelection: ").append(toIndentedString(accountSelection)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularJWTRefresh.JSON_PROPERTY_ACCESS_EXPIRES
 })
 @JsonTypeName("SpectacularJWTRefresh")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
 public class SpectacularJWTRefresh {
   public static final String JSON_PROPERTY_ACCESS = "access";
   private String access;
@@ -42,15 +42,27 @@ public class SpectacularJWTRefresh {
   public static final String JSON_PROPERTY_ACCESS_EXPIRES = "access_expires";
   private Integer accessExpires = 86400;
 
+  public SpectacularJWTRefresh() { 
+  }
+
+  @JsonCreator
+  public SpectacularJWTRefresh(
+    @JsonProperty(JSON_PROPERTY_ACCESS) String access, 
+    @JsonProperty(JSON_PROPERTY_ACCESS_EXPIRES) Integer accessExpires
+  ) {
+    this();
+    this.access = access;
+    this.accessExpires = accessExpires;
+  }
 
    /**
    * Your access token
    * @return access
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Your access token")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Your access token")
   @JsonProperty(JSON_PROPERTY_ACCESS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAccess() {
     return access;
@@ -63,10 +75,10 @@ public class SpectacularJWTRefresh {
    * Access token expires in seconds
    * @return accessExpires
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Access token expires in seconds")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Access token expires in seconds")
   @JsonProperty(JSON_PROPERTY_ACCESS_EXPIRES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getAccessExpires() {
     return accessExpires;

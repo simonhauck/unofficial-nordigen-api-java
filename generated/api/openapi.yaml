@@ -61,7 +61,7 @@ paths:
         Access account balances.
 
         Balances will be returned in Berlin Group PSD2 format.
-      operationId: retrieve account balances
+      operationId: retrieve account balances v2_2
       parameters:
       - explode: false
         in: path
@@ -90,6 +90,15 @@ paths:
                     summary: Invalid Account ID
                     detail: $ACCOUNT_ID is not a valid UUID.
                     status_code: 400
+                DateRangeError:
+                  description: Incorrect date range in query parameters
+                  summary: Date range error
+                  value:
+                    summary: Incorrect date range
+                    detail: Starting date '2022-01-03' is greater than end date '2021-12-24'.
+                      When specifying date range, starting date must precede the end
+                      date
+                    status_code: 400
               schema:
                 additionalProperties: {}
                 type: object
@@ -111,6 +120,13 @@ paths:
                     summary: Couldn't update account balances
                     detail: Account has been deactivated or it no longer exists.
                     type: AccountInactiveError
+                    status_code: 401
+                FailedAuthentication:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: SSN Verification has failed
+                    type: FailedAuthentication
                     status_code: 401
               schema:
                 additionalProperties: {}
@@ -134,6 +150,14 @@ paths:
                     summary: No valid End User Agreement
                     error: Account exists but there is no valid End User Agreement
                       permitting you to access it
+                    status_code: 403
+                AccountAccessForbidden:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Access to account is forbidden. The user might not have
+                      the necessary permissions.
+                    type: AccountAccessForbidden
                     status_code: 403
               schema:
                 additionalProperties: {}
@@ -175,8 +199,8 @@ paths:
                   summary: Account state error
                   value:
                     id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-                    created: 2021-10-25T16:01:40.661602Z
-                    last_accessed: 2021-10-25T16:01:40.661613Z
+                    created: 2021-12-24T17:07:02.039237Z
+                    last_accessed: 2021-12-24T17:07:02.039245Z
                     iban: string
                     aspsp_identifier: string
                     status: ERROR
@@ -241,7 +265,7 @@ paths:
         Access account details.
 
         Account details will be returned in Berlin Group PSD2 format.
-      operationId: retrieve account details
+      operationId: retrieve account details v2_2
       parameters:
       - explode: false
         in: path
@@ -270,6 +294,15 @@ paths:
                     summary: Invalid Account ID
                     detail: $ACCOUNT_ID is not a valid UUID.
                     status_code: 400
+                DateRangeError:
+                  description: Incorrect date range in query parameters
+                  summary: Date range error
+                  value:
+                    summary: Incorrect date range
+                    detail: Starting date '2022-01-03' is greater than end date '2021-12-24'.
+                      When specifying date range, starting date must precede the end
+                      date
+                    status_code: 400
               schema:
                 additionalProperties: {}
                 type: object
@@ -291,6 +324,13 @@ paths:
                     summary: Couldn't update account details
                     detail: Account has been deactivated or it no longer exists.
                     type: AccountInactiveError
+                    status_code: 401
+                FailedAuthentication:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: SSN Verification has failed
+                    type: FailedAuthentication
                     status_code: 401
               schema:
                 additionalProperties: {}
@@ -314,6 +354,14 @@ paths:
                     summary: No valid End User Agreement
                     error: Account exists but there is no valid End User Agreement
                       permitting you to access it
+                    status_code: 403
+                AccountAccessForbidden:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: Access to account is forbidden. The user might not have
+                      the necessary permissions.
+                    type: AccountAccessForbidden
                     status_code: 403
               schema:
                 additionalProperties: {}
@@ -355,8 +403,8 @@ paths:
                   summary: Account state error
                   value:
                     id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-                    created: 2021-10-25T16:01:40.661602Z
-                    last_accessed: 2021-10-25T16:01:40.661613Z
+                    created: 2021-12-24T17:07:02.039237Z
+                    last_accessed: 2021-12-24T17:07:02.039245Z
                     iban: string
                     aspsp_identifier: string
                     status: ERROR
@@ -421,8 +469,34 @@ paths:
         Access account transactions.
 
         Transactions will be returned in Berlin Group PSD2 format.
-      operationId: retrieve account transactions
+      operationId: retrieve account transactions v2_2
       parameters:
+      - examples:
+          "2021-09-25":
+            description: ISO 8601 format date
+            summary: 2021-09-25
+            value: 2021-09-25
+        explode: true
+        in: query
+        name: date_from
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - examples:
+          "2021-12-24":
+            description: ISO 8601 format date
+            summary: 2021-12-24
+            value: 2021-12-24
+        explode: true
+        in: query
+        name: date_to
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
       - explode: false
         in: path
         name: id
@@ -450,6 +524,15 @@ paths:
                     summary: Invalid Account ID
                     detail: $ACCOUNT_ID is not a valid UUID.
                     status_code: 400
+                DateRangeError:
+                  description: Incorrect date range in query parameters
+                  summary: Date range error
+                  value:
+                    summary: Incorrect date range
+                    detail: Starting date '2022-01-03' is greater than end date '2021-12-24'.
+                      When specifying date range, starting date must precede the end
+                      date
+                    status_code: 400
               schema:
                 additionalProperties: {}
                 type: object
@@ -471,6 +554,13 @@ paths:
                     summary: Couldn't update account transactions
                     detail: Account has been deactivated or it no longer exists.
                     type: AccountInactiveError
+                    status_code: 401
+                FailedAuthentication:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: SSN Verification has failed
+                    type: FailedAuthentication
                     status_code: 401
               schema:
                 additionalProperties: {}
@@ -494,6 +584,14 @@ paths:
                     summary: No valid End User Agreement
                     error: Account exists but there is no valid End User Agreement
                       permitting you to access it
+                    status_code: 403
+                AccountAccessForbidden:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Access to account is forbidden. The user might not have
+                      the necessary permissions.
+                    type: AccountAccessForbidden
                     status_code: 403
               schema:
                 additionalProperties: {}
@@ -535,8 +633,8 @@ paths:
                   summary: Account state error
                   value:
                     id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-                    created: 2021-10-25T16:01:40.661602Z
-                    last_accessed: 2021-10-25T16:01:40.661613Z
+                    created: 2021-12-24T17:07:02.039237Z
+                    last_accessed: 2021-12-24T17:07:02.039245Z
                     iban: string
                     aspsp_identifier: string
                     status: ERROR
@@ -594,6 +692,651 @@ paths:
                 type: object
       tags:
       - accounts
+      x-accepts: application/json
+  /api/v2/accounts/premium/{id}/balances/:
+    get:
+      description: Access account premium balances.
+      operationId: retrieve account balances v2
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              examples:
+                InvalidID:
+                  description: Invalid Account ID
+                  summary: Invalid ID
+                  value:
+                    summary: Invalid Account ID
+                    detail: $ACCOUNT_ID is not a valid UUID.
+                    status_code: 400
+                DateRangeError:
+                  description: Incorrect date range in query parameters
+                  summary: Date range error
+                  value:
+                    summary: Incorrect date range
+                    detail: Starting date '2022-01-03' is greater than end date '2021-12-24'.
+                      When specifying date range, starting date must precede the end
+                      date
+                    status_code: 400
+              schema:
+                additionalProperties: {}
+                type: object
+        "401":
+          content:
+            application/json:
+              examples:
+                AccessExpiredError:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Access has expired or it has been revoked. To restore
+                      access reconnect the account.
+                    type: AccessExpiredError
+                    status_code: 401
+                AccountInactiveError:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Account has been deactivated or it no longer exists.
+                    type: AccountInactiveError
+                    status_code: 401
+                FailedAuthentication:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: SSN Verification has failed
+                    type: FailedAuthentication
+                    status_code: 401
+              schema:
+                additionalProperties: {}
+                type: object
+        "403":
+          content:
+            application/json:
+              examples:
+                AccountEUAScopeError:
+                  description: EUA doesn't allow access to account balances.
+                  summary: Account EUA scope error
+                  value:
+                    summary: End User Agreement (EUA) access scope error
+                    detail: EUA doesn't allow access to account balances. Check EUA
+                      access scope. Or create new EUA with correct access scope
+                    status_code: 403
+                AccountValidEUAError:
+                  description: Account has no valid End User Agreement
+                  summary: Account valid EUA error
+                  value:
+                    summary: No valid End User Agreement
+                    error: Account exists but there is no valid End User Agreement
+                      permitting you to access it
+                    status_code: 403
+                AccountAccessForbidden:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Access to account is forbidden. The user might not have
+                      the necessary permissions.
+                    type: AccountAccessForbidden
+                    status_code: 403
+              schema:
+                additionalProperties: {}
+                type: object
+        "404":
+          content:
+            application/json:
+              examples:
+                NotFoundError:
+                  description: Not found error
+                  summary: Not found error
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                AccountNotFoundError:
+                  description: Account not found
+                  summary: Account not found error
+                  value:
+                    summary: 'Account: $ACC_ID not found'
+                    detail: ""
+                    status_code: 404
+              schema:
+                additionalProperties: {}
+                type: object
+        "409":
+          content:
+            application/json:
+              examples:
+                AccountSuspendedError:
+                  description: Account or its requisition suspended
+                  summary: Account suspended error
+                  value:
+                    summary: Account suspended
+                    detail: This account or its requisition was suspended due to numerous
+                      errors that occurred while accessing it.
+                    status_code: 409
+                AccountStateError:
+                  description: Account state does not support this operation
+                  summary: Account state error
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                    created: 2021-12-24T17:07:02.039237Z
+                    last_accessed: 2021-12-24T17:07:02.039245Z
+                    iban: string
+                    aspsp_identifier: string
+                    status: ERROR
+              schema:
+                additionalProperties: {}
+                type: object
+        "429":
+          content:
+            application/json:
+              examples:
+                RateLimitError:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Daily request limit set by the Institution has been exceeded.
+                    type: RateLimitError
+                    status_code: 429
+              schema:
+                additionalProperties: {}
+                type: object
+        "500":
+          content:
+            application/json:
+              examples:
+                UnknownRequestError:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Request to Institution returned an error
+                    type: UnknownRequestError
+                    status_code: 500
+              schema:
+                additionalProperties: {}
+                type: object
+        "503":
+          content:
+            application/json:
+              examples:
+                ServiceError:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Institution service unavailable
+                    type: ServiceError
+                    status_code: 503
+                ConnectionError:
+                  description: Couldn't update account balances
+                  value:
+                    summary: Couldn't update account balances
+                    detail: Couldn't connect to Institution
+                    type: ConnectionError
+                    status_code: 503
+              schema:
+                additionalProperties: {}
+                type: object
+      tags:
+      - premium
+      x-accepts: application/json
+  /api/v2/accounts/premium/{id}/details/:
+    get:
+      description: Access account premium details.
+      operationId: retrieve account details v2
+      parameters:
+      - description: ISO 3166 two-character country code
+        examples:
+          Germany:
+            description: ISO 3166 two-character code for Germany
+            summary: Germany
+            value: DE
+          UnitedKingdom:
+            description: ISO 3166 two-character code for the UK
+            summary: United Kingdom
+            value: GB
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              examples:
+                InvalidID:
+                  description: Invalid Account ID
+                  summary: Invalid ID
+                  value:
+                    summary: Invalid Account ID
+                    detail: $ACCOUNT_ID is not a valid UUID.
+                    status_code: 400
+                DateRangeError:
+                  description: Incorrect date range in query parameters
+                  summary: Date range error
+                  value:
+                    summary: Incorrect date range
+                    detail: Starting date '2022-01-03' is greater than end date '2021-12-24'.
+                      When specifying date range, starting date must precede the end
+                      date
+                    status_code: 400
+              schema:
+                additionalProperties: {}
+                type: object
+        "401":
+          content:
+            application/json:
+              examples:
+                AccessExpiredError:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: Access has expired or it has been revoked. To restore
+                      access reconnect the account.
+                    type: AccessExpiredError
+                    status_code: 401
+                AccountInactiveError:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: Account has been deactivated or it no longer exists.
+                    type: AccountInactiveError
+                    status_code: 401
+                FailedAuthentication:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: SSN Verification has failed
+                    type: FailedAuthentication
+                    status_code: 401
+              schema:
+                additionalProperties: {}
+                type: object
+        "403":
+          content:
+            application/json:
+              examples:
+                AccountEUAScopeError:
+                  description: EUA doesn't allow access to account details.
+                  summary: Account EUA scope error
+                  value:
+                    summary: End User Agreement (EUA) access scope error
+                    detail: EUA doesn't allow access to account details. Check EUA
+                      access scope. Or create new EUA with correct access scope
+                    status_code: 403
+                AccountValidEUAError:
+                  description: Account has no valid End User Agreement
+                  summary: Account valid EUA error
+                  value:
+                    summary: No valid End User Agreement
+                    error: Account exists but there is no valid End User Agreement
+                      permitting you to access it
+                    status_code: 403
+                AccountAccessForbidden:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: Access to account is forbidden. The user might not have
+                      the necessary permissions.
+                    type: AccountAccessForbidden
+                    status_code: 403
+              schema:
+                additionalProperties: {}
+                type: object
+        "404":
+          content:
+            application/json:
+              examples:
+                NotFoundError:
+                  description: Not found error
+                  summary: Not found error
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                AccountNotFoundError:
+                  description: Account not found
+                  summary: Account not found error
+                  value:
+                    summary: 'Account: $ACC_ID not found'
+                    detail: ""
+                    status_code: 404
+              schema:
+                additionalProperties: {}
+                type: object
+        "409":
+          content:
+            application/json:
+              examples:
+                AccountSuspendedError:
+                  description: Account or its requisition suspended
+                  summary: Account suspended error
+                  value:
+                    summary: Account suspended
+                    detail: This account or its requisition was suspended due to numerous
+                      errors that occurred while accessing it.
+                    status_code: 409
+                AccountStateError:
+                  description: Account state does not support this operation
+                  summary: Account state error
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                    created: 2021-12-24T17:07:02.039237Z
+                    last_accessed: 2021-12-24T17:07:02.039245Z
+                    iban: string
+                    aspsp_identifier: string
+                    status: ERROR
+              schema:
+                additionalProperties: {}
+                type: object
+        "429":
+          content:
+            application/json:
+              examples:
+                RateLimitError:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: Daily request limit set by the Institution has been exceeded.
+                    type: RateLimitError
+                    status_code: 429
+              schema:
+                additionalProperties: {}
+                type: object
+        "500":
+          content:
+            application/json:
+              examples:
+                UnknownRequestError:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: Request to Institution returned an error
+                    type: UnknownRequestError
+                    status_code: 500
+              schema:
+                additionalProperties: {}
+                type: object
+        "503":
+          content:
+            application/json:
+              examples:
+                ServiceError:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: Institution service unavailable
+                    type: ServiceError
+                    status_code: 503
+                ConnectionError:
+                  description: Couldn't update account details
+                  value:
+                    summary: Couldn't update account details
+                    detail: Couldn't connect to Institution
+                    type: ConnectionError
+                    status_code: 503
+              schema:
+                additionalProperties: {}
+                type: object
+      tags:
+      - premium
+      x-accepts: application/json
+  /api/v2/accounts/premium/{id}/transactions/:
+    get:
+      description: Access account premium transactions.
+      operationId: retrieve account transactions v2
+      parameters:
+      - description: ISO 3166 two-character country code
+        examples:
+          Germany:
+            description: ISO 3166 two-character code for Germany
+            summary: Germany
+            value: DE
+          UnitedKingdom:
+            description: ISO 3166 two-character code for the UK
+            summary: United Kingdom
+            value: GB
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          type: string
+        style: form
+      - examples:
+          "2021-09-25":
+            description: ISO 8601 format date
+            summary: 2021-09-25
+            value: 2021-09-25
+        explode: true
+        in: query
+        name: date_from
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - examples:
+          "2021-12-24":
+            description: ISO 8601 format date
+            summary: 2021-12-24
+            value: 2021-12-24
+        explode: true
+        in: query
+        name: date_to
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              examples:
+                InvalidID:
+                  description: Invalid Account ID
+                  summary: Invalid ID
+                  value:
+                    summary: Invalid Account ID
+                    detail: $ACCOUNT_ID is not a valid UUID.
+                    status_code: 400
+                DateRangeError:
+                  description: Incorrect date range in query parameters
+                  summary: Date range error
+                  value:
+                    summary: Incorrect date range
+                    detail: Starting date '2022-01-03' is greater than end date '2021-12-24'.
+                      When specifying date range, starting date must precede the end
+                      date
+                    status_code: 400
+              schema:
+                additionalProperties: {}
+                type: object
+        "401":
+          content:
+            application/json:
+              examples:
+                AccessExpiredError:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Access has expired or it has been revoked. To restore
+                      access reconnect the account.
+                    type: AccessExpiredError
+                    status_code: 401
+                AccountInactiveError:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Account has been deactivated or it no longer exists.
+                    type: AccountInactiveError
+                    status_code: 401
+                FailedAuthentication:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: SSN Verification has failed
+                    type: FailedAuthentication
+                    status_code: 401
+              schema:
+                additionalProperties: {}
+                type: object
+        "403":
+          content:
+            application/json:
+              examples:
+                AccountEUAScopeError:
+                  description: EUA doesn't allow access to account transactions.
+                  summary: Account EUA scope error
+                  value:
+                    summary: End User Agreement (EUA) access scope error
+                    detail: EUA doesn't allow access to account transactions. Check
+                      EUA access scope. Or create new EUA with correct access scope
+                    status_code: 403
+                AccountValidEUAError:
+                  description: Account has no valid End User Agreement
+                  summary: Account valid EUA error
+                  value:
+                    summary: No valid End User Agreement
+                    error: Account exists but there is no valid End User Agreement
+                      permitting you to access it
+                    status_code: 403
+                AccountAccessForbidden:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Access to account is forbidden. The user might not have
+                      the necessary permissions.
+                    type: AccountAccessForbidden
+                    status_code: 403
+              schema:
+                additionalProperties: {}
+                type: object
+        "404":
+          content:
+            application/json:
+              examples:
+                NotFoundError:
+                  description: Not found error
+                  summary: Not found error
+                  value:
+                    detail: Not found.
+                    status_code: 404
+                AccountNotFoundError:
+                  description: Account not found
+                  summary: Account not found error
+                  value:
+                    summary: 'Account: $ACC_ID not found'
+                    detail: ""
+                    status_code: 404
+              schema:
+                additionalProperties: {}
+                type: object
+        "409":
+          content:
+            application/json:
+              examples:
+                AccountSuspendedError:
+                  description: Account or its requisition suspended
+                  summary: Account suspended error
+                  value:
+                    summary: Account suspended
+                    detail: This account or its requisition was suspended due to numerous
+                      errors that occurred while accessing it.
+                    status_code: 409
+                AccountStateError:
+                  description: Account state does not support this operation
+                  summary: Account state error
+                  value:
+                    id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                    created: 2021-12-24T17:07:02.039237Z
+                    last_accessed: 2021-12-24T17:07:02.039245Z
+                    iban: string
+                    aspsp_identifier: string
+                    status: ERROR
+              schema:
+                additionalProperties: {}
+                type: object
+        "429":
+          content:
+            application/json:
+              examples:
+                RateLimitError:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Daily request limit set by the Institution has been exceeded.
+                    type: RateLimitError
+                    status_code: 429
+              schema:
+                additionalProperties: {}
+                type: object
+        "500":
+          content:
+            application/json:
+              examples:
+                UnknownRequestError:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Request to Institution returned an error
+                    type: UnknownRequestError
+                    status_code: 500
+              schema:
+                additionalProperties: {}
+                type: object
+        "503":
+          content:
+            application/json:
+              examples:
+                ServiceError:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Institution service unavailable
+                    type: ServiceError
+                    status_code: 503
+                ConnectionError:
+                  description: Couldn't update account transactions
+                  value:
+                    summary: Couldn't update account transactions
+                    detail: Couldn't connect to Institution
+                    type: ConnectionError
+                    status_code: 503
+              schema:
+                additionalProperties: {}
+                type: object
+      tags:
+      - premium
       x-accepts: application/json
   /api/v2/agreements/enduser/:
     get:
@@ -686,7 +1429,7 @@ paths:
                   value:
                     access_valid_for_days:
                     - summary: Incorrect access_valid_for_days
-                      detail: access_valid_for_days must be > 0 and <= 730
+                      detail: access_valid_for_days must be > 0 and <= 90
                     status_code: 400
               schema:
                 additionalProperties: {}
@@ -831,33 +1574,9 @@ paths:
       - agreements
       x-contentType: application/json
       x-accepts: application/json
-  /api/v2/agreements/enduser/{id}/text/:
-    get:
-      description: Show the text of the end-user agreement.
-      operationId: retrieve EUA text
-      parameters:
-      - description: A UUID string identifying this end user agreement.
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                additionalProperties: {}
-                type: object
-          description: EUA Text
-      tags:
-      - agreements
-      x-accepts: application/json
   /api/v2/institutions/:
     get:
-      description: List all ASPSPs available.
+      description: List all available institutions
       operationId: retrieve all supported Institutions in a given country
       parameters:
       - description: ISO 3166 two-character country code
@@ -981,12 +1700,12 @@ paths:
       x-accepts: application/json
   /api/v2/institutions/{id}/:
     get:
-      description: Get details about a specific ASPSP.
+      description: Get details about a specific Institution
       operationId: retrieve institution
       parameters:
       - examples:
           N26:
-            description: Nordigen's ASPSP ID for N26
+            description: Nordigen's Institution ID for N26
             summary: N26
             value: N26_NTSBDEB1
         explode: false
@@ -1167,6 +1886,22 @@ paths:
                         authentication in ASPSP
                     - summary: Invalid redirect URI
                       detail: Redirect URI must have a valid URI structure
+                    status_code: 400
+                SSNFieldErrors:
+                  description: Errors related to 'ssn' field.
+                  summary: SSN field errors
+                  value:
+                    ssn:
+                      summary: SSN verification is not supported
+                      detail: SSN verification is not supported for $INSTITUTION_ID
+                    status_code: 400
+                AccountSelectionFieldErrors:
+                  description: Errors related to 'account_selection' field.
+                  summary: Account selection field errors
+                  value:
+                    account_selection:
+                      summary: Account selection is not supported
+                      detail: Account selection is not supported for $INSTITUTION_ID
                     status_code: 400
                 InstitutionFieldErrors:
                   description: Errors related to 'institution' field.
@@ -1454,13 +2189,6 @@ components:
           description: The processing status of this account.
           readOnly: true
           title: Account Status
-      required:
-      - created
-      - iban
-      - id
-      - institution_id
-      - last_accessed
-      - status
       type: object
     AccountV2StatusEnum:
       enum:
@@ -1512,7 +2240,7 @@ components:
         - access_scope
         created: 2000-01-23T04:56:07.000+00:00
         accepted: 2000-01-23T04:56:07.000+00:00
-        access_valid_for_days: 440
+        access_valid_for_days: 54
         id: id
         max_historical_days: 59
         institution_id: institution_id
@@ -1539,7 +2267,7 @@ components:
         access_valid_for_days:
           default: 90
           description: Number of days from acceptance that the access can be used.
-          maximum: 730
+          maximum: 90
           minimum: 1
           title: Access Valid For (Days)
           type: integer
@@ -1566,9 +2294,6 @@ components:
           description: an Institution ID for this EUA
           type: string
       required:
-      - accepted
-      - created
-      - id
       - institution_id
       type: object
     EnduserAcceptanceDetails:
@@ -1615,7 +2340,6 @@ components:
           readOnly: true
           type: string
       required:
-      - access
       - refresh
       type: object
     PaginatedEndUserAgreementList:
@@ -1629,7 +2353,7 @@ components:
           - access_scope
           created: 2000-01-23T04:56:07.000+00:00
           accepted: 2000-01-23T04:56:07.000+00:00
-          access_valid_for_days: 440
+          access_valid_for_days: 54
           id: id
           max_historical_days: 59
           institution_id: institution_id
@@ -1638,7 +2362,7 @@ components:
           - access_scope
           created: 2000-01-23T04:56:07.000+00:00
           accepted: 2000-01-23T04:56:07.000+00:00
-          access_valid_for_days: 440
+          access_valid_for_days: 54
           id: id
           max_historical_days: 59
           institution_id: institution_id
@@ -1667,6 +2391,7 @@ components:
         results:
         - redirect: redirect
           reference: reference
+          account_selection: false
           agreement: agreement
           created: 2000-01-23T04:56:07.000+00:00
           link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
@@ -1677,8 +2402,10 @@ components:
           - accounts
           status: ""
           institution_id: institution_id
+          ssn: ssn
         - redirect: redirect
           reference: reference
+          account_selection: false
           agreement: agreement
           created: 2000-01-23T04:56:07.000+00:00
           link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
@@ -1689,6 +2416,7 @@ components:
           - accounts
           status: ""
           institution_id: institution_id
+          ssn: ssn
       properties:
         count:
           example: 123
@@ -1722,14 +2450,13 @@ components:
         initiate:
           readOnly: true
           type: string
-      required:
-      - initiate
       type: object
     RequisitionV2:
       description: Get requisition by id.
       example:
         redirect: redirect
         reference: reference
+        account_selection: false
         agreement: agreement
         created: 2000-01-23T04:56:07.000+00:00
         link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
@@ -1740,6 +2467,7 @@ components:
         - accounts
         status: ""
         institution_id: institution_id
+        ssn: ssn
       properties:
         id:
           readOnly: true
@@ -1758,7 +2486,7 @@ components:
           type: string
         status:
           allOf:
-          - $ref: '#/components/schemas/Status6e6Enum'
+          - $ref: '#/components/schemas/Status1c5Enum'
           description: status of this requisition
           readOnly: true
           title: Requisition status
@@ -1788,14 +2516,17 @@ components:
           description: link to initiate authorization with Institution
           readOnly: true
           type: string
+        ssn:
+          description: optional SSN field to verify ownership of the account
+          maxLength: 64
+          type: string
+        account_selection:
+          default: false
+          description: option to enable account selection view for the end user
+          type: boolean
       required:
-      - accounts
-      - created
-      - id
       - institution_id
-      - link
       - redirect
-      - status
       type: object
     SpectacularJWTObtain:
       description: Obtain new JWT pair.
@@ -1828,11 +2559,7 @@ components:
           readOnly: true
           type: integer
       required:
-      - access
-      - access_expires
       - password
-      - refresh
-      - refresh_expires
       type: object
     SpectacularJWTRefresh:
       description: Refresh Access token.
@@ -1849,15 +2576,13 @@ components:
           description: Access token expires in seconds
           readOnly: true
           type: integer
-      required:
-      - access
-      - access_expires
       type: object
     SpectacularRequisitionV2:
       description: Create requisition.
       example:
         redirect: redirect
         reference: reference
+        account_selection: false
         agreement: agreement
         created: 2000-01-23T04:56:07.000+00:00
         link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
@@ -1868,6 +2593,7 @@ components:
         - ""
         status: ""
         institution_id: institution_id
+        ssn: ssn
       properties:
         id:
           readOnly: true
@@ -1886,7 +2612,7 @@ components:
           type: string
         status:
           allOf:
-          - $ref: '#/components/schemas/Status6e6Enum'
+          - $ref: '#/components/schemas/Status1c5Enum'
           description: status of this requisition
           readOnly: true
           title: Requisition status
@@ -1915,20 +2641,28 @@ components:
           description: link to initiate authorization with Institution
           readOnly: true
           type: string
+        ssn:
+          description: optional SSN field to verify ownership of the account
+          maxLength: 64
+          type: string
+        account_selection:
+          default: false
+          description: option to enable account selection view for the end user
+          type: boolean
       required:
-      - accounts
-      - created
-      - id
       - institution_id
-      - link
       - redirect
-      - status
       type: object
-    Status6e6Enum:
+    Status1c5Enum:
       enum:
       - CR
       - LN
       - EX
+      - RJ
+      - UA
+      - GA
+      - SA
+      - GC
       type: string
   securitySchemes:
     jwtAuth:

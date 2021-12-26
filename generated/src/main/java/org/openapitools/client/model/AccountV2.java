@@ -23,7 +23,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.client.model.AccountV2StatusEnum;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -40,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   AccountV2.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("AccountV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
 public class AccountV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -49,7 +53,7 @@ public class AccountV2 {
   private OffsetDateTime created;
 
   public static final String JSON_PROPERTY_LAST_ACCESSED = "last_accessed";
-  private OffsetDateTime lastAccessed;
+  private JsonNullable<OffsetDateTime> lastAccessed = JsonNullable.<OffsetDateTime>undefined();
 
   public static final String JSON_PROPERTY_IBAN = "iban";
   private String iban;
@@ -58,17 +62,37 @@ public class AccountV2 {
   private String institutionId;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  private AccountV2StatusEnum status;
+  private JsonNullable<AccountV2StatusEnum> status = JsonNullable.<AccountV2StatusEnum>undefined();
 
+  public AccountV2() { 
+  }
+
+  @JsonCreator
+  public AccountV2(
+    @JsonProperty(JSON_PROPERTY_ID) String id, 
+    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
+    @JsonProperty(JSON_PROPERTY_LAST_ACCESSED) OffsetDateTime lastAccessed, 
+    @JsonProperty(JSON_PROPERTY_IBAN) String iban, 
+    @JsonProperty(JSON_PROPERTY_INSTITUTION_ID) String institutionId, 
+    @JsonProperty(JSON_PROPERTY_STATUS) AccountV2StatusEnum status
+  ) {
+    this();
+    this.id = id;
+    this.created = created;
+    this.lastAccessed = lastAccessed;
+    this.iban = iban;
+    this.institutionId = institutionId;
+    this.status = status;
+  }
 
    /**
    * The ID of this Account, used to refer to this account in other API calls.
    * @return id
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The ID of this Account, used to refer to this account in other API calls.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The ID of this Account, used to refer to this account in other API calls.")
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -81,10 +105,10 @@ public class AccountV2 {
    * The date &amp; time at which the account object was created.
    * @return created
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The date & time at which the account object was created.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The date & time at which the account object was created.")
   @JsonProperty(JSON_PROPERTY_CREATED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getCreated() {
     return created;
@@ -98,14 +122,28 @@ public class AccountV2 {
    * @return lastAccessed
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "The date & time at which the account object was last accessed.")
-  @JsonProperty(JSON_PROPERTY_LAST_ACCESSED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @ApiModelProperty(value = "The date & time at which the account object was last accessed.")
+  @JsonIgnore
 
   public OffsetDateTime getLastAccessed() {
-    return lastAccessed;
+    
+    if (lastAccessed == null) {
+      lastAccessed = JsonNullable.<OffsetDateTime>undefined();
+    }
+    return lastAccessed.orElse(null);
   }
 
+  @JsonProperty(JSON_PROPERTY_LAST_ACCESSED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<OffsetDateTime> getLastAccessed_JsonNullable() {
+    return lastAccessed;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_LAST_ACCESSED)
+  private void setLastAccessed_JsonNullable(JsonNullable<OffsetDateTime> lastAccessed) {
+    this.lastAccessed = lastAccessed;
+  }
 
 
 
@@ -113,10 +151,10 @@ public class AccountV2 {
    * The Account IBAN
    * @return iban
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The Account IBAN")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The Account IBAN")
   @JsonProperty(JSON_PROPERTY_IBAN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIban() {
     return iban;
@@ -129,10 +167,10 @@ public class AccountV2 {
    * The ASPSP associated with this account.
    * @return institutionId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The ASPSP associated with this account.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The ASPSP associated with this account.")
   @JsonProperty(JSON_PROPERTY_INSTITUTION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getInstitutionId() {
     return institutionId;
@@ -146,14 +184,28 @@ public class AccountV2 {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "The processing status of this account.")
-  @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @ApiModelProperty(value = "The processing status of this account.")
+  @JsonIgnore
 
   public AccountV2StatusEnum getStatus() {
-    return status;
+    
+    if (status == null) {
+      status = JsonNullable.<AccountV2StatusEnum>undefined();
+    }
+    return status.orElse(null);
   }
 
+  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<AccountV2StatusEnum> getStatus_JsonNullable() {
+    return status;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_STATUS)
+  private void setStatus_JsonNullable(JsonNullable<AccountV2StatusEnum> status) {
+    this.status = status;
+  }
 
 
 
@@ -168,15 +220,26 @@ public class AccountV2 {
     AccountV2 accountV2 = (AccountV2) o;
     return Objects.equals(this.id, accountV2.id) &&
         Objects.equals(this.created, accountV2.created) &&
-        Objects.equals(this.lastAccessed, accountV2.lastAccessed) &&
+        equalsNullable(this.lastAccessed, accountV2.lastAccessed) &&
         Objects.equals(this.iban, accountV2.iban) &&
         Objects.equals(this.institutionId, accountV2.institutionId) &&
-        Objects.equals(this.status, accountV2.status);
+        equalsNullable(this.status, accountV2.status);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, lastAccessed, iban, institutionId, status);
+    return Objects.hash(id, created, hashCodeNullable(lastAccessed), iban, institutionId, hashCodeNullable(status));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

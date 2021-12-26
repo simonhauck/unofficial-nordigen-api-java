@@ -24,7 +24,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -42,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   EndUserAgreement.JSON_PROPERTY_INSTITUTION_ID
 })
 @JsonTypeName("EndUserAgreement")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-11-07T16:52:58.053385Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T15:24:39.802060Z[Etc/UTC]")
 public class EndUserAgreement {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -60,20 +64,34 @@ public class EndUserAgreement {
   private List<String> accessScope = null;
 
   public static final String JSON_PROPERTY_ACCEPTED = "accepted";
-  private OffsetDateTime accepted;
+  private JsonNullable<OffsetDateTime> accepted = JsonNullable.<OffsetDateTime>undefined();
 
   public static final String JSON_PROPERTY_INSTITUTION_ID = "institution_id";
   private String institutionId;
 
+  public EndUserAgreement() { 
+  }
+
+  @JsonCreator
+  public EndUserAgreement(
+    @JsonProperty(JSON_PROPERTY_ID) String id, 
+    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
+    @JsonProperty(JSON_PROPERTY_ACCEPTED) OffsetDateTime accepted
+  ) {
+    this();
+    this.id = id;
+    this.created = created;
+    this.accepted = accepted;
+  }
 
    /**
    * The ID of this End User Agreement, used to refer to this end user agreement in other API calls.
    * @return id
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The ID of this End User Agreement, used to refer to this end user agreement in other API calls.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The ID of this End User Agreement, used to refer to this end user agreement in other API calls.")
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -86,10 +104,10 @@ public class EndUserAgreement {
    * The date &amp; time at which the end user agreement was created.
    * @return created
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The date & time at which the end user agreement was created.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The date & time at which the end user agreement was created.")
   @JsonProperty(JSON_PROPERTY_CREATED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getCreated() {
     return created;
@@ -136,7 +154,7 @@ public class EndUserAgreement {
    /**
    * Number of days from acceptance that the access can be used.
    * minimum: 1
-   * maximum: 730
+   * maximum: 90
    * @return accessValidForDays
   **/
   @javax.annotation.Nullable
@@ -196,14 +214,28 @@ public class EndUserAgreement {
    * @return accepted
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "The date & time at which the end user accepted the agreement.")
-  @JsonProperty(JSON_PROPERTY_ACCEPTED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @ApiModelProperty(value = "The date & time at which the end user accepted the agreement.")
+  @JsonIgnore
 
   public OffsetDateTime getAccepted() {
-    return accepted;
+    
+    if (accepted == null) {
+      accepted = JsonNullable.<OffsetDateTime>undefined();
+    }
+    return accepted.orElse(null);
   }
 
+  @JsonProperty(JSON_PROPERTY_ACCEPTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<OffsetDateTime> getAccepted_JsonNullable() {
+    return accepted;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ACCEPTED)
+  private void setAccepted_JsonNullable(JsonNullable<OffsetDateTime> accepted) {
+    this.accepted = accepted;
+  }
 
 
 
@@ -248,13 +280,24 @@ public class EndUserAgreement {
         Objects.equals(this.maxHistoricalDays, endUserAgreement.maxHistoricalDays) &&
         Objects.equals(this.accessValidForDays, endUserAgreement.accessValidForDays) &&
         Objects.equals(this.accessScope, endUserAgreement.accessScope) &&
-        Objects.equals(this.accepted, endUserAgreement.accepted) &&
+        equalsNullable(this.accepted, endUserAgreement.accepted) &&
         Objects.equals(this.institutionId, endUserAgreement.institutionId);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, maxHistoricalDays, accessValidForDays, accessScope, accepted, institutionId);
+    return Objects.hash(id, created, maxHistoricalDays, accessValidForDays, accessScope, hashCodeNullable(accepted), institutionId);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

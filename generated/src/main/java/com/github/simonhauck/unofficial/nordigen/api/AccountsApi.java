@@ -5,6 +5,7 @@ import com.github.simonhauck.unofficial.nordigen.EncodingUtils;
 import org.openapitools.client.model.ApiResponse;
 
 import org.openapitools.client.model.AccountV2;
+import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:39:18.485873Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
 public interface AccountsApi extends ApiClient.Api {
 
 
@@ -109,7 +110,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  Map<String, Object> retrieveAccountTransactionsV22(@Param("id") String id, @Param("dateFrom") String dateFrom, @Param("dateTo") String dateTo);
+  Map<String, Object> retrieveAccountTransactionsV22(@Param("id") String id, @Param("dateFrom") LocalDate dateFrom, @Param("dateTo") LocalDate dateTo);
 
   /**
    * 
@@ -124,7 +125,7 @@ public interface AccountsApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<Map<String, Object>> retrieveAccountTransactionsV22WithHttpInfo(@Param("id") String id, @Param("dateFrom") String dateFrom, @Param("dateTo") String dateTo);
+  ApiResponse<Map<String, Object>> retrieveAccountTransactionsV22WithHttpInfo(@Param("id") String id, @Param("dateFrom") LocalDate dateFrom, @Param("dateTo") LocalDate dateTo);
 
 
   /**
@@ -176,11 +177,11 @@ public interface AccountsApi extends ApiClient.Api {
    * <code>retrieveAccountTransactionsV22</code> method in a fluent style.
    */
   public static class RetrieveAccountTransactionsV22QueryParams extends HashMap<String, Object> {
-    public RetrieveAccountTransactionsV22QueryParams dateFrom(final String value) {
+    public RetrieveAccountTransactionsV22QueryParams dateFrom(final LocalDate value) {
       put("date_from", EncodingUtils.encode(value));
       return this;
     }
-    public RetrieveAccountTransactionsV22QueryParams dateTo(final String value) {
+    public RetrieveAccountTransactionsV22QueryParams dateTo(final LocalDate value) {
       put("date_to", EncodingUtils.encode(value));
       return this;
     }

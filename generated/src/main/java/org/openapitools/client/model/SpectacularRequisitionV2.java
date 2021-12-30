@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.Status1c5Enum;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.threeten.bp.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
@@ -51,13 +52,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularRequisitionV2.JSON_PROPERTY_ACCOUNT_SELECTION
 })
 @JsonTypeName("SpectacularRequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:39:18.485873Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
 public class SpectacularRequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
   public static final String JSON_PROPERTY_CREATED = "created";
-  private JsonNullable<String> created = JsonNullable.<String>undefined();
+  private JsonNullable<OffsetDateTime> created = JsonNullable.<OffsetDateTime>undefined();
 
   public static final String JSON_PROPERTY_REDIRECT = "redirect";
   private String redirect;
@@ -95,7 +96,7 @@ public class SpectacularRequisitionV2 {
   @JsonCreator
   public SpectacularRequisitionV2(
     @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_CREATED) String created, 
+    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
     @JsonProperty(JSON_PROPERTY_STATUS) Status1c5Enum status, 
     @JsonProperty(JSON_PROPERTY_ACCOUNTS) List<Object> accounts
   ) {
@@ -130,10 +131,10 @@ public class SpectacularRequisitionV2 {
   @ApiModelProperty(value = "The date & time at which the requisition was created.")
   @JsonIgnore
 
-  public String getCreated() {
+  public OffsetDateTime getCreated() {
     
     if (created == null) {
-      created = JsonNullable.<String>undefined();
+      created = JsonNullable.<OffsetDateTime>undefined();
     }
     return created.orElse(null);
   }
@@ -141,12 +142,12 @@ public class SpectacularRequisitionV2 {
   @JsonProperty(JSON_PROPERTY_CREATED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getCreated_JsonNullable() {
+  public JsonNullable<OffsetDateTime> getCreated_JsonNullable() {
     return created;
   }
   
   @JsonProperty(JSON_PROPERTY_CREATED)
-  private void setCreated_JsonNullable(JsonNullable<String> created) {
+  private void setCreated_JsonNullable(JsonNullable<OffsetDateTime> created) {
     this.created = created;
   }
 

@@ -481,6 +481,7 @@ paths:
         name: date_from
         required: false
         schema:
+          format: date
           type: string
         style: form
       - examples:
@@ -493,6 +494,7 @@ paths:
         name: date_to
         required: false
         schema:
+          format: date
           type: string
         style: form
       - explode: false
@@ -1130,6 +1132,7 @@ paths:
         name: date_from
         required: false
         schema:
+          format: date
           type: string
         style: form
       - examples:
@@ -1142,6 +1145,7 @@ paths:
         name: date_to
         required: false
         schema:
+          format: date
           type: string
         style: form
       - explode: false
@@ -2144,7 +2148,7 @@ components:
     AccountV2:
       description: AccountV2Serializer.
       example:
-        last_accessed: last_accessed
+        last_accessed: 2000-01-23T04:56:07.000+00:00
         created: 2000-01-23T04:56:07.000+00:00
         iban: iban
         id: id
@@ -2160,10 +2164,12 @@ components:
         created:
           description: The date & time at which the account object was created.
           format: date-time
+          readOnly: true
           title: Created date/time
           type: string
         last_accessed:
           description: The date & time at which the account object was last accessed.
+          format: date-time
           nullable: true
           readOnly: true
           title: Last accessed date/time
@@ -2232,8 +2238,8 @@ components:
         access_scope:
         - access_scope
         - access_scope
-        created: created
-        accepted: accepted
+        created: 2000-01-23T04:56:07.000+00:00
+        accepted: 2000-01-23T04:56:07.000+00:00
         access_valid_for_days: 54
         id: id
         max_historical_days: 59
@@ -2247,6 +2253,7 @@ components:
           type: string
         created:
           description: The date & time at which the end user agreement was created.
+          format: date-time
           readOnly: true
           title: Created Date
           type: string
@@ -2278,6 +2285,7 @@ components:
           type: array
         accepted:
           description: The date & time at which the end user accepted the agreement.
+          format: date-time
           nullable: true
           readOnly: true
           title: Accepted Date
@@ -2343,8 +2351,8 @@ components:
         - access_scope:
           - access_scope
           - access_scope
-          created: created
-          accepted: accepted
+          created: 2000-01-23T04:56:07.000+00:00
+          accepted: 2000-01-23T04:56:07.000+00:00
           access_valid_for_days: 54
           id: id
           max_historical_days: 59
@@ -2352,8 +2360,8 @@ components:
         - access_scope:
           - access_scope
           - access_scope
-          created: created
-          accepted: accepted
+          created: 2000-01-23T04:56:07.000+00:00
+          accepted: 2000-01-23T04:56:07.000+00:00
           access_valid_for_days: 54
           id: id
           max_historical_days: 59
@@ -2385,7 +2393,7 @@ components:
           reference: reference
           account_selection: false
           agreement: agreement
-          created: created
+          created: 2000-01-23T04:56:07.000+00:00
           link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           user_language: user_language
           id: id
@@ -2399,7 +2407,7 @@ components:
           reference: reference
           account_selection: false
           agreement: agreement
-          created: created
+          created: 2000-01-23T04:56:07.000+00:00
           link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           user_language: user_language
           id: id
@@ -2450,7 +2458,7 @@ components:
         reference: reference
         account_selection: false
         agreement: agreement
-        created: created
+        created: 2000-01-23T04:56:07.000+00:00
         link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
         user_language: user_language
         id: id
@@ -2466,6 +2474,7 @@ components:
           type: string
         created:
           description: The date & time at which the requisition was created.
+          format: date-time
           nullable: true
           readOnly: true
           title: Created Date
@@ -2505,10 +2514,12 @@ components:
         link:
           default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           description: link to initiate authorization with Institution
+          readOnly: true
           type: string
         ssn:
           description: optional SSN field to verify ownership of the account
           maxLength: 64
+          nullable: true
           type: string
         account_selection:
           default: false
@@ -2574,7 +2585,7 @@ components:
         reference: reference
         account_selection: false
         agreement: agreement
-        created: created
+        created: 2000-01-23T04:56:07.000+00:00
         link: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
         user_language: user_language
         id: id
@@ -2590,6 +2601,7 @@ components:
           type: string
         created:
           description: The date & time at which the requisition was created.
+          format: date-time
           nullable: true
           readOnly: true
           title: Created Date

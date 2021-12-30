@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   AccountV2.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("AccountV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:39:18.485873Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
 public class AccountV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -53,7 +53,7 @@ public class AccountV2 {
   private OffsetDateTime created;
 
   public static final String JSON_PROPERTY_LAST_ACCESSED = "last_accessed";
-  private JsonNullable<String> lastAccessed = JsonNullable.<String>undefined();
+  private JsonNullable<OffsetDateTime> lastAccessed = JsonNullable.<OffsetDateTime>undefined();
 
   public static final String JSON_PROPERTY_IBAN = "iban";
   private String iban;
@@ -70,13 +70,15 @@ public class AccountV2 {
   @JsonCreator
   public AccountV2(
     @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_LAST_ACCESSED) String lastAccessed, 
+    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
+    @JsonProperty(JSON_PROPERTY_LAST_ACCESSED) OffsetDateTime lastAccessed, 
     @JsonProperty(JSON_PROPERTY_IBAN) String iban, 
     @JsonProperty(JSON_PROPERTY_INSTITUTION_ID) String institutionId, 
     @JsonProperty(JSON_PROPERTY_STATUS) AccountV2StatusEnum status
   ) {
     this();
     this.id = id;
+    this.created = created;
     this.lastAccessed = lastAccessed;
     this.iban = iban;
     this.institutionId = institutionId;
@@ -99,12 +101,6 @@ public class AccountV2 {
 
 
 
-  public AccountV2 created(OffsetDateTime created) {
-    
-    this.created = created;
-    return this;
-  }
-
    /**
    * The date &amp; time at which the account object was created.
    * @return created
@@ -119,11 +115,6 @@ public class AccountV2 {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreated(OffsetDateTime created) {
-    this.created = created;
-  }
 
 
    /**
@@ -134,10 +125,10 @@ public class AccountV2 {
   @ApiModelProperty(value = "The date & time at which the account object was last accessed.")
   @JsonIgnore
 
-  public String getLastAccessed() {
+  public OffsetDateTime getLastAccessed() {
     
     if (lastAccessed == null) {
-      lastAccessed = JsonNullable.<String>undefined();
+      lastAccessed = JsonNullable.<OffsetDateTime>undefined();
     }
     return lastAccessed.orElse(null);
   }
@@ -145,12 +136,12 @@ public class AccountV2 {
   @JsonProperty(JSON_PROPERTY_LAST_ACCESSED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getLastAccessed_JsonNullable() {
+  public JsonNullable<OffsetDateTime> getLastAccessed_JsonNullable() {
     return lastAccessed;
   }
   
   @JsonProperty(JSON_PROPERTY_LAST_ACCESSED)
-  private void setLastAccessed_JsonNullable(JsonNullable<String> lastAccessed) {
+  private void setLastAccessed_JsonNullable(JsonNullable<OffsetDateTime> lastAccessed) {
     this.lastAccessed = lastAccessed;
   }
 

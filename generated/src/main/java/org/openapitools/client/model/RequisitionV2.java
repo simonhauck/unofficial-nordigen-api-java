@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.Status1c5Enum;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.threeten.bp.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
@@ -51,13 +52,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionV2.JSON_PROPERTY_ACCOUNT_SELECTION
 })
 @JsonTypeName("RequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:39:18.485873Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
 public class RequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
   public static final String JSON_PROPERTY_CREATED = "created";
-  private JsonNullable<String> created = JsonNullable.<String>undefined();
+  private JsonNullable<OffsetDateTime> created = JsonNullable.<OffsetDateTime>undefined();
 
   public static final String JSON_PROPERTY_REDIRECT = "redirect";
   private String redirect;
@@ -84,7 +85,7 @@ public class RequisitionV2 {
   private String link = "https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id";
 
   public static final String JSON_PROPERTY_SSN = "ssn";
-  private String ssn;
+  private JsonNullable<String> ssn = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_ACCOUNT_SELECTION = "account_selection";
   private Boolean accountSelection = false;
@@ -95,15 +96,17 @@ public class RequisitionV2 {
   @JsonCreator
   public RequisitionV2(
     @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_CREATED) String created, 
+    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
     @JsonProperty(JSON_PROPERTY_STATUS) Status1c5Enum status, 
-    @JsonProperty(JSON_PROPERTY_ACCOUNTS) List<String> accounts
+    @JsonProperty(JSON_PROPERTY_ACCOUNTS) List<String> accounts, 
+    @JsonProperty(JSON_PROPERTY_LINK) String link
   ) {
     this();
     this.id = id;
     this.created = created;
     this.status = status;
     this.accounts = accounts;
+    this.link = link;
   }
 
    /**
@@ -130,10 +133,10 @@ public class RequisitionV2 {
   @ApiModelProperty(value = "The date & time at which the requisition was created.")
   @JsonIgnore
 
-  public String getCreated() {
+  public OffsetDateTime getCreated() {
     
     if (created == null) {
-      created = JsonNullable.<String>undefined();
+      created = JsonNullable.<OffsetDateTime>undefined();
     }
     return created.orElse(null);
   }
@@ -141,12 +144,12 @@ public class RequisitionV2 {
   @JsonProperty(JSON_PROPERTY_CREATED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getCreated_JsonNullable() {
+  public JsonNullable<OffsetDateTime> getCreated_JsonNullable() {
     return created;
   }
   
   @JsonProperty(JSON_PROPERTY_CREATED)
-  private void setCreated_JsonNullable(JsonNullable<String> created) {
+  private void setCreated_JsonNullable(JsonNullable<OffsetDateTime> created) {
     this.created = created;
   }
 
@@ -333,12 +336,6 @@ public class RequisitionV2 {
   }
 
 
-  public RequisitionV2 link(String link) {
-    
-    this.link = link;
-    return this;
-  }
-
    /**
    * link to initiate authorization with Institution
    * @return link
@@ -353,16 +350,11 @@ public class RequisitionV2 {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LINK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLink(String link) {
-    this.link = link;
-  }
 
 
   public RequisitionV2 ssn(String ssn) {
+    this.ssn = JsonNullable.<String>of(ssn);
     
-    this.ssn = ssn;
     return this;
   }
 
@@ -372,18 +364,26 @@ public class RequisitionV2 {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "optional SSN field to verify ownership of the account")
-  @JsonProperty(JSON_PROPERTY_SSN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getSsn() {
-    return ssn;
+        return ssn.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_SSN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSsn(String ssn) {
+
+  public JsonNullable<String> getSsn_JsonNullable() {
+    return ssn;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_SSN)
+  public void setSsn_JsonNullable(JsonNullable<String> ssn) {
     this.ssn = ssn;
+  }
+
+  public void setSsn(String ssn) {
+    this.ssn = JsonNullable.<String>of(ssn);
   }
 
 
@@ -433,7 +433,7 @@ public class RequisitionV2 {
         Objects.equals(this.accounts, requisitionV2.accounts) &&
         Objects.equals(this.userLanguage, requisitionV2.userLanguage) &&
         Objects.equals(this.link, requisitionV2.link) &&
-        Objects.equals(this.ssn, requisitionV2.ssn) &&
+        equalsNullable(this.ssn, requisitionV2.ssn) &&
         Objects.equals(this.accountSelection, requisitionV2.accountSelection);
   }
 
@@ -443,7 +443,7 @@ public class RequisitionV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, hashCodeNullable(created), redirect, hashCodeNullable(status), institutionId, agreement, reference, accounts, userLanguage, link, ssn, accountSelection);
+    return Objects.hash(id, hashCodeNullable(created), redirect, hashCodeNullable(status), institutionId, agreement, reference, accounts, userLanguage, link, hashCodeNullable(ssn), accountSelection);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {

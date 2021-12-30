@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   Aspsp.JSON_PROPERTY_LOGO
 })
 @JsonTypeName("Aspsp")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:39:18.485873Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
 public class Aspsp {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

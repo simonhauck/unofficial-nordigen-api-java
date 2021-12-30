@@ -1,7 +1,7 @@
 apiPackage: com.github.simonhauck.unofficial.nordigen.api
 artifactId: unofficial-nordigen-api-java
 groupId: com.github.simonhauck
-artifactVersion: 2.0.1
+artifactVersion: 2.1.0
 artifactUrl: https://github.com/simonhauck/unofficial-nordigen-api-java
 serializationLibrary: gson
 artifactDescription: Nordigen api

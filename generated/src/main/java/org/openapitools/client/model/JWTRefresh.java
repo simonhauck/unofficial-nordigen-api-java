@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   JWTRefresh.JSON_PROPERTY_ACCESS
 })
 @JsonTypeName("JWTRefresh")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:02:29.348425Z[Etc/UTC]")
 public class JWTRefresh {
   public static final String JSON_PROPERTY_REFRESH = "refresh";
   private String refresh;
@@ -43,14 +43,6 @@ public class JWTRefresh {
   private String access;
 
   public JWTRefresh() { 
-  }
-
-  @JsonCreator
-  public JWTRefresh(
-    @JsonProperty(JSON_PROPERTY_ACCESS) String access
-  ) {
-    this();
-    this.access = access;
   }
 
   public JWTRefresh refresh(String refresh) {
@@ -80,6 +72,12 @@ public class JWTRefresh {
   }
 
 
+  public JWTRefresh access(String access) {
+    
+    this.access = access;
+    return this;
+  }
+
    /**
    * Get access
    * @return access
@@ -94,6 +92,11 @@ public class JWTRefresh {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ACCESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccess(String access) {
+    this.access = access;
+  }
 
 
   @Override

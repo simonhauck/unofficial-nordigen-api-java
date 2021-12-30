@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   AccountV2.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("AccountV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:02:29.348425Z[Etc/UTC]")
 public class AccountV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -67,22 +67,10 @@ public class AccountV2 {
   public AccountV2() { 
   }
 
-  @JsonCreator
-  public AccountV2(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
-    @JsonProperty(JSON_PROPERTY_LAST_ACCESSED) OffsetDateTime lastAccessed, 
-    @JsonProperty(JSON_PROPERTY_IBAN) String iban, 
-    @JsonProperty(JSON_PROPERTY_INSTITUTION_ID) String institutionId, 
-    @JsonProperty(JSON_PROPERTY_STATUS) AccountV2StatusEnum status
-  ) {
-    this();
+  public AccountV2 id(String id) {
+    
     this.id = id;
-    this.created = created;
-    this.lastAccessed = lastAccessed;
-    this.iban = iban;
-    this.institutionId = institutionId;
-    this.status = status;
+    return this;
   }
 
    /**
@@ -99,7 +87,18 @@ public class AccountV2 {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(String id) {
+    this.id = id;
+  }
 
+
+  public AccountV2 created(OffsetDateTime created) {
+    
+    this.created = created;
+    return this;
+  }
 
    /**
    * The date &amp; time at which the account object was created.
@@ -115,7 +114,18 @@ public class AccountV2 {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_CREATED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCreated(OffsetDateTime created) {
+    this.created = created;
+  }
 
+
+  public AccountV2 lastAccessed(OffsetDateTime lastAccessed) {
+    this.lastAccessed = JsonNullable.<OffsetDateTime>of(lastAccessed);
+    
+    return this;
+  }
 
    /**
    * The date &amp; time at which the account object was last accessed.
@@ -126,11 +136,7 @@ public class AccountV2 {
   @JsonIgnore
 
   public OffsetDateTime getLastAccessed() {
-    
-    if (lastAccessed == null) {
-      lastAccessed = JsonNullable.<OffsetDateTime>undefined();
-    }
-    return lastAccessed.orElse(null);
+        return lastAccessed.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_LAST_ACCESSED)
@@ -141,11 +147,20 @@ public class AccountV2 {
   }
   
   @JsonProperty(JSON_PROPERTY_LAST_ACCESSED)
-  private void setLastAccessed_JsonNullable(JsonNullable<OffsetDateTime> lastAccessed) {
+  public void setLastAccessed_JsonNullable(JsonNullable<OffsetDateTime> lastAccessed) {
     this.lastAccessed = lastAccessed;
   }
 
+  public void setLastAccessed(OffsetDateTime lastAccessed) {
+    this.lastAccessed = JsonNullable.<OffsetDateTime>of(lastAccessed);
+  }
 
+
+  public AccountV2 iban(String iban) {
+    
+    this.iban = iban;
+    return this;
+  }
 
    /**
    * The Account IBAN
@@ -161,7 +176,18 @@ public class AccountV2 {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_IBAN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIban(String iban) {
+    this.iban = iban;
+  }
 
+
+  public AccountV2 institutionId(String institutionId) {
+    
+    this.institutionId = institutionId;
+    return this;
+  }
 
    /**
    * The ASPSP associated with this account.
@@ -177,7 +203,18 @@ public class AccountV2 {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_INSTITUTION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInstitutionId(String institutionId) {
+    this.institutionId = institutionId;
+  }
 
+
+  public AccountV2 status(AccountV2StatusEnum status) {
+    this.status = JsonNullable.<AccountV2StatusEnum>of(status);
+    
+    return this;
+  }
 
    /**
    * The processing status of this account.
@@ -188,11 +225,7 @@ public class AccountV2 {
   @JsonIgnore
 
   public AccountV2StatusEnum getStatus() {
-    
-    if (status == null) {
-      status = JsonNullable.<AccountV2StatusEnum>undefined();
-    }
-    return status.orElse(null);
+        return status.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_STATUS)
@@ -203,10 +236,13 @@ public class AccountV2 {
   }
   
   @JsonProperty(JSON_PROPERTY_STATUS)
-  private void setStatus_JsonNullable(JsonNullable<AccountV2StatusEnum> status) {
+  public void setStatus_JsonNullable(JsonNullable<AccountV2StatusEnum> status) {
     this.status = status;
   }
 
+  public void setStatus(AccountV2StatusEnum status) {
+    this.status = JsonNullable.<AccountV2StatusEnum>of(status);
+  }
 
 
   @Override

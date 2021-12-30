@@ -2158,36 +2158,30 @@ components:
         id:
           description: The ID of this Account, used to refer to this account in other
             API calls.
-          readOnly: true
           title: Account ID
           type: string
         created:
           description: The date & time at which the account object was created.
           format: date-time
-          readOnly: true
           title: Created date/time
           type: string
         last_accessed:
           description: The date & time at which the account object was last accessed.
           format: date-time
           nullable: true
-          readOnly: true
           title: Last accessed date/time
           type: string
         iban:
           description: The Account IBAN
-          readOnly: true
           type: string
         institution_id:
           description: The ASPSP associated with this account.
-          readOnly: true
           title: ASPSP ID
           type: string
         status:
           allOf:
           - $ref: '#/components/schemas/AccountV2StatusEnum'
           description: The processing status of this account.
-          readOnly: true
           title: Account Status
       type: object
     AccountV2StatusEnum:
@@ -2248,13 +2242,11 @@ components:
         id:
           description: The ID of this End User Agreement, used to refer to this end
             user agreement in other API calls.
-          readOnly: true
           title: End User Agreement ID
           type: string
         created:
           description: The date & time at which the end user agreement was created.
           format: date-time
-          readOnly: true
           title: Created Date
           type: string
         max_historical_days:
@@ -2287,7 +2279,6 @@ components:
           description: The date & time at which the end user accepted the agreement.
           format: date-time
           nullable: true
-          readOnly: true
           title: Accepted Date
           type: string
         institution_id:
@@ -2337,7 +2328,6 @@ components:
         refresh:
           type: string
         access:
-          readOnly: true
           type: string
       required:
       - refresh
@@ -2448,7 +2438,6 @@ components:
       description: RequisitionLinksSerializer.
       properties:
         initiate:
-          readOnly: true
           type: string
       type: object
     RequisitionV2:
@@ -2470,13 +2459,11 @@ components:
         ssn: ssn
       properties:
         id:
-          readOnly: true
           type: string
         created:
           description: The date & time at which the requisition was created.
           format: date-time
           nullable: true
-          readOnly: true
           title: Created Date
           type: string
         redirect:
@@ -2488,7 +2475,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/Status1c5Enum'
           description: status of this requisition
-          readOnly: true
           title: Requisition status
         institution_id:
           description: an Institution ID for this Requisition
@@ -2505,7 +2491,6 @@ components:
           items:
             title: accounts
             type: string
-          readOnly: true
           type: array
         user_language:
           description: A two-letter country code (ISO 639-1)
@@ -2514,7 +2499,6 @@ components:
         link:
           default: https://ob.nordigen.com/psd2/start/3fa85f64-5717-4562-b3fc-2c963f66afa6/some_institution_id
           description: link to initiate authorization with Institution
-          readOnly: true
           type: string
         ssn:
           description: optional SSN field to verify ownership of the account
@@ -2543,21 +2527,17 @@ components:
           writeOnly: true
         access:
           description: Your access token
-          readOnly: true
           type: string
         access_expires:
           default: 86400
           description: Access token expires in seconds
-          readOnly: true
           type: integer
         refresh:
           description: Your refresh token
-          readOnly: true
           type: string
         refresh_expires:
           default: 2592000
           description: Refresh token expires in seconds
-          readOnly: true
           type: integer
       required:
       - password
@@ -2570,12 +2550,10 @@ components:
       properties:
         access:
           description: Your access token
-          readOnly: true
           type: string
         access_expires:
           default: 86400
           description: Access token expires in seconds
-          readOnly: true
           type: integer
       type: object
     SpectacularRequisitionV2:
@@ -2597,13 +2575,11 @@ components:
         ssn: ssn
       properties:
         id:
-          readOnly: true
           type: string
         created:
           description: The date & time at which the requisition was created.
           format: date-time
           nullable: true
-          readOnly: true
           title: Created Date
           type: string
         redirect:
@@ -2615,7 +2591,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/Status1c5Enum'
           description: status of this requisition
-          readOnly: true
           title: Requisition status
         institution_id:
           description: an Institution ID for this Requisition
@@ -2631,7 +2606,6 @@ components:
           default: []
           description: array of account IDs retrieved within a scope of this requisition
           items: {}
-          readOnly: true
           type: array
         user_language:
           description: A two-letter country code (ISO 639-1)

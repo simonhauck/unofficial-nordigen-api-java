@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularRequisitionV2.JSON_PROPERTY_ACCOUNT_SELECTION
 })
 @JsonTypeName("SpectacularRequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:02:29.348425Z[Etc/UTC]")
 public class SpectacularRequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -93,18 +93,10 @@ public class SpectacularRequisitionV2 {
   public SpectacularRequisitionV2() { 
   }
 
-  @JsonCreator
-  public SpectacularRequisitionV2(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
-    @JsonProperty(JSON_PROPERTY_STATUS) Status1c5Enum status, 
-    @JsonProperty(JSON_PROPERTY_ACCOUNTS) List<Object> accounts
-  ) {
-    this();
+  public SpectacularRequisitionV2 id(String id) {
+    
     this.id = id;
-    this.created = created;
-    this.status = status;
-    this.accounts = accounts;
+    return this;
   }
 
    /**
@@ -121,7 +113,18 @@ public class SpectacularRequisitionV2 {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(String id) {
+    this.id = id;
+  }
 
+
+  public SpectacularRequisitionV2 created(OffsetDateTime created) {
+    this.created = JsonNullable.<OffsetDateTime>of(created);
+    
+    return this;
+  }
 
    /**
    * The date &amp; time at which the requisition was created.
@@ -132,11 +135,7 @@ public class SpectacularRequisitionV2 {
   @JsonIgnore
 
   public OffsetDateTime getCreated() {
-    
-    if (created == null) {
-      created = JsonNullable.<OffsetDateTime>undefined();
-    }
-    return created.orElse(null);
+        return created.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_CREATED)
@@ -147,10 +146,13 @@ public class SpectacularRequisitionV2 {
   }
   
   @JsonProperty(JSON_PROPERTY_CREATED)
-  private void setCreated_JsonNullable(JsonNullable<OffsetDateTime> created) {
+  public void setCreated_JsonNullable(JsonNullable<OffsetDateTime> created) {
     this.created = created;
   }
 
+  public void setCreated(OffsetDateTime created) {
+    this.created = JsonNullable.<OffsetDateTime>of(created);
+  }
 
 
   public SpectacularRequisitionV2 redirect(String redirect) {
@@ -180,6 +182,12 @@ public class SpectacularRequisitionV2 {
   }
 
 
+  public SpectacularRequisitionV2 status(Status1c5Enum status) {
+    this.status = JsonNullable.<Status1c5Enum>of(status);
+    
+    return this;
+  }
+
    /**
    * status of this requisition
    * @return status
@@ -189,11 +197,7 @@ public class SpectacularRequisitionV2 {
   @JsonIgnore
 
   public Status1c5Enum getStatus() {
-    
-    if (status == null) {
-      status = JsonNullable.<Status1c5Enum>undefined();
-    }
-    return status.orElse(null);
+        return status.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_STATUS)
@@ -204,10 +208,13 @@ public class SpectacularRequisitionV2 {
   }
   
   @JsonProperty(JSON_PROPERTY_STATUS)
-  private void setStatus_JsonNullable(JsonNullable<Status1c5Enum> status) {
+  public void setStatus_JsonNullable(JsonNullable<Status1c5Enum> status) {
     this.status = status;
   }
 
+  public void setStatus(Status1c5Enum status) {
+    this.status = JsonNullable.<Status1c5Enum>of(status);
+  }
 
 
   public SpectacularRequisitionV2 institutionId(String institutionId) {
@@ -291,6 +298,20 @@ public class SpectacularRequisitionV2 {
   }
 
 
+  public SpectacularRequisitionV2 accounts(List<Object> accounts) {
+    
+    this.accounts = accounts;
+    return this;
+  }
+
+  public SpectacularRequisitionV2 addAccountsItem(Object accountsItem) {
+    if (this.accounts == null) {
+      this.accounts = new ArrayList<Object>();
+    }
+    this.accounts.add(accountsItem);
+    return this;
+  }
+
    /**
    * array of account IDs retrieved within a scope of this requisition
    * @return accounts
@@ -305,6 +326,11 @@ public class SpectacularRequisitionV2 {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccounts(List<Object> accounts) {
+    this.accounts = accounts;
+  }
 
 
   public SpectacularRequisitionV2 userLanguage(String userLanguage) {

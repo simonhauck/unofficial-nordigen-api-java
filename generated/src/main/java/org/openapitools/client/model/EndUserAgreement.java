@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   EndUserAgreement.JSON_PROPERTY_INSTITUTION_ID
 })
 @JsonTypeName("EndUserAgreement")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:02:29.348425Z[Etc/UTC]")
 public class EndUserAgreement {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -72,16 +72,10 @@ public class EndUserAgreement {
   public EndUserAgreement() { 
   }
 
-  @JsonCreator
-  public EndUserAgreement(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
-    @JsonProperty(JSON_PROPERTY_ACCEPTED) OffsetDateTime accepted
-  ) {
-    this();
+  public EndUserAgreement id(String id) {
+    
     this.id = id;
-    this.created = created;
-    this.accepted = accepted;
+    return this;
   }
 
    /**
@@ -98,7 +92,18 @@ public class EndUserAgreement {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(String id) {
+    this.id = id;
+  }
 
+
+  public EndUserAgreement created(OffsetDateTime created) {
+    
+    this.created = created;
+    return this;
+  }
 
    /**
    * The date &amp; time at which the end user agreement was created.
@@ -114,6 +119,11 @@ public class EndUserAgreement {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_CREATED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCreated(OffsetDateTime created) {
+    this.created = created;
+  }
 
 
   public EndUserAgreement maxHistoricalDays(Integer maxHistoricalDays) {
@@ -209,6 +219,12 @@ public class EndUserAgreement {
   }
 
 
+  public EndUserAgreement accepted(OffsetDateTime accepted) {
+    this.accepted = JsonNullable.<OffsetDateTime>of(accepted);
+    
+    return this;
+  }
+
    /**
    * The date &amp; time at which the end user accepted the agreement.
    * @return accepted
@@ -218,11 +234,7 @@ public class EndUserAgreement {
   @JsonIgnore
 
   public OffsetDateTime getAccepted() {
-    
-    if (accepted == null) {
-      accepted = JsonNullable.<OffsetDateTime>undefined();
-    }
-    return accepted.orElse(null);
+        return accepted.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_ACCEPTED)
@@ -233,10 +245,13 @@ public class EndUserAgreement {
   }
   
   @JsonProperty(JSON_PROPERTY_ACCEPTED)
-  private void setAccepted_JsonNullable(JsonNullable<OffsetDateTime> accepted) {
+  public void setAccepted_JsonNullable(JsonNullable<OffsetDateTime> accepted) {
     this.accepted = accepted;
   }
 
+  public void setAccepted(OffsetDateTime accepted) {
+    this.accepted = JsonNullable.<OffsetDateTime>of(accepted);
+  }
 
 
   public EndUserAgreement institutionId(String institutionId) {

@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularJWTObtain.JSON_PROPERTY_REFRESH_EXPIRES
 })
 @JsonTypeName("SpectacularJWTObtain")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:02:29.348425Z[Etc/UTC]")
 public class SpectacularJWTObtain {
   public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;
@@ -55,20 +55,6 @@ public class SpectacularJWTObtain {
   private Integer refreshExpires = 2592000;
 
   public SpectacularJWTObtain() { 
-  }
-
-  @JsonCreator
-  public SpectacularJWTObtain(
-    @JsonProperty(JSON_PROPERTY_ACCESS) String access, 
-    @JsonProperty(JSON_PROPERTY_ACCESS_EXPIRES) Integer accessExpires, 
-    @JsonProperty(JSON_PROPERTY_REFRESH) String refresh, 
-    @JsonProperty(JSON_PROPERTY_REFRESH_EXPIRES) Integer refreshExpires
-  ) {
-    this();
-    this.access = access;
-    this.accessExpires = accessExpires;
-    this.refresh = refresh;
-    this.refreshExpires = refreshExpires;
   }
 
   public SpectacularJWTObtain password(String password) {
@@ -98,6 +84,12 @@ public class SpectacularJWTObtain {
   }
 
 
+  public SpectacularJWTObtain access(String access) {
+    
+    this.access = access;
+    return this;
+  }
+
    /**
    * Your access token
    * @return access
@@ -112,7 +104,18 @@ public class SpectacularJWTObtain {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ACCESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccess(String access) {
+    this.access = access;
+  }
 
+
+  public SpectacularJWTObtain accessExpires(Integer accessExpires) {
+    
+    this.accessExpires = accessExpires;
+    return this;
+  }
 
    /**
    * Access token expires in seconds
@@ -128,7 +131,18 @@ public class SpectacularJWTObtain {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ACCESS_EXPIRES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccessExpires(Integer accessExpires) {
+    this.accessExpires = accessExpires;
+  }
 
+
+  public SpectacularJWTObtain refresh(String refresh) {
+    
+    this.refresh = refresh;
+    return this;
+  }
 
    /**
    * Your refresh token
@@ -144,7 +158,18 @@ public class SpectacularJWTObtain {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REFRESH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRefresh(String refresh) {
+    this.refresh = refresh;
+  }
 
+
+  public SpectacularJWTObtain refreshExpires(Integer refreshExpires) {
+    
+    this.refreshExpires = refreshExpires;
+    return this;
+  }
 
    /**
    * Refresh token expires in seconds
@@ -160,6 +185,11 @@ public class SpectacularJWTObtain {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REFRESH_EXPIRES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRefreshExpires(Integer refreshExpires) {
+    this.refreshExpires = refreshExpires;
+  }
 
 
   @Override

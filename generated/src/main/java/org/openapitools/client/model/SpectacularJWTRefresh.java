@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SpectacularJWTRefresh.JSON_PROPERTY_ACCESS_EXPIRES
 })
 @JsonTypeName("SpectacularJWTRefresh")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:02:29.348425Z[Etc/UTC]")
 public class SpectacularJWTRefresh {
   public static final String JSON_PROPERTY_ACCESS = "access";
   private String access;
@@ -45,14 +45,10 @@ public class SpectacularJWTRefresh {
   public SpectacularJWTRefresh() { 
   }
 
-  @JsonCreator
-  public SpectacularJWTRefresh(
-    @JsonProperty(JSON_PROPERTY_ACCESS) String access, 
-    @JsonProperty(JSON_PROPERTY_ACCESS_EXPIRES) Integer accessExpires
-  ) {
-    this();
+  public SpectacularJWTRefresh access(String access) {
+    
     this.access = access;
-    this.accessExpires = accessExpires;
+    return this;
   }
 
    /**
@@ -69,7 +65,18 @@ public class SpectacularJWTRefresh {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ACCESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccess(String access) {
+    this.access = access;
+  }
 
+
+  public SpectacularJWTRefresh accessExpires(Integer accessExpires) {
+    
+    this.accessExpires = accessExpires;
+    return this;
+  }
 
    /**
    * Access token expires in seconds
@@ -85,6 +92,11 @@ public class SpectacularJWTRefresh {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ACCESS_EXPIRES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccessExpires(Integer accessExpires) {
+    this.accessExpires = accessExpires;
+  }
 
 
   @Override

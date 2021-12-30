@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionV2.JSON_PROPERTY_ACCOUNT_SELECTION
 })
 @JsonTypeName("RequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T15:58:16.849203Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:02:29.348425Z[Etc/UTC]")
 public class RequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
@@ -93,20 +93,10 @@ public class RequisitionV2 {
   public RequisitionV2() { 
   }
 
-  @JsonCreator
-  public RequisitionV2(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_CREATED) OffsetDateTime created, 
-    @JsonProperty(JSON_PROPERTY_STATUS) Status1c5Enum status, 
-    @JsonProperty(JSON_PROPERTY_ACCOUNTS) List<String> accounts, 
-    @JsonProperty(JSON_PROPERTY_LINK) String link
-  ) {
-    this();
+  public RequisitionV2 id(String id) {
+    
     this.id = id;
-    this.created = created;
-    this.status = status;
-    this.accounts = accounts;
-    this.link = link;
+    return this;
   }
 
    /**
@@ -123,7 +113,18 @@ public class RequisitionV2 {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(String id) {
+    this.id = id;
+  }
 
+
+  public RequisitionV2 created(OffsetDateTime created) {
+    this.created = JsonNullable.<OffsetDateTime>of(created);
+    
+    return this;
+  }
 
    /**
    * The date &amp; time at which the requisition was created.
@@ -134,11 +135,7 @@ public class RequisitionV2 {
   @JsonIgnore
 
   public OffsetDateTime getCreated() {
-    
-    if (created == null) {
-      created = JsonNullable.<OffsetDateTime>undefined();
-    }
-    return created.orElse(null);
+        return created.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_CREATED)
@@ -149,10 +146,13 @@ public class RequisitionV2 {
   }
   
   @JsonProperty(JSON_PROPERTY_CREATED)
-  private void setCreated_JsonNullable(JsonNullable<OffsetDateTime> created) {
+  public void setCreated_JsonNullable(JsonNullable<OffsetDateTime> created) {
     this.created = created;
   }
 
+  public void setCreated(OffsetDateTime created) {
+    this.created = JsonNullable.<OffsetDateTime>of(created);
+  }
 
 
   public RequisitionV2 redirect(String redirect) {
@@ -182,6 +182,12 @@ public class RequisitionV2 {
   }
 
 
+  public RequisitionV2 status(Status1c5Enum status) {
+    this.status = JsonNullable.<Status1c5Enum>of(status);
+    
+    return this;
+  }
+
    /**
    * status of this requisition
    * @return status
@@ -191,11 +197,7 @@ public class RequisitionV2 {
   @JsonIgnore
 
   public Status1c5Enum getStatus() {
-    
-    if (status == null) {
-      status = JsonNullable.<Status1c5Enum>undefined();
-    }
-    return status.orElse(null);
+        return status.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_STATUS)
@@ -206,10 +208,13 @@ public class RequisitionV2 {
   }
   
   @JsonProperty(JSON_PROPERTY_STATUS)
-  private void setStatus_JsonNullable(JsonNullable<Status1c5Enum> status) {
+  public void setStatus_JsonNullable(JsonNullable<Status1c5Enum> status) {
     this.status = status;
   }
 
+  public void setStatus(Status1c5Enum status) {
+    this.status = JsonNullable.<Status1c5Enum>of(status);
+  }
 
 
   public RequisitionV2 institutionId(String institutionId) {
@@ -293,6 +298,20 @@ public class RequisitionV2 {
   }
 
 
+  public RequisitionV2 accounts(List<String> accounts) {
+    
+    this.accounts = accounts;
+    return this;
+  }
+
+  public RequisitionV2 addAccountsItem(String accountsItem) {
+    if (this.accounts == null) {
+      this.accounts = new ArrayList<String>();
+    }
+    this.accounts.add(accountsItem);
+    return this;
+  }
+
    /**
    * array of account IDs retrieved within a scope of this requisition
    * @return accounts
@@ -307,6 +326,11 @@ public class RequisitionV2 {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccounts(List<String> accounts) {
+    this.accounts = accounts;
+  }
 
 
   public RequisitionV2 userLanguage(String userLanguage) {
@@ -336,6 +360,12 @@ public class RequisitionV2 {
   }
 
 
+  public RequisitionV2 link(String link) {
+    
+    this.link = link;
+    return this;
+  }
+
    /**
    * link to initiate authorization with Institution
    * @return link
@@ -350,6 +380,11 @@ public class RequisitionV2 {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLink(String link) {
+    this.link = link;
+  }
 
 
   public RequisitionV2 ssn(String ssn) {

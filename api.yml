@@ -2347,6 +2347,7 @@ components:
           type: string
           description: optional SSN field to verify ownership of the account
           maxLength: 64
+          nullable: true
         account_selection:
           type: boolean
           default: false

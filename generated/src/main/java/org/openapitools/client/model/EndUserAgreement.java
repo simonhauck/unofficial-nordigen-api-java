@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   EndUserAgreement.JSON_PROPERTY_INSTITUTION_ID
 })
 @JsonTypeName("EndUserAgreement")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:02:29.348425Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:06:26.310052Z[Etc/UTC]")
 public class EndUserAgreement {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

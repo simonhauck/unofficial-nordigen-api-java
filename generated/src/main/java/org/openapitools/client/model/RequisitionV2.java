@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   RequisitionV2.JSON_PROPERTY_ACCOUNT_SELECTION
 })
 @JsonTypeName("RequisitionV2")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:02:29.348425Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-30T16:06:26.310052Z[Etc/UTC]")
 public class RequisitionV2 {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;
